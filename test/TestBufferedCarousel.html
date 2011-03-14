@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>TestBufferdCarousel</title>
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    <link rel="stylesheet" href="styles/720.css" type="text/css">
+    <link rel="stylesheet" href="styles/ieat.css" type="text/css">
+    
+    <script type="text/javascript" src="scripts/sencha-touch-debug-w-comments.js"></script>
+    <script type="text/javascript" src="scripts/library.js"></script>
+    <script type="text/javascript" src="scripts/BufferedCarousel.js"></script>
+    <script type="text/javascript" src="scripts/PageViewPanel.js"></script>
+    <script type="text/javascript" src="scripts/page-data.js"></script>
+    
+    <style>
+		body {
+			background-color: #376daa;
+		}
+	</style>
+    
+
+    <script type="text/javascript" charset="utf-8">
+	Ext.setup({
+				tabletStartupScreen : 'images/tablet_startup.png',
+				icon : 'icon.png',
+				glossOnIcon : true,
+
+				onReady : function() {
+					createStoreModule() ;
+					
+					cardswitch = function(container, newCard, oldCard, index,
+							animated) {
+						console.log('cardswitch');
+					}
+					
+					var panel = new SH.PageViewPanel(
+							{
+								fullscreen : true,
+								layout : 'card',
+								cls : 'pagesheets' , 
+								defaults : {
+									cls : 'card',
+									flex : 1
+								} ,
+								pageData : createPageStore() ,
+								pageContentSwitch : cardswitch
+							}
+						)
+					
+					panel.showItemsPage(0);
+					
+					beforeorder = function(target, data){
+						console.log("ordering") ;
+						console.dir(data);
+						console.dir(event) ;
+					}
+					
+					afterorder = function(target, event){
+						console.log("after order") ;
+					}
+					
+					
+					panel.on('order', beforeorder , this);
+					panel.on('afterorder', afterorder , this);
+				}
+			}) ;
+    
+</script>
+</head>
+
+<body>
+</body></html>               
