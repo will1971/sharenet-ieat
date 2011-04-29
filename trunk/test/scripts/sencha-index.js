@@ -502,6 +502,7 @@ function createPage(pageStore , self ){
 	
 	self.pagepanel.on('order', orderFun , this);
 	self.pagepanel.on('afterorder', afterOrderFun , this);	
+	
 }
 
 /**

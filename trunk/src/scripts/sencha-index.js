@@ -71,6 +71,7 @@ function removeClassName(oHTMLElement, classNameToRemove) {
 }
 
 function createOrderStore() {
+	//建立点选菜单的存储
 	var store = new Ext.data.JsonStore( {
 		model : 'Item',
 		sorters : 'id',
@@ -79,7 +80,6 @@ function createOrderStore() {
 			return record.get('type');
 		}
 	});
-	
 	return store ;
 }
 
@@ -88,6 +88,8 @@ function createOrderStore() {
  * create tool bar, contains type and other things
  * @return
  */
+var DishNum = 0; //桌号
+
 function createToolBar(orderedList , self ){
 	
 	var extendOrderPad = function(btn, event) {
@@ -102,7 +104,7 @@ function createToolBar(orderedList , self ){
 	}, {
 		iconMask : true,
 		iconCls : 'organize',
-		text : '已点菜（0份）',
+		text :'  桌号：'+ DishNum+'   已点菜（0份）',
 		handler : extendOrderPad
 	} ];
 
@@ -132,9 +134,9 @@ function createToolBar(orderedList , self ){
 	operationButtonGroup.push( {
 		xtype : 'spacer'
 	});
-
+    
 	var toolbar = new Ext.Toolbar( {
-		title : '<span class="logo push_5 grid_2">炫动美食</span>',
+		title : '<span class="logo push_8 grid_2">炫动美食</span>',
 		height : '46px',
 		width : '100%',
 		dock : 'top',
@@ -179,9 +181,19 @@ function createOrderedList(store){
                 selModel: {
                     mode: 'SINGLE',
                     allowDeselect: true
-                }
+                },
+                onItemDisclosure: 
+                {
+                scope: 'test',
+                handler: function(record, btn, index) {
+                   // alert('删除菜 ' + record.get('name'));
+                    store.remove(record);
+                    }
+                } 
 			});
-
+        
+        
+        
 	var overlay = new Ext.Panel( {
 		floating : true,
 		modal : true,
@@ -239,6 +251,7 @@ function createOrderedList(store){
  * @param expand
  */
 function expandPageBar(self , expand){
+	
 	if(expand && !self.pageBarExtended){
 		self.pagecarousel.setVisible(true);
 		self.pagePanel.setHeight(self.pagePanelHeight
@@ -372,7 +385,8 @@ function createPageBar(self , pageStore){
 					}
 				}
 				
-			})
+			}
+			)
 
 	self.pagePanel = new Ext.Panel( {
 		id : 'pagepanel' ,
@@ -443,7 +457,7 @@ function updateOrderStatus( self ){
 		price += item.get('price');
 	});
 	
-	var txt = "已点菜（" + count + "份）价格:" + price + "元";
+	var txt = '  桌号：'+ DishNum + "   已点菜（" + count + "份）价格:" + price + "元";
 	self.toolbar.items.items[1].setText( txt  ) ;
 }
 
@@ -566,6 +580,7 @@ function updateCurrentPage(self , index){
 /**
  * The entry point, page render start from here.
  */
+
 Ext.setup( {
 			tabletStartupScreen : 'images/tablet_startup.jpg',
 			icon : 'icon.png',
@@ -577,26 +592,36 @@ Ext.setup( {
 				/*
 				 * prepare the controls
 				 */
+				 //建立点菜单
 				createStoreModule();
 				this.orderStore = createOrderStore();
 				this.orderedList = createOrderedList(this.orderStore) ;
 				
+		     
+				
+				//建立工具栏
 				this.toolbar = createToolBar(this.orderedList , this) ;
 				this.toolbar.setVisible(true);
 		
-				// create page store
+				// 建立页面内容
 				this.pageStore = createPageStore();
 				
+				//建立多页浏览
 				// create page snapview panel
 				var pagePanel = createPageBar(this , this.pageStore);
 				pagePanel.setVisible(true);
 				this.showControls = true ;
-
+				
+				
+                //创建页面
 				// create main page panel
 				createPage(this.pageStore , this);
 				
+				
+				//开始第一页
 				// flash current page to first page
 				updateCurrentPage(this , 0) ;
+				
 			}
 
 		});
