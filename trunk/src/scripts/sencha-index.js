@@ -100,7 +100,11 @@ function createToolBar(orderedList , self ){
 	
 	var operationButtonGroup = [ {
 		text : '返回',
-		ui : 'back' 
+		ui : 'back' ,
+		handler : function( btn, event ){
+			DishNum = -1 ;
+			self.mainPanel.setActiveItem(0);
+		}
 	}, {
 		iconMask : true,
 		iconCls : 'organize',
@@ -525,6 +529,7 @@ function createTablePanel(tableStore , self ){
 		items: [{
             xtype: 'list',
             onItemDisclosure: function(record, btn, index) {
+            	DishNum = index ;
 				self.mainPanel.setActiveItem(1);
             },
             store: tableStore,
