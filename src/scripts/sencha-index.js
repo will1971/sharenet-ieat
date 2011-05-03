@@ -410,7 +410,6 @@ function createPageBar(self , pageStore){
 	return self.pagePanel ;
 }
 
-
 var pageTpl = new Ext.XTemplate(
 	    '<div style="background-image: url({image});" class="{cls}">', 
 		'<tpl for="items">',
@@ -484,7 +483,7 @@ function createPage(pageStore , self ){
 	
 	self.pagepanel = new SH.PageViewPanel(
 			{
-				fullscreen : true,
+				//fullscreen : true,
 				layout : 'card',
 				cls : 'pagesheets' , 
 				defaults : {
@@ -514,8 +513,24 @@ function createPage(pageStore , self ){
 			}
 		) ;
 	
+
+	
 	self.pagepanel.on('order', orderFun , this);
 	self.pagepanel.on('afterorder', afterOrderFun , this);	
+}
+
+
+function createTablePanel(tableStore , self ){
+	self.tablepanel = new Ext.Panel({
+		items: [{
+            xtype: 'list',
+            onItemDisclosure: function(record, btn, index) {
+				self.mainPanel.setActiveItem(1);
+            },
+            store: tableStore,
+            itemTpl: '<div class="contact"><strong>{desc}</strong> {state}</div>'
+        }]
+    });
 }
 
 /**
@@ -613,15 +628,20 @@ Ext.setup( {
 				this.showControls = true ;
 				
 				
-                //创建页面
-				// create main page panel
+                //创建菜单页面 , 并翻倒第一页
 				createPage(this.pageStore , this);
+				//updateCurrentPage(this , 0) ;
 				
+				this.tableStore = createTableStore() ;
+				createTablePanel(this.tableStore, this) ;
 				
-				//开始第一页
-				// flash current page to first page
-				updateCurrentPage(this , 0) ;
+				this.mainPanel = new Ext.Panel({
+			        fullscreen: true,
+			        layout: 'card',
+			        items: [this.tablepanel , this.pagepanel ]
+			    });
 				
+				//显示开台页 
+				this.mainPanel.setActiveItem(0);
 			}
-
 		});

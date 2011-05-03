@@ -26,6 +26,10 @@ function createStoreModule(){
 					'type', 'detail', 'cls' ]
 		});
 		
+		Ext.regModel('Table', {
+			fields : [ 'id' , 'desc' /* 其他信息 */ , 'state' /*当前状态*/ ,] 
+		});
+		
 		moduleDefined = false ;
 	}
 }
@@ -215,3 +219,24 @@ function createPageStore(){
 	});
 	return pageStore ;
 }
+
+function createTableStore(){
+	var tableStore = new Ext.data.JsonStore({
+		/**
+		 * 'id' , 'desc' , 'state' 
+		 */
+		model : 'Table',
+		sorters : 'id',
+		data : [
+		    { id : 1 , desc : '一号桌，四座' , state: '未定' } ,
+		    { id : 2 , desc : '二号桌，四座' , state: '未定' } ,
+		    { id : 3 , desc : '三号桌，四座' , state: '未定' } ,
+		    { id : 4 , desc : '四号桌，四座' , state: '未定' } ,
+		    { id : 5 , desc : '五号桌，四座' , state: '未定' } ,
+		    { id : 6 , desc : '六号桌，四座' , state: '未定' } ,
+		    { id : 7 , desc : '七号桌，四座' , state: '未定' } 
+		]
+	}) ;
+	return tableStore ;
+}
+
