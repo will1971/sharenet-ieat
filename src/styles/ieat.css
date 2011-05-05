@@ -91,6 +91,12 @@ body {
 	background-color:#000;
 }
 
+#tablepanel .x-list-disclosure{
+	-webkit-mask-size: 2.5em;
+	width: 3.0em;
+	height: 3.0em;
+}
+
 /* ===========
    =========== */
 .controlpanel {
