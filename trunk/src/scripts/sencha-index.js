@@ -1,3 +1,5 @@
+
+ChooseNum = 0;
 function addClassName(oHTMLElement, classNameToAdd) {
     if (typeof(oHTMLElement) == "string") {
         oHTMLElement = document.getElementById(oHTMLElement);
@@ -88,7 +90,7 @@ function createOrderStore() {
  * create tool bar, contains type and other things
  * @return
  */
-var DishNum = 0; //桌号
+
 
 function createToolBar(orderedList , self ){
 	
@@ -97,22 +99,24 @@ function createToolBar(orderedList , self ){
 		orderedList.doLayout();
 		orderedList.showBy(btn);
 	} ;
-	
 	var operationButtonGroup = [ {
 		text : '返回',
 		ui : 'back' ,
 		handler : function( btn, event ){
-			DishNum = -1 ;
-			self.mainPanel.setActiveItem(0);
+			console.log("点击返回按钮！");
+			self.pagepanel.setActiveItem(0);
 		}
 	}, {
+		
 		iconMask : true,
 		iconCls : 'organize',
-		text :'  桌号：'+ DishNum+'   已点菜（0份）',
+		text :'  桌号：'+ self.DishNum+'   已点菜（0份）',
 		handler : extendOrderPad
 	} ];
-
-	var itemList = [ ] ;
+	
+	
+	
+    var itemList = [ ] ;
 	types.forEach(function(typeTxt){
 		itemList.push({ text : typeTxt , id: typeTxt });
 	});
@@ -166,7 +170,8 @@ function createToolBar(orderedList , self ){
 }
 
 
-function createOrderedList(store){
+function createOrderedList(self){
+	var store= self.orderStore;
 	var list = new Ext.List(
 			{
 				grouped : true,
@@ -192,6 +197,7 @@ function createOrderedList(store){
                 handler: function(record, btn, index) {
                    // alert('删除菜 ' + record.get('name'));
                     store.remove(record);
+                    updateOrderStatus(self);
                     }
                 } 
 			});
@@ -459,8 +465,9 @@ function updateOrderStatus( self ){
 		count ++ ;
 		price += item.get('price');
 	});
+	console.log(self.orderStore);
 	
-	var txt = '  桌号：'+ DishNum + "   已点菜（" + count + "份）价格:" + price + "元";
+	var txt = '  桌号：'+ self.DishNum + "   已点菜（" + count + "份）价格:" + price + "元";
 	self.toolbar.items.items[1].setText( txt  ) ;
 }
 
@@ -530,8 +537,10 @@ function createTablePanel(tableStore , self ){
 		items: [{
             xtype: 'list',
             onItemDisclosure: function(record, btn, index) {
-            	DishNum = index ;
-				self.mainPanel.setActiveItem(1);
+			self.DishNum = index+1 ;
+            self.toolbar.setVisible(true);
+			self.mainPanel.setActiveItem(1);
+			updateOrderStatus(self);
             },
             store: tableStore,
             itemTpl: '<div class="contact"><strong>{desc}</strong><br>{state}</div>'
@@ -601,7 +610,7 @@ function updateCurrentPage(self , index){
 /**
  * The entry point, page render start from here.
  */
-
+   
 Ext.setup( {
 			tabletStartupScreen : 'images/tablet_startup.jpg',
 			icon : 'icon.png',
@@ -613,10 +622,12 @@ Ext.setup( {
 				/*
 				 * prepare the controls
 				 */
+	             //建立应用通用变量
+				 this.DishNum = 0;
 				 //建立点菜单
 				createStoreModule();
 				this.orderStore = createOrderStore();
-				this.orderedList = createOrderedList(this.orderStore) ;
+				this.orderedList = createOrderedList(this) ;
 				
 		     
 				
@@ -639,7 +650,9 @@ Ext.setup( {
 				//updateCurrentPage(this , 0) ;
 				
 				this.tableStore = createTableStore() ;
+				
 				createTablePanel(this.tableStore, this) ;
+				
 				
 				this.mainPanel = new Ext.Panel({
 			        fullscreen: true,
@@ -648,6 +661,8 @@ Ext.setup( {
 			    });
 				
 				//显示开台页 
+				
+				this.toolbar.setVisible(false);
 				this.mainPanel.setActiveItem(0);
 			}
 		});
