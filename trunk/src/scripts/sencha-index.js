@@ -526,6 +526,7 @@ function createPage(pageStore , self ){
 
 function createTablePanel(tableStore , self ){
 	self.tablepanel = new Ext.Panel({
+		id: "tablepanel" ,
 		items: [{
             xtype: 'list',
             onItemDisclosure: function(record, btn, index) {
@@ -533,7 +534,7 @@ function createTablePanel(tableStore , self ){
 				self.mainPanel.setActiveItem(1);
             },
             store: tableStore,
-            itemTpl: '<div class="contact"><strong>{desc}</strong> {state}</div>'
+            itemTpl: '<div class="contact"><strong>{desc}</strong><br>{state}</div>'
         }]
     });
 }
