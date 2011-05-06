@@ -104,7 +104,7 @@ function createToolBar(orderedList , self ){
 		ui : 'back' ,
 		handler : function( btn, event ){
 			console.log("点击返回按钮！");
-			self.pagepanel.setActiveItem(0);
+			self.mainPanel.setActiveItem(0);
 		}
 	}, {
 		
