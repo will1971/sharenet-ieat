@@ -148,7 +148,7 @@ function createToolBar(orderedList , self ){
 	});
     
 	var toolbar = new Ext.Toolbar( {
-		title : '<span class="logo push_8 grid_2">炫动美食</span>',
+		title : '<span class="logo push_6 grid_2">炫动美食</span>',
 		height : '46px',
 		width : '100%',
 		dock : 'top',
