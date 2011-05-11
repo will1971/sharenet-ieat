@@ -104,7 +104,11 @@ function createToolBar(orderedList , self ){
 		ui : 'back' ,
 		handler : function( btn, event ){
 			console.log("点击返回按钮！");
-			self.mainPanel.setActiveItem(0);
+			self.toolbar.setVisible(false);
+			self.dishbar.setVisible(true);
+			updateDishStatus( self );
+			pagePanel.setVisible(false);
+			self.mainPanel.setActiveItem(2);
 		}
 	}, {
 		
@@ -123,8 +127,8 @@ function createToolBar(orderedList , self ){
 	
 	self.typetoggle = function ( up , button, pressed ) {
 		var type = button.id ;
-		var firstPage = typeStartIndex[type];
-		
+		var firstPage = typeStartIndex[type]+1;//这里firstPage为数字序号，考虑-2.-1又从0开始故+1
+		console.log("button id:"+type+"  page"+firstPage);
 		if(firstPage >= 0){
 			updateCurrentPage(self, firstPage) ;
 		} ;
@@ -170,10 +174,12 @@ function createToolBar(orderedList , self ){
 }
 
 
+
 function createOrderedList(self){
 	var store= self.orderStore;
 	var list = new Ext.List(
 			{
+				id:'oredrlist',
 				grouped : true,
 				pinHeaders : false ,
 				itemTpl : new Ext.XTemplate(
@@ -253,7 +259,159 @@ function createOrderedList(self){
 	//return overlay ;
     return tabpanel ;
 }
+/*已点菜单工具栏*/
+  function createDishToolBar(orderedList , self ){
+	function noAction()
+	{
+		;
+	}
+	
 
+	
+	
+	var operationButtonGroup = [  {
+		iconMask : true,
+		iconCls : 'organize',
+		text :'  桌号：'+ self.DishNum+'   已点菜（0份）',
+		handle:noAction
+	} ];
+	
+	
+	
+    var itemList = [ ] ;
+	types.forEach(function(typeTxt){
+		itemList.push({ text : typeTxt , id: typeTxt });
+	});
+	
+	self.typetoggle = function ( up , button, pressed ) {
+		var type = button.id ;
+		var firstPage = typeStartIndex[type]+1;
+		
+		if(firstPage >= 0){
+			self.mainPanel.setActiveItem(1);
+			self.toolbar.setVisible(true);
+			updateCurrentPage(self, firstPage) ;
+			
+		} ;
+	};
+		
+	var typeButtonG = [ {
+		height: '42px' ,
+		xtype : 'segmentedbutton',
+		items : itemList ,
+		listeners : {
+			toggle : self.typetoggle 
+		}
+	} ];
+
+	operationButtonGroup.push( {
+		xtype : 'spacer'
+	});
+    
+	var dishtoolbar = new Ext.Toolbar( {
+		title : '<span class="logo push_8 grid_2">已点菜单</span>',
+		height : '46px',
+		width : '100%',
+		dock : 'top',
+		cls : 'toolbar',
+		floating : true,
+		floatingCls : 'toolbar-float',
+		hideOnMaskTap : false,
+		defaults : {
+			ui : 'plain'
+		},
+		scroll : 'horizontal',
+		layout : {
+			pack : 'right'
+		},
+		defaults : {
+			iconMask : true,
+			ui : 'plain'
+		},
+		items : operationButtonGroup.concat(typeButtonG)
+	});
+	
+	return dishtoolbar ;
+}
+ 
+
+
+
+/**
+ * 已点菜单汇总
+ */
+function createDishPanel(self)
+{
+	
+	var store= self.orderStore;
+	var list = new Ext.List(
+			{
+				id:'Dishlist',
+				grouped : true,
+				pinHeaders : false ,
+				itemTpl : new Ext.XTemplate(
+						'<div class="dish" id="pos_horizontal">',
+							'<img class="loan_img" src="{image}" >',
+							/*'<div class="dish" id="pos_horizontal">',*/
+								'<div class="box itemname">{name} </div>' ,
+								'<div class="box price">单价：{price}元</div>',
+								/*'<div class="box desc">{desc}</div>',*/
+								//'</div>',
+							//'</div>' ,
+						'</div>'),
+				store : store,
+				scroll : 'vertical' ,
+                height: 1000,
+                selModel: {
+                    mode: 'SINGLE',
+                    allowDeselect: true
+                },
+                onItemDisclosure: 
+                {
+                scope: 'test',
+                handler: function(record, btn, index) {
+                   // alert('删除菜 ' + record.get('name'));
+                    store.remove(record);
+                    updateDishStatus(self);
+                    
+                    }
+                } 
+			});
+        
+
+	
+	
+	
+        
+	var dishpanel = new Ext.Panel( {
+		//floating : true,
+		id:'dishpanel',
+		modal : true,
+		centered : false,
+		//html:"点菜单汇总",
+		//board: 2 ,
+		//padding: 2 ,
+		cls: 'dishpanel grid_5' ,
+		height: 1000,
+		 cardSwitchAnimation: {
+            type: 'slide',
+            cover: true
+        },
+        defaults: {
+            scroll: 'vertical'
+        },
+		items : [self.dishbar,list]
+	});
+//	self.toolbar.setVisible(true);
+//	console.log(dishpanel);
+	updateOrderStatus( self );
+	return dishpanel ;
+    //return tabpanel ;
+}
+
+/*创建套餐选取界面*/
+ function createPackagePanel(self)
+ 
 
 /**
  * expand or unexpand the pagebar
@@ -395,8 +553,8 @@ function createPageBar(self , pageStore){
 					}
 				}
 				
-			}
-			)
+			});
+			
 
 	self.pagePanel = new Ext.Panel( {
 		id : 'pagepanel' ,
@@ -469,8 +627,22 @@ function updateOrderStatus( self ){
 	
 	var txt = '  桌号：'+ self.DishNum + "   已点菜（" + count + "份）价格:" + price + "元";
 	self.toolbar.items.items[1].setText( txt  ) ;
+	
 }
 
+function updateDishStatus( self ){
+	var count = 0 ; 
+	var price = 0 ;
+	self.orderStore.each(function(item){
+		count ++ ;
+		price += item.get('price');
+	});
+	console.log(self.orderStore);
+	
+	var txt = '  桌号：'+ self.DishNum + "   已点菜（" + count + "份）总价格:" + price + "元";
+	self.dishbar.items.items[0].setText( txt  ) ;
+	
+}
 /**
  * create the page store object, which is the main contains of whole manu
  * fields : [ 'id' , 'pageIndex', 'image', 'snapshot' ,'type', 'cls'] 
@@ -587,8 +759,11 @@ var COVER_SIZE = 2 ;
 
 // change status of currentPage, include the typeButton , pageBar status
 function updateCurrentPage(self , index){
-	var page =self.pageStore.getAt(index);
+	
+	var page = self.pageStore.getAt(index);
 	var type = page.get('type') ;
+	
+	
 	var pressedBtn = self.toolbar.items.get(3).getPressed();
 	if(!pressedBtn || (pressedBtn.id != type) ){
 		// FIXIT: the segment button is toolbar.items.get(3), buggie
@@ -632,6 +807,10 @@ Ext.setup( {
 		     
 				
 				//建立工具栏
+				//最终点菜栏
+				this.dishbar = createDishToolBar(this.orderedList , this) ;
+				this.dishbar.setVisible(false);
+				//工具栏
 				this.toolbar = createToolBar(this.orderedList , this) ;
 				this.toolbar.setVisible(true);
 		
@@ -640,29 +819,42 @@ Ext.setup( {
 				
 				//建立多页浏览
 				// create page snapview panel
-				var pagePanel = createPageBar(this , this.pageStore);
+				pagePanel = createPageBar(this , this.pageStore);
 				pagePanel.setVisible(true);
 				this.showControls = true ;
+				
 				
 				
                 //创建菜单页面 , 并翻倒第一页
 				createPage(this.pageStore , this);
 				//updateCurrentPage(this , 0) ;
 				
-				this.tableStore = createTableStore() ;
+				//创建套餐选取页面
 				
+				
+				//创建最终点菜页面
+				
+				this.dishpanel = createDishPanel(this);
+				
+				//console.log(dishpanel);
+				
+				
+				//创建选桌面页面
+				this.tableStore = createTableStore() ;
+			
 				createTablePanel(this.tableStore, this) ;
 				
 				
 				this.mainPanel = new Ext.Panel({
 			        fullscreen: true,
 			        layout: 'card',
-			        items: [this.tablepanel , this.pagepanel ]
+			        items: [this.tablepanel , this.pagepanel ,this.dishpanel]
 			    });
+				console.log(this.mainPanel);
 				
 				//显示开台页 
 				
-				this.toolbar.setVisible(false);
-				this.mainPanel.setActiveItem(0);
+				//this.toolbar.setVisible(false);
+				this.mainPanel.setActiveItem(1);
 			}
 		});
