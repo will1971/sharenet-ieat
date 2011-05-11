@@ -3,11 +3,11 @@
  */
 var moduleDefined = false ;
 //food type
-var types = ['凉菜' , '热菜'	, '酒水' , '海鲜' , '特色推荐'];
+var types = ['凉菜' , '热菜'	, '酒水' , '点心' , '特色推荐'];
 
 //each food type start position, will using for jump page
-var typeStartIndex = { '凉菜' : 2 , '热菜' : 4 , '酒水' : 9 , 
-		'海鲜' : 10 , '特色推荐' : 11 } ;
+var typeStartIndex = { '凉菜' : 1 , '热菜' : 3 , '酒水' : 11 , 
+		'点心' : 10 , '特色推荐' : 9 } ;
 
 /**
  * create data store module
@@ -51,7 +51,7 @@ function createPageStore(){
 		/**
 		 * the page define JSON, the object must follow the index of page
 		 * otherwize, maybe out of control.
-		 * total : 20 sheet , '凉菜'： 2 , '热菜'： 10 , '海鲜' ： 2 ,'酒水'： 1 , '特色推荐' : 3
+		 * total : 20 sheet , '凉菜'： 2 , '热菜'： 10 , '点心' ： 2 ,'酒水'： 1 , '特色推荐' : 3
 		 */
 		data : [
 		 /*
@@ -187,11 +187,11 @@ function createPageStore(){
 			type : types[2] ,  cls : 'page' ,
 			items : [{
 				id : 17 , page_id: 9 , name: '翡翠黑米糕' ,  image : 'images/p10f2-small.gif' , 
-				desc: '黑米含蛋白质及多种人体所需微量元素 益气补血 润肺止咳 暖胃健脾 滋补肝肾 营养丰富' , price: 30 , type: types[1] , detail: '黑米 新鲜豌豆',
+				desc: '黑米含蛋白质及多种人体所需微量元素 益气补血 润肺止咳 暖胃健脾 滋补肝肾 营养丰富' , price: 30 , type: types[3] , detail: '黑米 新鲜豌豆',
 				controlCls: 'push_9 vpush_2 f2'
 			},{
 				id : 18 , page_id: 9 , name: '美味肉粽' , image : 'images/p10f1-small.gif' , 
-				desc: '补中益气 健脾养胃 滋阴润燥 为中国特色美食' , price: 50 , type: types[1] , detail: '糯米 鲜瘦肉',
+				desc: '补中益气 健脾养胃 滋阴润燥 为中国特色美食' , price: 50 , type: types[3] , detail: '糯米 鲜瘦肉',
 				controlCls: 'push_1 vpush_6 grid_3 f2'
 			}]
 		},
@@ -201,11 +201,11 @@ function createPageStore(){
 			type : types[2] ,  cls : 'page' ,
 			items : [{
 				id : 19 , page_id: 10 , name: '法国香槟' , image: 'images/p11f1-small.gif' , 
-				desc: '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒' , price: 680 , type: types[1] , detail: 'Food1 is a good Food',
+				desc: '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒' , price: 680 , type: types[2] , detail: 'Food1 is a good Food',
 				controlCls: 'push_2 vpush_4 grid_4 f11'
 			},{
 				id : 20 , page_id: 10 , name: '手调果酒' , image: 'images/p11f2-small.gif' , 
-				desc: '果酒有利于调节 情绪保持身材  有益健康 ' , price: 80 , type: types[1] , detail: 'Food1 is a good Food',
+				desc: '果酒有利于调节 情绪保持身材  有益健康 ' , price: 80 , type: types[2] , detail: 'Food1 is a good Food',
 				controlCls: 'push_1 vpush_8 grid_3 f11'
 			}]
 		},
