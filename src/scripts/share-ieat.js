@@ -114,7 +114,7 @@ function createToolBar(orderedList , self ){
 		
 		iconMask : true,
 		iconCls : 'organize',
-		text :'  桌号：'+ self.DishNum+'   已点菜（0份）',
+		text :'已点菜（0份）',
 		handler : extendOrderPad
 	} ];
 	
@@ -272,7 +272,7 @@ function createOrderedList(self){
 	var operationButtonGroup = [  {
 		iconMask : true,
 		iconCls : 'organize',
-		text :'  桌号：'+ self.DishNum+'   已点菜（0份）',
+		text :'已点菜（0份)',
 		handle:noAction
 	} ];
 	
@@ -410,7 +410,7 @@ function createDishPanel(self)
 }
 
 /*创建套餐选取界面*/
- function createPackagePanel(self)
+// function createPackagePanel(self)
  
 
 /**
@@ -625,7 +625,7 @@ function updateOrderStatus( self ){
 	});
 	console.log(self.orderStore);
 	
-	var txt = '  桌号：'+ self.DishNum + "   已点菜（" + count + "份）价格:" + price + "元";
+	var txt = "已点菜（" + count + "份）价格:" + price + "元";
 	self.toolbar.items.items[1].setText( txt  ) ;
 	
 }
@@ -639,7 +639,7 @@ function updateDishStatus( self ){
 	});
 	console.log(self.orderStore);
 	
-	var txt = '  桌号：'+ self.DishNum + "   已点菜（" + count + "份）总价格:" + price + "元";
+	var txt ="已点菜（" + count + "份）总价格:" + price + "元";
 	self.dishbar.items.items[0].setText( txt  ) ;
 	
 }
@@ -788,7 +788,7 @@ function updateCurrentPage(self , index){
    
 Ext.setup( {
 			tabletStartupScreen : 'images/tablet_startup.jpg',
-			icon : 'icon.png',
+			icon : 'images/icon.jpg',
 			glossOnIcon : true,
 
 			onReady : function() {
