@@ -1,6 +1,7 @@
 CACHE MANIFEST
 
-#version Share-IEat Beta 1.0.$Rev$
+#version Share-IEat Beta 1.0
+#$Id$
 
 index.html
 
