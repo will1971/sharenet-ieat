@@ -1,4 +1,4 @@
-如何脱机运行菜单程序
+#summary 如何脱机运行菜单程序
 
 = Introduction =
 
