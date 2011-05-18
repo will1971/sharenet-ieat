@@ -86,6 +86,7 @@ function createOrderStore() {
 }
 
 
+
 /**
  * create tool bar, contains type and other things
  * @return
@@ -100,10 +101,10 @@ function createToolBar(orderedList , self ){
 		orderedList.showBy(btn);
 	} ;
 	var operationButtonGroup = [ {
-		text : '返回',
+		text : '点菜完成',
 		ui : 'back' ,
 		handler : function( btn, event ){
-			console.log("点击返回按钮！");
+			//console.log("点击返回按钮！");
 			self.toolbar.setVisible(false);
 			self.dishbar.setVisible(true);
 			updateDishStatus( self );
@@ -148,7 +149,7 @@ function createToolBar(orderedList , self ){
 	});
     
 	var toolbar = new Ext.Toolbar( {
-		title : '<span class="logo push_5 grid_2">炫动美食</span>',
+		title : '<span class="logo push_7 grid_2">炫动美食</span>',
 		height : '46px',
 		width : '100%',
 		dock : 'top',
@@ -291,6 +292,7 @@ function createOrderedList(self){
 			self.mainPanel.setActiveItem(1);
 			self.toolbar.setVisible(true);
 			updateCurrentPage(self, firstPage) ;
+			updateOrderStatus(self);
 			
 		} ;
 	};
@@ -402,16 +404,90 @@ function createDishPanel(self)
         },
 		items : [self.dishbar,list]
 	});
-//	self.toolbar.setVisible(true);
-//	console.log(dishpanel);
+
 	updateOrderStatus( self );
 	return dishpanel ;
-    //return tabpanel ;
+    
 }
+/*获取套餐的列表对象
+function getPackList(index,self)//itemdata对应于items
+{   var packarray = self.packStore.getById(index).data.items;
+	 
+	var page =self.pageStore.getById(pageId);
 
+	var items = page.data.items ;
+	var founded = false ;
+	items.forEach(function(item){
+	if(item['id'] == itemId && !founded){
+		self.orderStore.add(item) ;
+		founded = true ;
+	}
+	}) ;
+
+if(!founded){
+	console.error("在当前页中找不到点的菜，请检查page-data.js page:" + pageId + " item:" + itemId);
+}else{
+	//updateOrderStatus( self );
+}
+	 
+
+	 var tempStore = new Ext.data.JsonStore( {
+			model : 'Item',
+			sorters : 'id',
+
+			getGroupString : function(record) {
+				return record.get('type');
+			}
+		});
+	 
+	 
+	    
+		var list = new Ext.List(
+				{
+					id:'oredrlist',
+					grouped : true,
+					pinHeaders : false ,
+					itemTpl : new Ext.XTemplate(
+							'<div class="loan">',
+								'<img class="loan_img" src="{image}">',
+								'<div class="desc">',
+									'<span class="itemname">{name} </span>' ,
+									'<span class="price">单价：{price}元</span>',
+								'</div>' ,
+							'</div>'),
+					store : storetemp,
+					scroll : 'vertical' ,
+	                height: 700,
+	                selModel: {
+	                    mode: 'SINGLE',
+	                    allowDeselect: true
+	                },
+	                onItemDisclosure: 
+	                {
+	                scope: 'test',
+	                handler: function(record, btn, index) {
+	                   // alert('删除菜 ' + record.get('name'));
+	                    store.remove(record);
+	                    updateOrderStatus(self);
+	                    }
+	                } 
+				});
+}*/
 /*创建套餐选取界面*/
-// function createPackagePanel(self)
- 
+/* function createPackagePanel(self)
+ {
+	 var store= self.packStore;
+	 var itemList = [ ] ;
+	 store.each(function(record)
+	 {
+		   
+		  
+		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') });
+	 });
+	 
+	 
+	 return 0;
+ }*/
 
 /**
  * expand or unexpand the pagebar
@@ -829,7 +905,8 @@ Ext.setup( {
 				createPage(this.pageStore , this);
 				//updateCurrentPage(this , 0) ;
 				
-				//创建套餐选取页面
+				/*//创建套餐选取页面
+				this.packStore = createPackageStore();*/
 				
 				
 				//创建最终点菜页面
