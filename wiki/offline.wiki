@@ -13,3 +13,6 @@
 //TODO添加具体的说明
   * 最后，把该页设置成桌面上的启动项，然后用启动项再启动一次，就OK了。
 //TODO添加具体的说明
+
+参考文档：
+http://www.sencha.com/learn/Tutorial:Taking_Sencha_Touch_Apps_Offline
