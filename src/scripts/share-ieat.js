@@ -104,7 +104,7 @@ function createToolBar(orderedList , self ){
 		text : '点菜完成',
 		ui : 'back' ,
 		handler : function( btn, event ){
-			//console.log("点击返回按钮！");
+			
 			self.toolbar.setVisible(false);
 			self.dishbar.setVisible(true);
 			updateDishStatus( self );
@@ -129,7 +129,6 @@ function createToolBar(orderedList , self ){
 	self.typetoggle = function ( up , button, pressed ) {
 		var type = button.id ;
 		var firstPage = typeStartIndex[type]+1;//这里firstPage为数字序号，考虑-2.-1又从0开始故+1
-		console.log("button id:"+type+"  page"+firstPage);
 		if(firstPage >= 0){
 			updateCurrentPage(self, firstPage) ;
 		} ;
@@ -390,9 +389,6 @@ function createDishPanel(self)
 		id:'dishpanel',
 		modal : true,
 		centered : false,
-		//html:"点菜单汇总",
-		//board: 2 ,
-		//padding: 2 ,
 		cls: 'dishpanel grid_5' ,
 		height: 1000,
 		 cardSwitchAnimation: {
@@ -409,60 +405,59 @@ function createDishPanel(self)
 	return dishpanel ;
     
 }
-/*获取套餐的列表对象
-function getPackList(index,self)//itemdata对应于items
-{   var packarray = self.packStore.getById(index).data.items;
+//获取套餐的列表对象
+function getPackList(index,self)//由index获取套餐列表
+{   
+   //packarray = self.packStore;
+	var packarray = self.packStore.getById(index).data.items;
+	var packCount = packarray.length;
+	var dishStore = self.tempStore;
+	dishStore.removeAll();
+	/*console.log("out sign index array count");
+	console.log(index);
+	console.log(packarray);
+	console.log(packCount);*/
 	 
-	var page =self.pageStore.getById(pageId);
-
-	var items = page.data.items ;
-	var founded = false ;
-	items.forEach(function(item){
-	if(item['id'] == itemId && !founded){
-		self.orderStore.add(item) ;
-		founded = true ;
-	}
-	}) ;
-
-if(!founded){
-	console.error("在当前页中找不到点的菜，请检查page-data.js page:" + pageId + " item:" + itemId);
-}else{
-	//updateOrderStatus( self );
-}
-	 
-
-	 var tempStore = new Ext.data.JsonStore( {
-			model : 'Item',
-			sorters : 'id',
-
-			getGroupString : function(record) {
-				return record.get('type');
-			}
-		});
-	 
-	 
+	for (var i = 0;i<packCount;i++)
+	{
+	    var pageid = packarray[i]['pageid'];//页码
+	    var id   = packarray[i]['id'];      //菜码
+	  
 	    
+		var items = self.pageStore.getById(pageid).data.items;
+		
+		var founded = false ;
+		items.forEach(function(item){
+			if(item['id'] == id && !founded){
+				dishStore.add(item);
+				founded = true ;
+			}
+		}) ;
+		
+		
+	}//for 形成dishStore
+
+	  
 		var list = new Ext.List(
 				{
-					id:'oredrlist',
+					id:'packlist'+index,
 					grouped : true,
 					pinHeaders : false ,
 					itemTpl : new Ext.XTemplate(
-							'<div class="loan">',
-								'<img class="loan_img" src="{image}">',
-								'<div class="desc">',
-									'<span class="itemname">{name} </span>' ,
-									'<span class="price">单价：{price}元</span>',
-								'</div>' ,
-							'</div>'),
-					store : storetemp,
+							'<div class="dish" id="pos_horizontal">',
+							'<img class="loan_img" src="{image}" >',
+							/*'<div class="dish" id="pos_horizontal">',*/
+								'<div class="box itemname">{name} </div>' ,
+								'<div class="box price">单价：{price}元</div>',
+								'</div>'),
+					store : dishStore,
 					scroll : 'vertical' ,
 	                height: 700,
 	                selModel: {
 	                    mode: 'SINGLE',
 	                    allowDeselect: true
-	                },
-	                onItemDisclosure: 
+	                }
+	                /*onItemDisclosure: 
 	                {
 	                scope: 'test',
 	                handler: function(record, btn, index) {
@@ -470,24 +465,43 @@ if(!founded){
 	                    store.remove(record);
 	                    updateOrderStatus(self);
 	                    }
-	                } 
+	                } */
 				});
-}*/
+		
+		
+		return list;
+}
 /*创建套餐选取界面*/
-/* function createPackagePanel(self)
- {
+ function createPackagePanel(self)
+ {   
+	 self.toolbar.setVisible(false);
+	 
+	 
 	 var store= self.packStore;
 	 var itemList = [ ] ;
+	 var index = 1;
 	 store.each(function(record)
-	 {
-		   
-		  
-		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') });
+	 {   
+		 var list = getPackList(index,self);
+		 console.log(list);
+		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[list]});
+	     index+=1;
 	 });
 	 
 	 
-	 return 0;
- }*/
+	 var PackagePanel = new Ext.TabPanel({
+         fullscreen: false,
+         type: 'light',
+         sortable: true,
+         cardSwitchAnimation: {
+             type: 'slide',
+             cover: true
+         },
+         items: [itemList]
+     });
+	 
+	 return PackagePanel;
+ }
 
 /**
  * expand or unexpand the pagebar
@@ -699,7 +713,6 @@ function updateOrderStatus( self ){
 		count ++ ;
 		price += item.get('price');
 	});
-	console.log(self.orderStore);
 	
 	var txt = "已点菜（" + count + "份）价格:" + price + "元";
 	self.toolbar.items.items[1].setText( txt  ) ;
@@ -713,7 +726,6 @@ function updateDishStatus( self ){
 		count ++ ;
 		price += item.get('price');
 	});
-	console.log(self.orderStore);
 	
 	var txt ="已点菜（" + count + "份）总价格:" + price + "元";
 	self.dishbar.items.items[0].setText( txt  ) ;
@@ -896,7 +908,7 @@ Ext.setup( {
 				//建立多页浏览
 				// create page snapview panel
 				pagePanel = createPageBar(this , this.pageStore);
-				pagePanel.setVisible(true);
+				pagePanel.setVisible(false);
 				this.showControls = true ;
 				
 				
@@ -904,16 +916,17 @@ Ext.setup( {
                 //创建菜单页面 , 并翻倒第一页
 				createPage(this.pageStore , this);
 				//updateCurrentPage(this , 0) ;
-				
-				/*//创建套餐选取页面
-				this.packStore = createPackageStore();*/
+				//创建套餐信息缓存
+				this.tempStore = createDishStoreTemp();
+				//创建套餐选取页面
+				this.packStore = createPackageStore();
+				this.packPanel = createPackagePanel(this);
 				
 				
 				//创建最终点菜页面
 				
 				this.dishpanel = createDishPanel(this);
 				
-				//console.log(dishpanel);
 				
 				
 				//创建选桌面页面
@@ -925,13 +938,13 @@ Ext.setup( {
 				this.mainPanel = new Ext.Panel({
 			        fullscreen: true,
 			        layout: 'card',
-			        items: [this.tablepanel , this.pagepanel ,this.dishpanel]
+			        items: [this.tablepanel , this.pagepanel ,this.dishpanel,this.packPanel]
 			    });
-				console.log(this.mainPanel);
+				
 				
 				//显示开台页 
 				
 				//this.toolbar.setVisible(false);
-				this.mainPanel.setActiveItem(1);
+				this.mainPanel.setActiveItem(3);
 			}
 		});
