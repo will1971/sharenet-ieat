@@ -408,15 +408,25 @@ function createDishPanel(self)
 //获取套餐的列表对象
 function getPackList(index,self)//由index获取套餐列表
 {   
-   //packarray = self.packStore;
+  
 	var packarray = self.packStore.getById(index).data.items;
 	var packCount = packarray.length;
-	var dishStore = self.tempStore;
-	dishStore.removeAll();
+	var dishStore = new Ext.data.JsonStore( {
+		model : 'Item',
+		sorters : 'id',
+
+		getGroupString : function(record) {
+			return record.get('type');
+		}
+	});
+	/*var dishStore = self.tempStore;
+	dishStore.removeAll();*/
 	/*console.log("out sign index array count");
 	console.log(index);
-	console.log(packarray);
-	console.log(packCount);*/
+	console.log(packCount);
+	console.log(packarray);*/
+	
+	
 	 
 	for (var i = 0;i<packCount;i++)
 	{
@@ -436,8 +446,10 @@ function getPackList(index,self)//由index获取套餐列表
 		
 		
 	}//for 形成dishStore
-
-	  
+    ;
+	 
+    self.tempStore.push(dishStore);
+    
 		var list = new Ext.List(
 				{
 					id:'packlist'+index,
@@ -451,6 +463,7 @@ function getPackList(index,self)//由index获取套餐列表
 								'<div class="box price">单价：{price}元</div>',
 								'</div>'),
 					store : dishStore,
+					region:'center',
 					scroll : 'vertical' ,
 	                height: 700,
 	                selModel: {
@@ -476,29 +489,69 @@ function getPackList(index,self)//由index获取套餐列表
  {   
 	 self.toolbar.setVisible(false);
 	 
+	 var tapHandler = function(button, event) {
+	        var txt = "User tapped the '" + button.text + "' button.";
+	        
+	    };
+	    
+	    var buttonsGroup1 = [{
+	        text: '上一个',
+	        ui: 'round',
+	        handler: tapHandler
+	    }, {
+	        text: '就这个',
+	        ui:"round",
+	        handler: tapHandler
+	    }, {
+	        text: '下一个',
+	        ui: 'round',
+	        handler: tapHandler
+	    }];
+	 
+	/* var tools = [new Ext.Toolbar({
+      ui: 'light',
+      region:'north',
+      items: buttonsGroup1
+  })];*/
 	 
 	 var store= self.packStore;
 	 var itemList = [ ] ;
 	 var index = 1;
+	 
 	 store.each(function(record)
 	 {   
 		 var list = getPackList(index,self);
-		 console.log(list);
-		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[list]});
+		 var tools = [new Ext.Toolbar({
+		      ui: 'light',
+		      region:'north',
+		      items: buttonsGroup1
+		  })];
+		 
+		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[tools,list]});
 	     index+=1;
 	 });
 	 
+	 console.log(itemList);
 	 
+ 
+			    
 	 var PackagePanel = new Ext.TabPanel({
          fullscreen: false,
+         layout:'border',
          type: 'light',
          sortable: true,
          cardSwitchAnimation: {
-             type: 'slide',
+             type: 'fade',
              cover: true
          },
          items: [itemList]
      });
+	 
+	 /*var PackagePanel = new Ext.Panel({
+	        fullscreen: true,
+	        layout: 'card',
+	        items: [this.tablepanel , this.pagepanel ,this.dishpanel,this.packPanel]
+	    });*/
 	 
 	 return PackagePanel;
  }
@@ -916,8 +969,8 @@ Ext.setup( {
                 //创建菜单页面 , 并翻倒第一页
 				createPage(this.pageStore , this);
 				//updateCurrentPage(this , 0) ;
-				//创建套餐信息缓存
-				this.tempStore = createDishStoreTemp();
+				//创建套餐信息缓存数组
+				this.tempStore = [];
 				//创建套餐选取页面
 				this.packStore = createPackageStore();
 				this.packPanel = createPackagePanel(this);
