@@ -102,14 +102,14 @@ function createToolBar(orderedList , self ){
 	} ;
 	var operationButtonGroup = [ {
 		text : '点菜完成',
-		ui : 'back' ,
+		ui : 'forward' ,
 		handler : function( btn, event ){
 			
 			self.toolbar.setVisible(false);
 			self.dishbar.setVisible(true);
 			updateDishStatus( self );
 			pagePanel.setVisible(false);
-			self.mainPanel.setActiveItem(2);
+			self.mainPanel.setActiveItem(3);
 		}
 	}, {
 		
@@ -129,9 +129,16 @@ function createToolBar(orderedList , self ){
 	self.typetoggle = function ( up , button, pressed ) {
 		var type = button.id ;
 		var firstPage = typeStartIndex[type]+1;//这里firstPage为数字序号，考虑-2.-1又从0开始故+1
-		if(firstPage >= 0){
+		
+		if(firstPage >= 0 ){
 			updateCurrentPage(self, firstPage) ;
-		} ;
+		} 
+		else if(firstPage == -9)//进入套餐选取中
+			{
+			self.toolbar.setVisible(false);
+			self.pagepanel.setVisible(false);
+			self.mainPanel.setActiveItem(2);
+			}
 	};
 		
 	var typeButtonG = [ {
@@ -293,7 +300,13 @@ function createOrderedList(self){
 			updateCurrentPage(self, firstPage) ;
 			updateOrderStatus(self);
 			
-		} ;
+		} 
+		else if(firstPage == -9)//进入套餐选取中
+		{
+		self.toolbar.setVisible(false);
+		self.pagepanel.setVisible(false);
+		self.mainPanel.setActiveItem(2);
+		}
 	};
 		
 	var typeButtonG = [ {
@@ -344,7 +357,8 @@ function createOrderedList(self){
 function createDishPanel(self)
 {
 	
-	var store= self.orderStore;
+	//var store= self.orderStore;
+	
 	var list = new Ext.List(
 			{
 				id:'Dishlist',
@@ -360,8 +374,9 @@ function createDishPanel(self)
 								//'</div>',
 							//'</div>' ,
 						'</div>'),
-				store : store,
-				scroll : 'vertical' ,
+				store : self.orderStore,
+				//scroll : 'vertical' ,
+				//region:'center',
                 height: 1000,
                 selModel: {
                     mode: 'SINGLE',
@@ -372,37 +387,74 @@ function createDishPanel(self)
                 scope: 'test',
                 handler: function(record, btn, index) {
                    // alert('删除菜 ' + record.get('name'));
-                    store.remove(record);
+                	self.orderStore.remove(record);
                     updateDishStatus(self);
                     
                     }
                 } 
 			});
-        
+	
+	var listform ={title: 'Basic',
+	        xtype: 'panel',
+	        id: 'listform',
+	        scroll: 'vertical',
+	        items: [list]};
+	
+     var btn = new Ext.Button(
+    		 { 
+    			 cls:'ok-button',
+                 ui  : 'decline', 
+                 scope: this,
+    		   text: '请确认菜单',
+    		   centerd:true,
+    		   hasDisabled:false,
+    		   listeners:
+    		   {
+    			 tap:function(btn){
+    			 var form = Ext.getCmp('listform');
+
+                 if (btn.hasDisabled) {
+                	 
+                     form.enable();
+                     btn.hasDisabled = false;
+                     btn.setText('请确认菜单');                      
+                 } else {
+                     form.disable();
+                     btn.hasDisabled = true;
+                     btn.setText('已锁定');
+                 }
+    	        }  
+    			 
+    		 }
+    		   });
 
 	
 	
 	
         
-	var dishpanel = new Ext.Panel( {
+	var dishPanel = new Ext.Panel( {
 		//floating : true,
 		id:'dishpanel',
 		modal : true,
 		centered : false,
-		cls: 'dishpanel grid_5' ,
-		height: 1000,
-		 cardSwitchAnimation: {
+		cls: 'dishpanel' ,
+		height: 760,
+		width:780,
+		layout: {
+		    type: 'vbox'
+		    //align: 'center'
+		},
+		 /*cardSwitchAnimation: {
             type: 'slide',
             cover: true
-        },
+        },*/
         defaults: {
-            scroll: 'vertical'
+            //scroll: 'vertical'
         },
-		items : [self.dishbar,list]
-	});
-
+		items : [self.dishbar,btn,listform]});
+    
 	updateOrderStatus( self );
-	return dishpanel ;
+	return dishPanel ;
     
 }
 //获取套餐的列表对象
@@ -419,12 +471,6 @@ function getPackList(index,self)//由index获取套餐列表
 			return record.get('type');
 		}
 	});
-	/*var dishStore = self.tempStore;
-	dishStore.removeAll();*/
-	/*console.log("out sign index array count");
-	console.log(index);
-	console.log(packCount);
-	console.log(packarray);*/
 	
 	
 	 
@@ -470,13 +516,12 @@ function getPackList(index,self)//由index获取套餐列表
 	                    mode: 'SINGLE',
 	                    allowDeselect: true
 	                }
-	                /*onItemDisclosure: 
+	               /* listeners: 
 	                {
-	                scope: 'test',
-	                handler: function(record, btn, index) {
+	                
+	                	itemdoubletap: function(list, index, item, e)  {
 	                   // alert('删除菜 ' + record.get('name'));
-	                    store.remove(record);
-	                    updateOrderStatus(self);
+	                   console.log("busy");
 	                    }
 	                } */
 				});
@@ -484,35 +529,37 @@ function getPackList(index,self)//由index获取套餐列表
 		
 		return list;
 }
+
+// 由名称获取选取的套餐
+ function SearchStoreFromPackName(self,name)
+ {
+	 var store= self.packStore;
+	 index = 1;
+	 var getindex= 0;
+	 
+	 store.each(function(record)
+	 { 
+	
+		if(name == record.get("desc")){
+			getindex = index;
+			
+		} 
+		else{
+			index+=1;
+		}
+	 });
+	 
+	 return getindex;
+	 
+ }
+ 
+ 
+
 /*创建套餐选取界面*/
  function createPackagePanel(self)
  {   
 	 self.toolbar.setVisible(false);
-	 
-	 var tapHandler = function(button, event) {
-	        var txt = "User tapped the '" + button.text + "' button.";
-	        
-	    };
-	    
-	    var buttonsGroup1 = [{
-	        text: '上一个',
-	        ui: 'round',
-	        handler: tapHandler
-	    }, {
-	        text: '就这个',
-	        ui:"round",
-	        handler: tapHandler
-	    }, {
-	        text: '下一个',
-	        ui: 'round',
-	        handler: tapHandler
-	    }];
-	 
-	/* var tools = [new Ext.Toolbar({
-      ui: 'light',
-      region:'north',
-      items: buttonsGroup1
-  })];*/
+	 	 
 	 
 	 var store= self.packStore;
 	 var itemList = [ ] ;
@@ -521,17 +568,59 @@ function getPackList(index,self)//由index获取套餐列表
 	 store.each(function(record)
 	 {   
 		 var list = getPackList(index,self);
-		 var tools = [new Ext.Toolbar({
-		      ui: 'light',
-		      region:'north',
-		      items: buttonsGroup1
-		  })];
 		 
-		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[tools,list]});
+		
+		
+		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[{
+	            title: record.get('desc'),
+	            html: '<h1 style="text-align:center;">'+record.get('desc')+'</h1><div align="center"><img src="'+record.get('image')+'" width="400" height="300"></div>',
+	            region:'north',
+	            iconCls: 'pack'
+	        },
+	        new Ext.Button({
+	        	cls:'x-packbutton',
+                ui  : 'decline',
+                text: '选此套餐',
+                width: 300,
+                centerd:true,
+                margin:2,
+                listeners:{
+	        	tap:function()
+	        	{   
+	        	
+	        	var storenum = SearchStoreFromPackName(self,self.packPanel.getActiveItem().title);
+	        	//self.orderStore.removeAll();
+	        	
+	        	var num = self.tempStore[storenum-1].getCount();
+	        	//console.log(self.tempStore[storenum-1]);
+	        	var items = self.tempStore[storenum-1].data.items;
+	        	items.forEach(function(item){
+	        		
+	        			self.orderStore.add(item) ;
+	        			
+	        	}) ;
+	        	
+	        	//self.orderStore = self.tempStore[storenum-1];
+	        	//console.log(self.orderStore);
+	        	//强制写入orderStore
+	        	//self.dishPanel.items.items[1].store= self.orderStore;
+	        	
+	        	        	
+	        	self.toolbar.setVisible(false);
+				self.dishbar.setVisible(true);
+				updateDishStatus( self );
+				self.pagePanel.setVisible(false);
+				
+				self.mainPanel.setActiveItem(3);
+	        	
+	        	}
+	        }
+            }),
+	        list]});
 	     index+=1;
 	 });
 	 
-	 console.log(itemList);
+	 
 	 
  
 			    
@@ -547,11 +636,7 @@ function getPackList(index,self)//由index获取套餐列表
          items: [itemList]
      });
 	 
-	 /*var PackagePanel = new Ext.Panel({
-	        fullscreen: true,
-	        layout: 'card',
-	        items: [this.tablepanel , this.pagepanel ,this.dishpanel,this.packPanel]
-	    });*/
+	
 	 
 	 return PackagePanel;
  }
@@ -969,6 +1054,10 @@ Ext.setup( {
                 //创建菜单页面 , 并翻倒第一页
 				createPage(this.pageStore , this);
 				//updateCurrentPage(this , 0) ;
+				//创建最终点菜页面
+				
+				this.dishPanel = createDishPanel(this);
+				
 				//创建套餐信息缓存数组
 				this.tempStore = [];
 				//创建套餐选取页面
@@ -976,9 +1065,7 @@ Ext.setup( {
 				this.packPanel = createPackagePanel(this);
 				
 				
-				//创建最终点菜页面
 				
-				this.dishpanel = createDishPanel(this);
 				
 				
 				
@@ -991,13 +1078,14 @@ Ext.setup( {
 				this.mainPanel = new Ext.Panel({
 			        fullscreen: true,
 			        layout: 'card',
-			        items: [this.tablepanel , this.pagepanel ,this.dishpanel,this.packPanel]
+			        items: [this.tablepanel , this.pagepanel ,this.packPanel,this.dishPanel]
 			    });
 				
 				
 				//显示开台页 
 				
 				//this.toolbar.setVisible(false);
-				this.mainPanel.setActiveItem(3);
+				
+				this.mainPanel.setActiveItem(1);
 			}
 		});
