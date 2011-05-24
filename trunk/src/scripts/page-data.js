@@ -3,11 +3,11 @@
  */
 var moduleDefined = false ;
 //food type
-var types = ['凉菜' , '热菜'	, '酒水' , '点心' , '特色推荐'];
+var types = ['凉菜' , '热菜'	, '酒水' , '点心' , '特色套餐'];
 
 //each food type start position, will using for jump page
 var typeStartIndex = { '凉菜' : 1 , '热菜' : 3 , '酒水' : 11 , 
-		'点心' : 10 , '特色推荐' : 9 } ;
+		'点心' : 10 , '特色套餐' : -10} ;
 
 /**
  * create data store module
@@ -28,6 +28,14 @@ function createStoreModule(){
 		
 		Ext.regModel('Table', {
 			fields : [ 'id' , 'desc' /* 其他信息 */ , 'state' /*当前状态*/ ,] 
+		});
+		
+		Ext.regModel('Package', {
+			fields : [ 'id' , 'desc' /* 套餐名 */ , 'price'/*价位*/,'image','items' /*套餐组成菜谱*/ ,]
+		});
+		
+		Ext.regModel('Packitem', {
+			fields : ['pageid',/*菜页数*/'id',/*菜id*/'name'/*菜名*/,]
 		});
 		
 		moduleDefined = false ;
@@ -240,3 +248,28 @@ function createTableStore(){
 	return tableStore ;
 }
 
+function createPackageStore(){
+	var packStore = new Ext.data.JsonStore({
+	model:	'Package',
+	soters: 'id',
+	data:[
+	      {id :1, desc:'情侣套餐(188元)',   price:188,  image:'images/pack1.jpg',items:[{pageid:0,id:0,name:'翡翠黄瓜'},{pageid:1,id:2,name:'荷叶虾仁'},{pageid:9,id:17,name:'翡翠黑米糕'},{pageid:10,id:20,name:'手调果酒'}]},
+	      {id: 2, desc:'家常套餐(188元)', price:188,  image:'images/pack2.jpg',items:[{pageid:0,id:0,name:'翡翠黄瓜'},{pageid:6,id:12,name:'东坡肉'},{pageid:8,id:15,name:'密汁凤爪'},{pageid:9,id:18,name:'美味肉粽'}]},
+	      {id: 3, desc:'豪华套餐(1888元)', price:1888, image:'images/pack3.jpg',items:[{pageid:6,id:12,name:'东坡肉'},{pageid:8,id:15,name:'密汁凤爪'},{pageid:9,id:18,name:'美味肉粽'},{pageid:8,id:16,name:'人参乳鸽汤'},{pageid:10,id:19,name:'法国香槟'},{pageid:10,id:19,name:'法国香槟'}]} 
+	]
+	}
+	);
+	return packStore;
+}
+
+function createDishStoreTemp(){
+	var dishStore = new Ext.data.JsonStore( {
+		model : 'Item',
+		sorters : 'id',
+
+		getGroupString : function(record) {
+			return record.get('type');
+		}
+	});
+	return dishStore;
+}
