@@ -38,6 +38,9 @@ function createStoreModule(){
 			fields : ['pageid',/*菜页数*/'id',/*菜id*/'name'/*菜名*/,]
 		});
 		
+		Ext.regModel('GuideDishes',{
+			fields:['id'/*推荐菜系id*/,'desc'/*推荐菜系名*/,'items'/*具体的菜数组，按Packitem给出*/]});
+
 		moduleDefined = false ;
 	}
 }
@@ -272,4 +275,19 @@ function createDishStoreTemp(){
 		}
 	});
 	return dishStore;
+}
+
+function createGuideDishesStore()
+{
+	var guideStore = new Ext.data.JsonStore( {
+		model : 'Package',
+		sorters : 'id',
+		//  'id'/*推荐菜系id*/,'desc'/*推荐菜系名*/,'items'/*具体的菜数组，按Packitem给出*/
+		data:[
+		     {id:1, desc:'咖喱风味',price:0, image:'', items:[{pageid:0,id:0,name:'翡翠黄瓜'},{pageid:9,id:17,name:'翡翠黑米糕'}]},
+		     {id:2,desc:'麻辣风味', price:0, image:'', items:[{pageid:1,id:2,name:'荷叶虾仁'},{pageid:8,id:15,name:'密汁凤爪'}]},
+		     {id:3,desc:'家常风味', price:0, image:'', items:[{pageid:6,id:12,name:'东坡肉'} ]}
+		      ] 
+	});
+	return guideStore;
 }

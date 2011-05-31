@@ -100,6 +100,21 @@ function createToolBar(orderedList , self ){
 		orderedList.doLayout();
 		orderedList.showBy(btn);
 	} ;
+	
+	 self.btnback = new Ext.Button({
+			text : '返回特色菜单',
+			ui : 'confirm-round' ,
+			handler : function(){
+				
+				self.toolbar.setVisible(false);
+				self.btnback.setVisible(false);
+				pagePanel.setVisible(false);
+				self.mainPanel.setActiveItem(self.guideListPanel);
+			}	
+	});
+	self.btnback.setVisible(false);
+	
+	
 	var operationButtonGroup = [ {
 		text : '点菜完成',
 		ui : 'forward' ,
@@ -111,13 +126,14 @@ function createToolBar(orderedList , self ){
 			pagePanel.setVisible(false);
 			self.mainPanel.setActiveItem(3);
 		}
-	}, {
+	}, 
+	{
 		
 		iconMask : true,
 		iconCls : 'organize',
 		text :'已点菜（0份）',
 		handler : extendOrderPad
-	} ];
+	},self.btnback];
 	
 	
 	
@@ -155,7 +171,7 @@ function createToolBar(orderedList , self ){
 	});
     
 	var toolbar = new Ext.Toolbar( {
-		title : '<span class="logo push_7 grid_2">炫动美食</span>',
+		title : '',
 		height : '46px',
 		width : '100%',
 		dock : 'top',
@@ -199,7 +215,7 @@ function createOrderedList(self){
 						'</div>'),
 				store : store,
 				scroll : 'vertical' ,
-                height: 700,
+                height: 1000,
                 selModel: {
                     mode: 'SINGLE',
                     allowDeselect: true
@@ -989,13 +1005,14 @@ function updateCurrentPage(self , index){
 	var page = self.pageStore.getAt(index);
 	var type = page.get('type') ;
 	
+	console.log(self.toolbar.items);
 	
-	var pressedBtn = self.toolbar.items.get(3).getPressed();
+	var pressedBtn = self.toolbar.items.get(4).getPressed();
 	if(!pressedBtn || (pressedBtn.id != type) ){
 		// FIXIT: the segment button is toolbar.items.get(3), buggie
-		self.toolbar.items.get(3).un("toggle",self.typetoggle); // for stop the event when change page
-		self.toolbar.items.get(3).setPressed(type , true);
-		self.toolbar.items.get(3).on("toggle",self.typetoggle); // for enable the event when change page
+		self.toolbar.items.get(4).un("toggle",self.typetoggle); // for stop the event when change page
+		self.toolbar.items.get(4).setPressed(type , true);
+		self.toolbar.items.get(4).on("toggle",self.typetoggle); // for enable the event when change page
 	}
 
 	if(index != self.pagepanel.getPageIndex()){
@@ -1073,19 +1090,25 @@ Ext.setup( {
 				this.tableStore = createTableStore() ;
 			
 				createTablePanel(this.tableStore, this) ;
+				//创建是否新老客户查询界面（可选）
+				this.csPanel =createcsPanel(this);
+				//创建引导界面（可选）
+				this.guideStore= createGuideDishesStore();
+				this.guidePanel = createguidePanel(this);
+				//创建引导list界面（可选）
+				this.guideListPanel=createguideListPanel(this);
 				
-				
+				//创建主界面
 				this.mainPanel = new Ext.Panel({
 			        fullscreen: true,
 			        layout: 'card',
-			        items: [this.tablepanel , this.pagepanel ,this.packPanel,this.dishPanel]
+			       
+			        items: [this.tablepanel , this.pagepanel ,this.packPanel,this.dishPanel,this.csPanel,this.guidePanel,this.guideListPanel]
 			    });
 				
 				
 				//显示开台页 
-				
-				//this.toolbar.setVisible(false);
-				
-				this.mainPanel.setActiveItem(1);
+								
+				this.mainPanel.setActiveItem(this.csPanel);
 			}
 		});
