@@ -421,6 +421,7 @@ function createDishPanel(self)
     			 cls:'ok-button',
                  ui  : 'decline', 
                  scope: this,
+                 height:80,
     		   text: '请确认菜单',
     		   centerd:true,
     		   hasDisabled:false,
@@ -433,11 +434,11 @@ function createDishPanel(self)
                 	 
                      form.enable();
                      btn.hasDisabled = false;
-                     btn.setText('请确认菜单');                      
+                     btn.setText('确认提交');                      
                  } else {
                      form.disable();
                      btn.hasDisabled = true;
-                     btn.setText('已锁定');
+                     btn.setText('已锁定，点击解锁');
                  }
     	        }  
     			 
