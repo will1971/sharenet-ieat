@@ -193,7 +193,7 @@ width:100px;height:100px;font-size:24px;text-align:center;overflow: hidden;
 .dish .price
 {   
 	font-size:26px;
-    width:300px;
+    width:200px;
 	line-heihgt:100px;
 	font-family:Arial;
 	
@@ -209,7 +209,7 @@ width:100px;height:100px;font-size:24px;text-align:center;overflow: hidden;
 	
 }
 .dish .itemname{
-	width:400px;
+	width:300px;
 	font-size:26px;
 	font-weight: bold;
 	line-heihgt:100px;
