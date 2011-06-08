@@ -456,7 +456,7 @@ function createDishPanel(self)
 		centered : false,
 		cls: 'dishpanel' ,
 		height: 760,
-		width:780,
+		width:820,
 		layout: {
 		    type: 'vbox'
 		    //align: 'center'
