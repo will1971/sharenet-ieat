@@ -385,7 +385,7 @@ function createDishPanel(self)
 							'<img class="loan_img" src="{image}" >',
 							/*'<div class="dish" id="pos_horizontal">',*/
 								'<div class="box itemname">{name} </div>' ,
-								'<div class="box price">单价：{price}元</div>',
+								'<div class="box price">{price}元</div>',
 								/*'<div class="box desc">{desc}</div>',*/
 								//'</div>',
 							//'</div>' ,
