@@ -1,9 +1,99 @@
 CACHE MANIFEST
 
+
+#updated 2011.6.8
+#version Share-IEat Beta 1.0.0.0
+=======
 #version Share-IEat Beta 1.0
 #$Id$
 
-index.html
+
+images/
+2011/03/18  20:53             6,216 egg.gif
+2011/03/18  20:53            16,136 egg.jpg
+2011/03/18  20:53            29,210 egg_02.jpg
+2011/03/18  20:53             3,208 loading.gif
+2011/03/18  20:53             8,010 lou.gif
+2011/03/18  20:53            25,969 lou.png
+2011/03/18  20:53           141,746 p0-1.jpg
+2011/03/18  20:53           110,617 p0-2.jpg
+2011/03/18  20:53            85,519 p0-3.jpg
+2011/03/18  20:53             6,538 p1-small.jpg
+2011/03/18  20:53           141,081 p1.jpg
+2011/03/18  20:53             4,770 p10-small.jpg
+2011/03/18  20:53           150,075 p10.jpg
+2011/03/18  20:53            10,229 p10f1-small.gif
+2011/03/18  20:53            10,287 p10f2-small.gif
+2011/03/18  20:53             7,016 p10f3-small.gif
+2011/03/18  20:53             7,105 p11-small.jpg
+2011/03/18  20:53           186,708 p11.jpg
+2011/03/18  20:53             6,625 p11f1-small.gif
+2011/03/18  20:53             6,701 p11f2-small.gif
+2011/03/18  20:53             6,945 p12-small.jpg
+2011/03/18  20:53           172,323 p12.jpg
+2011/03/18  20:53            10,737 p12f1-small.gif
+2011/03/18  20:53             7,899 p12f2-small.gif
+2011/03/18  20:53             6,289 p13-small.jpg
+2011/03/18  20:53           172,132 p13.jpg
+2011/03/18  20:53             9,735 p13f1-small.gif
+2011/03/18  20:53             7,255 p13f2-small.gif
+2011/03/18  20:53             6,954 p14f1-small.gif
+2011/03/18  20:53             6,398 p17f2-small.gif
+2011/03/18  20:53            12,657 p18-small.jpg
+2011/03/18  20:53             6,652 p1f1-small.gif
+2011/03/18  20:53            10,329 p1f2-small.gif
+2011/03/18  20:53             5,792 p2-small.jpg
+2011/03/18  20:53           124,795 p2.jpg
+2011/03/18  20:53             7,179 p2f1-small.gif
+2011/03/18  20:53             9,855 p2f2-small.gif
+2011/03/18  20:53             9,931 p3-small.gif
+2011/03/18  20:53             5,587 p3-small.jpg
+2011/03/18  20:53           221,960 p3.jpg
+2011/03/18  20:53             8,898 p3f1-small.gif
+2011/03/18  20:53             9,094 p3f2-small.gif
+2011/03/18  20:53             8,584 p3f3-small.gif
+2011/03/18  20:53             5,057 p4-small.jpg
+2011/03/18  20:53           139,794 p4.jpg
+2011/03/18  20:53             9,621 p4f1-small.gif
+2011/03/18  20:53             7,379 p4f2-small.gif
+2011/03/18  20:53             8,609 p5-small.gif
+2011/03/18  20:53             5,165 p5-small.jpg
+2011/03/18  20:53           147,882 p5.jpg
+2011/03/18  20:53             7,059 p5f1-small.gif
+2011/03/18  20:53             9,046 p5f2-small.gif
+2011/03/18  20:53             6,021 p6-small.jpg
+2011/03/18  20:53           131,535 p6.jpg
+2011/03/18  20:53             8,690 p6f1-small.gif
+2011/03/18  20:53             9,024 p6f2-small.gif
+2011/03/18  20:53             9,192 p6f3-small.gif
+2011/03/18  20:53             9,579 p6f4-small.gif
+2011/03/18  20:53             6,140 p6f5-small.gif
+2011/03/18  20:53             9,931 p7-small.gif
+2011/03/18  20:53             4,533 p7-small.jpg
+2011/03/18  20:53           143,558 p7.jpg
+2011/03/18  20:53            10,075 p7f-small.gif
+2011/03/18  20:53             8,898 p7f1-small.gif
+2011/03/18  20:53             9,094 p7f2-small.gif
+2011/03/18  20:53             8,584 p7f3-small.gif
+2011/03/18  20:53             6,858 p8-small.gif
+2011/03/18  20:53             4,634 p8-small.jpg
+2011/03/18  20:53           105,600 p8.jpg
+2011/03/18  20:53             7,589 p8f1-small.gif
+2011/03/18  20:53             8,707 p8f2-small.gif
+2011/03/18  20:53             4,829 p9-small.jpg
+2011/03/18  20:53            96,446 p9.jpg
+2011/03/18  20:53             8,245 p9f1-small.gif
+2011/03/18  20:53             9,834 p9f2-small.gif
+2011/06/07  11:45            99,852 pack1.jpg
+2011/06/07  11:45           109,699 pack2.jpg
+2011/06/07  11:45            72,919 pack3.jpg
+2011/03/18  20:53             8,063 qing.gif
+2011/03/18  20:53            23,526 qing.png
+2011/03/18  20:53            41,071 tablet_startup.jpg
+2011/03/18  20:53             8,651 tong.gif
+2011/03/18  20:53            25,330 tong.png
+=======
+>>>>>>> .r48
 
 #scripts
 scripts/BufferedCarousel.js
@@ -11,6 +101,8 @@ scripts/page-data.js
 scripts/PageViewPanel.js
 scripts/sencha-touch.js
 scripts/share-ieat.js
+scripts/csPanel.js
+scripts/guidePanel.js
 
 #styles
 styles/720.css
@@ -96,6 +188,9 @@ images/p9-small.jpg
 images/p9.jpg
 images/p9f1-small.gif
 images/p9f2-small.gif
+images/pack1.jpg
+images/pack2.jpg
+images/pack3.jpg
 images/qing.gif
 images/qing.png
 images/tablet_startup.jpg
