@@ -339,7 +339,7 @@ function createOrderedList(self){
 	});
     
 	var dishtoolbar = new Ext.Toolbar( {
-		title : '<span class="logo push_8 grid_2">已点菜单</span>',
+		title :'', //'<span class="logo push_8 grid_2">已点菜单</span>',
 		height : '46px',
 		width : '100%',
 		dock : 'top',
