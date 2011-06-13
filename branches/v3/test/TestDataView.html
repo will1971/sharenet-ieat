@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>炫动美食-iEat</title>
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    <link rel="stylesheet" href="styles/720.css" type="text/css">
+    
+    <script type="text/javascript" src="scripts/sencha-touch-debug-w-comments.js"></script>
+    
+    <style>
+		body {
+			background-color: #376daa;
+		}
+		
+		/* line 93, shopstyle.scss */
+		.productlist-container {
+			display: -webkit-box;
+			-webkit-box-orient: horizontal;
+			-webkit-box-align: stretch;
+		}
+		
+		.thumb-wrap {
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-box-align: stretch;
+			height: 100%;
+			border: solid 1px #DDD;
+			padding: 10px ;
+			margin: 10px ;
+		}
+		
+		.thumb-wrap.selected {
+			border-color: black;
+		}
+	</style>
+    
+
+    <script type="text/javascript" charset="utf-8">
+	Ext
+			.setup({
+				tabletStartupScreen : 'images/tablet_startup.png',
+				icon : 'icon.png',
+				glossOnIcon : true,
+
+				onReady : function() {
+					var store = new Ext.data.JsonStore({
+						/* url: 'get-images.php', */
+						/* root: 'images', */
+						fields : [ 'name', 'url', {
+							name : 'size',
+							type : 'float'
+						}, {
+							name : 'lastmod',
+							type : 'date',
+							dateFormat : 'timestamp'
+						} ],
+						data : [ {
+							name : "test1",
+							url : "images/p1-small.jpg",
+							size : 10.0,
+							shortName : "showName1"
+						}, {
+							name : "test2",
+							url : "images/p2-small.jpg",
+							size : 10.0,
+							shortName : "showName2"
+						}, {
+							name : "test2",
+							url : "images/p2-small.jpg",
+							size : 10.0,
+							shortName : "showName2"
+						}, {
+							name : "test2",
+							url : "images/p2-small.jpg",
+							size : 10.0,
+							shortName : "showName2"
+						}, {
+							name : "test2",
+							url : "images/p2-small.jpg",
+							size : 10.0,
+							shortName : "showName2"
+						}, {
+							name : "test2",
+							url : "images/p2-small.jpg",
+							size : 10.0,
+							shortName : "showName2"
+						} ]
+					});
+					/* store.load(); */
+
+					var tpl = new Ext.XTemplate(
+							'<div class="productlist-container">',
+							'<tpl for=".">',
+							'<div class="thumb-wrap" id="{name}">',
+							'<div class="thumb"><img src="{url}" title="{name}"></div>',
+							'<span class="x-editable">{shortName}</span></div>',
+							'</tpl>', '<div class="x-clear"></div>', '</div>');
+
+					/*var panel = new Ext.Panel({
+						fullscreen : true,
+					    id:'images-view',
+					    frame:true,
+					    width:535,
+					    autoHeight:true,
+					    collapsible:true, 
+					    layout:'fit',
+					    title:'Simple DataView',
+					
+					    items: new Ext.DataView({
+							fullscreen : true,
+					        store: store,
+					        tpl: tpl,
+					        autoHeight:true,
+					        multiSelect: true,
+					        overItemClass:'x-view-over',
+					        itemSelector:'div.thumb-wrap',
+					        emptyText: 'No images to display'
+					    })
+					});*/
+
+					new Ext.DataView({
+						fullscreen : true,
+						store : store,
+						tpl : tpl,
+						autoHeight : true,
+						selectedItemCls : 'selected',
+						multiSelect : true,
+						scroll : 'horizontal',
+						overItemClass : 'x-view-over',
+						itemSelector : 'div.thumb-wrap',
+						emptyText : 'No images to display',
+						
+						listeners:{
+							itemtap : function(dv, index, item, e){
+								console.dir(dv) ;
+								console.log("index:"+ index)
+								console.log(item.id);
+								console.dir(e);
+							}
+						}
+					})
+				}
+			})
+</script>
+</head>
+
+<body>
+</body></html>               
