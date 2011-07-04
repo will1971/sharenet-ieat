@@ -55,7 +55,59 @@ Ext.setup( {
 	                centered: true,
 	                hideOnMaskTap: false,
 				    items: [
-				       v1, v2
+				       v1, v2 ,  [
+							        {
+							            html: '<p>Navigate the carousel on this page by swiping left/right.</p>',
+							            cls : 'card card1'
+							        },
+							        {
+							            html: '<p>Clicking on either side of the indicators below</p>',
+							            cls : 'card card2'
+							        },
+							        {
+							            html: 'Card #3',
+							            cls : 'card card3'
+							        }
+							    ], [
+							        {
+							            html: '<p>Navigate the carousel on this page by swiping left/right.</p>',
+							            cls : 'card card1'
+							        },
+							        {
+							            html: '<p>Clicking on either side of the indicators below</p>',
+							            cls : 'card card2'
+							        },
+							        {
+							            html: 'Card #3',
+							            cls : 'card card3'
+							        }
+							    ], [
+							        {
+							            html: '<p>Navigate the carousel on this page by swiping left/right.</p>',
+							            cls : 'card card1'
+							        },
+							        {
+							            html: '<p>Clicking on either side of the indicators below</p>',
+							            cls : 'card card2'
+							        },
+							        {
+							            html: 'Card #3',
+							            cls : 'card card3'
+							        }
+							    ], [
+							        {
+							            html: '<p>Navigate the carousel on this page by swiping left/right.</p>',
+							            cls : 'card card1'
+							        },
+							        {
+							            html: '<p>Clicking on either side of the indicators below</p>',
+							            cls : 'card card2'
+							        },
+							        {
+							            html: 'Card #3',
+							            cls : 'card card3'
+							        }
+							    ] 
 				    ]
 				});
 				
