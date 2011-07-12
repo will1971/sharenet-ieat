@@ -7,10 +7,22 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 
 	
 	initComponent : function() {
-		this.cls = "imgpanel" ;
-		this.html = '<img style=" width : 100% ; height : 100% " src="'+ this.img +'"/>';
-		
+		//this.cls = "imgpanel" ;
+		this.bodyCls = "imgpanel" ;
+		//this.html = '<div class="inner"><img src="images/loading.gif"/><div>';		
 		SH.ImagePanel.superclass.initComponent.call(this);
-	}
+	
+        this.monitorOrientation = true;
+        this.mon(this, "orientationChange", this.onOrientationChange, this);
+	},
+	
+	afterRender: function() {
+        SH.ImagePanel.superclass.afterRender.apply(this, arguments);
+        this.setOrientation(Ext.getOrientation());
+    },
+    
+	onOrientationChange: function(target, orientation) {
+		
+    }
 
 });
