@@ -35,54 +35,14 @@ Ext.setup( {
 				
 				//用CrossCarousel实现选择界面
 				var carousel = new Ext.Carousel({
-	                floating: true,
-	                width: 350,
-	                height: 370,
-	                centered: true,
-	                hideOnMaskTap: false,
+					cls: "overview" ,
+					bodyMargin: "300px, 300px, 300px, 300px" ,
 				    items: items
 				});
-				carousel.show();
 				
-				var panel = new Ext.Panel({
+				new Ext.Panel({
 					fullscreen: true,
-					layout: 'fit',  
-				    dockedItems: [
-				        {
-				            dock : 'top',
-				            xtype: 'toolbar',
-				            height: 200,
-				            title: 'Standard Titlebar'
-				        },
-//				        {
-//				            dock : 'left',
-//				            xtype: 'toolbar',
-//				            width: 350,
-//				            ui   : 'light',
-//				            items: [
-//				                {
-//				                    text: 'Test Button'
-//				                }
-//				            ]
-//				        },
-//				        {
-//				            dock : 'right',
-//				            xtype: 'toolbar',
-//				            width: 350,
-//				            ui   : 'light',
-//				            items: [
-//				                {
-//				                    text: 'Test Button'
-//				                }
-//				            ]
-//				        },
-//				        {
-//				            dock : 'bottom',
-//				            xtype: 'toolbar',
-//				            height: 200,
-//				            title: 'Standard Titlebar'
-//				        }
-				    ],
+					layout: 'fit',
 				    items:[carousel]
 				});
 			}

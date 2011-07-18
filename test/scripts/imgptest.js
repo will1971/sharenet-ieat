@@ -11,7 +11,7 @@ Ext.setup({
 		var panel = new SH.ImagePanel({
 			fullscreen : true,
 			layout : 'fit',
-			img : "images/p3-small.gif"
+			bgImg : "images/p3-small.gif"
 		});
 	}
 });
