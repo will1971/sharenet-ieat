@@ -14,6 +14,7 @@ Ext.setup( {
 				
 				for(var i = 0 ; i<= 9 ; i++){
 					var v1 = new Ext.Carousel({
+						bodyCls:  "overview" ,
 		                direction: 'vertical',
 					    items: [
 					        {
@@ -33,9 +34,14 @@ Ext.setup( {
 					items[i] = v1 ;
 				}
 				
+				
+				var viewSize = Ext.Viewport.getSize();
+				var panelSize = {width : 192 , height : 256 } ;
+				
 				//用CrossCarousel实现选择界面
 				var carousel = new Ext.Carousel({
-					cls: "overview" ,
+					cls: "overview",
+					bodyCls:  "overview" ,
 					bodyMargin: "300px, 300px, 300px, 300px" ,
 				    items: items
 				});
