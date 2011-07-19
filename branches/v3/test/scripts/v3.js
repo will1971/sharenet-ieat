@@ -14,35 +14,33 @@ Ext.setup( {
 				
 				for(var i = 0 ; i<= 9 ; i++){
 					var v1 = new Ext.Carousel({
-						bodyCls:  "overview" ,
 		                direction: 'vertical',
+		            	defaults: {
+		                	cls: "ovitem" 
+		                },
 					    items: [
-					        {
-					            html: '<p>Navigate the carousel on this page by swiping left/right.</p>',
-					            cls : 'card card1'
-					        },
-					        {
-					            html: '<p>Clicking on either side of the indicators below</p>',
-					            cls : 'card card2'
-					        },
-					        {
-					            html: 'Card #3',
-					            cls : 'card card3'
-					        }
+					        new SH.ImagePanel({
+					        	bgImg : "images/p1.jpg" 
+					        }),
+					        new SH.ImagePanel({
+					        	bgImg : "images/p1.jpg" 
+					        }),
+					        new SH.ImagePanel({
+					        	bgImg : "images/p1.jpg" 
+					        })
 					    ]
 					});
 					items[i] = v1 ;
 				}
 				
 				
-				var viewSize = Ext.Viewport.getSize();
+				
 				var panelSize = {width : 192 , height : 256 } ;
 				
 				//用CrossCarousel实现选择界面
-				var carousel = new Ext.Carousel({
-					cls: "overview",
-					bodyCls:  "overview" ,
-					bodyMargin: "300px, 300px, 300px, 300px" ,
+				var carousel = new SH.Overview({
+					bodyWidth : 192 ,
+					bodyHeight : 256,
 				    items: items
 				});
 				
@@ -53,3 +51,73 @@ Ext.setup( {
 				});
 			}
 		});
+
+
+Ext.ns("SH");
+
+/**
+ * 支持Cross卷动的Carousel Panel，能够支持在垂直或者水平方向上的移动。
+ * 并且实现Buffered Create，不会再 
+ */
+SH.Overview = Ext.extend(Ext.Carousel, {
+	
+	
+
+    constructor: function(options) {
+    	var viewSize = Ext.Viewport.getSize();
+    	
+    	var bodyMarginWidth = (viewSize.width - options.bodyWidth ) / 2 ;
+    	var bodyMarginHeight = (viewSize.height - options.bodyHeight)/2;
+    	
+        options = Ext.apply({}, options, {
+        	cls: "ovpanel" ,
+        	bodyCls: "ovbody" ,
+        	bodyMargin: bodyMarginHeight + "px, " + bodyMarginWidth + "px, " + bodyMarginHeight + "px, " + bodyMarginWidth + "px",
+        	bodyPadding: "0px, 5px, 0px, 5px" ,
+            defaults: {
+            	bodyCls: "ovbody" 
+            }
+        });
+        
+        console.dir(options) ;
+        SH.Overview.superclass.constructor.call(this, options);
+    },
+    
+    initComponent: function() {
+        SH.Overview.superclass.initComponent.apply(this, arguments);
+
+    },
+    
+    afterRender: function() {
+    	SH.Overview.superclass.afterRender.apply(this , arguments);
+    }   
+});
+
+SH.ImagePanel = Ext.extend(Ext.Panel, {
+
+	defaultBgImg : "images/loading.gif" ,
+	
+	initComponent : function() {
+		SH.ImagePanel.superclass.initComponent.call(this);
+	    this.monitorOrientation = true;
+        this.mon(this, "orientationChange", this.onOrientationChange, this);
+	},
+	
+	afterRender: function() {
+        SH.ImagePanel.superclass.afterRender.apply(this, arguments);
+        this.setOrientation(Ext.getOrientation());
+        var el = this.getEl();
+        
+        if(Ext.isDefined(this.bgImg)){
+        	el.setStyle("background","url('"+this.bgImg+"') center no-repeat");
+        }else{
+        	el.setStyle("background","url('"+this.defaultBgImg+"') center no-repeat");
+        }
+    },
+    
+	onOrientationChange: function(target, orientation) {
+		
+    }
+
+});
+
