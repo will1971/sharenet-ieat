@@ -35,7 +35,7 @@ function createguidePanel(self)
 	{
 		self.btnindex= button.id;
 		console.log("button id:"+self.btnindex);
-		self.guideListPanel.items.items[0].html='<p><font style=font-size:24px>顾客，请浏览本店的特色菜:'+button.text+'</font></p>';
+		self.guideListPanel.items.items[0].html='<p><font style=font-size:24px face="方正隶书简体">顾客，请浏览本店的特色菜:'+button.text+'</font></p>';
 		
 		updateGuideListStore(self,self.btnindex);
 		self.mainPanel.setActiveItem(self.guideListPanel);
@@ -47,8 +47,9 @@ function createguidePanel(self)
 			id:1,
 			text: '咖喱风味菜',
 	        ui: 'round',
-	        width:'450px',
-	        height:'150px',
+	        width:'350px',
+	        height:'50px',
+			cls:'test',
 	        handler:getDishList
 		});
 		
@@ -56,8 +57,9 @@ function createguidePanel(self)
 			id:2,
 			text: '麻辣风味菜',
 	        ui: 'confirm',
-	        width:'450px',
-	        height:'150px',
+	        width:'350px',
+	        height:'50px',
+			cls:'test',
 	        handler:getDishList
 		});
 		
@@ -65,8 +67,9 @@ function createguidePanel(self)
 			id:3,
 			text: '家常风味菜',
 	        ui: 'confirm',
-	        width:'450px',
-	        height:'150px',
+	        width:'350px',
+	        height:'50px',
+			cls:'test',
 	        handler:getDishList
 		});
 		
@@ -75,13 +78,13 @@ function createguidePanel(self)
 			    layout: {
 			    type: 'vbox',
 		        pack: 'center',
-		        align: 'stretch'
+		        align: 'center'
 			    },
 			    height : '1000px',
 			    
 			    items:[{
 			    	
-			    	html: '<p><font style=font-size:24px>顾客，您好！欢迎光临本餐厅，本餐厅提供以下风味菜肴，您更喜欢：</font></p>',
+			    	html: '<p><font style=font-size:24px face="方正隶书简体">顾客，您好！欢迎光临本餐厅，本餐厅提供以下风味菜肴，您更喜欢：</font></p>',
 		            cls: 'welcome'
 			    	
 			    },
@@ -185,14 +188,14 @@ function createguideListPanel(self)
 		 self.btnindex = 1;
 		 
 		 var intruduction = {
-				    html: '<p><font style=font-size:24px>顾客，请浏览本店的特色菜:'+self.guideitem+'</font></p>',
+				    html: '<p><font style=font-size:24px face="方正隶书简体">顾客，请浏览本店的特色菜:'+self.guideitem+'</font></p>',
 		            cls: 'guidelist'
 			        };
 		 var backbtn = new Ext.Button
 		 ({
 			 
 			 text : '返回上级菜单',
-			 ui : 'back' ,
+			 ui : 'round' ,
 			 width: 200,
 				handler : function(){
 					self.mainPanel.setActiveItem(self.guidePanel);
