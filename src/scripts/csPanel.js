@@ -4,8 +4,9 @@ function createcsPanel(self)
 	var btn1 = new Ext.Button({
 		text: '是的，我是第一次来本餐厅就餐！',
         ui: 'round',
-        width:'450px',
-        height:'150px',
+        width:'350px',
+        height:'50px',
+		cls:'test',
         handler: function() {
             self.mainPanel.setActiveItem(5);
         }
@@ -14,8 +15,9 @@ function createcsPanel(self)
 	var btn2 = new Ext.Button({
 		text: '否，我是老顾客了！',
         ui: 'confirm',
-        width:'450px',
-        height:'150px',
+        width:'350px',
+        height:'50px',
+		cls:'test',
         handler: function() {
             self.mainPanel.setActiveItem(1);
         }
@@ -26,20 +28,14 @@ function createcsPanel(self)
 		    layout: {
 		    type: 'vbox',
 	        pack: 'center',
-	        align: 'stretch'
+	        align: 'center'
 		    },
 		    height : '1000px',
 		    
 		    items:[{
 		    	
-		    	html: '<p><font style=font-size:24px>欢迎光临本餐厅</font></p>',
+		    	html: '<p><font style=font-size:24px face="方正隶书简体">欢迎光临本餐厅您是否首次光临本店？</font></p>',
 	            cls: 'welcome'
-		    	
-		    },
-		    {
-		    	
-		    	html: '<p><font style=font-size:24px>您是否首次光临本店？</font></p>',
-	            cls: 'query'
 		    	
 		    },
 		    btn1,btn2
