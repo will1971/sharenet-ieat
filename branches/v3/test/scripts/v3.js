@@ -8,46 +8,45 @@ Ext.setup( {
 			glossOnIcon : true,
 
 			onReady : function() {
-				//用CrossCarousel实现选择界面
+				// set the windows size
+				// window.resizeTo(768,1024);
 				
-				var items = []
+				
+				
+				//用CrossCarousel实现选择界面
+				var items = [];
 				
 				for(var i = 0 ; i<= 9 ; i++){
 					var v1 = new Ext.Carousel({
 		                direction: 'vertical',
+		                indicator: false ,
 		            	defaults: {
 		                	cls: "ovitem" 
 		                },
 					    items: [
 					        new SH.ImagePanel({
-					        	bgImg : "images/p1.jpg" 
+					        	bgImg : "images/p1l_s.jpg" 
 					        }),
 					        new SH.ImagePanel({
-					        	bgImg : "images/p1.jpg" 
+					        	bgImg : "images/p1l_s.jpg" 
 					        }),
 					        new SH.ImagePanel({
-					        	bgImg : "images/p1.jpg" 
+					        	bgImg : "images/p1l_s.jpg" 
 					        })
 					    ]
 					});
 					items[i] = v1 ;
 				}
-				
-				
-				
-				var panelSize = {width : 192 , height : 256 } ;
+								
+				//var panelSize = {width : 192 , height : 256 } ;
 				
 				//用CrossCarousel实现选择界面
 				var carousel = new SH.Overview({
-					bodyWidth : 192 ,
-					bodyHeight : 256,
-				    items: items
-				});
-				
-				new Ext.Panel({
 					fullscreen: true,
-					layout: 'fit',
-				    items:[carousel]
+					indicator: true,
+					bodyWidth : 230 ,
+					bodyHeight : 307,
+				    items: items
 				});
 			}
 		});
@@ -60,14 +59,11 @@ Ext.ns("SH");
  * 并且实现Buffered Create，不会再 
  */
 SH.Overview = Ext.extend(Ext.Carousel, {
-	
-	
-
     constructor: function(options) {
     	var viewSize = Ext.Viewport.getSize();
     	
     	var bodyMarginWidth = (viewSize.width - options.bodyWidth ) / 2 ;
-    	var bodyMarginHeight = (viewSize.height - options.bodyHeight)/2;
+    	var bodyMarginHeight = (viewSize.height - options.bodyHeight) / 2 ;
     	
         options = Ext.apply({}, options, {
         	cls: "ovpanel" ,
@@ -79,19 +75,70 @@ SH.Overview = Ext.extend(Ext.Carousel, {
             }
         });
         
-        console.dir(options) ;
         SH.Overview.superclass.constructor.call(this, options);
     },
     
     initComponent: function() {
+        var indicator = this.indicator;
+        this.indicator = false;
+        
         SH.Overview.superclass.initComponent.apply(this, arguments);
-
+        
+        if (indicator) {
+            var cfg = Ext.isObject(this.indicator) ? this.indicator : {};
+            
+            this.indicator = new SH.Overview.Indicator(Ext.apply({}, cfg, {
+                direction: this.direction,
+                carousel: this,
+                ui: this.ui
+            }));
+        }
     },
     
     afterRender: function() {
     	SH.Overview.superclass.afterRender.apply(this , arguments);
     }   
 });
+
+SH.Overview.Indicator = Ext.extend(Ext.Carousel.Indicator, {
+    baseCls: 'sh-carousel-indicator',
+
+    initComponent: function() {
+    	
+        if (this.carousel.rendered) {
+            this.render(this.carousel.body);
+            this.onBeforeCardSwitch(null, null, this.carousel.items.indexOf(this.carousel.layout.getActiveItem()));
+        } else {
+            this.carousel.on('render', function() {
+                this.render(this.carousel.body);
+            }, this, {single: true});
+        }
+        SH.Overview.Indicator.superclass.initComponent.call(this);
+    },
+
+    // @private
+    onRender: function() {
+        Ext.Carousel.Indicator.superclass.onRender.apply(this, arguments);
+        
+        for (var i = 0, ln = this.carousel.items.length; i < ln; i++) {
+            this.createIndicator();
+        }
+        
+        this.mon(this.carousel, {
+            beforecardswitch: this.onBeforeCardSwitch,
+            scope: this
+        });
+        
+        this.el.addCls(this.baseCls + '-' + this.direction);
+    },
+    
+    // @private
+    onBeforeCardSwitch: function(carousel, card, old, index) {
+    	if (Ext.isNumber(index) && index != -1 && this.indicators[index]) {
+            this.indicators[index].radioCls('x-carousel-indicator-active');
+        }
+    }
+}) ; 
 
 SH.ImagePanel = Ext.extend(Ext.Panel, {
 
@@ -118,6 +165,5 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 	onOrientationChange: function(target, orientation) {
 		
     }
-
 });
 
