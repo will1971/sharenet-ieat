@@ -100,7 +100,7 @@ SH.Overview = Ext.extend(Ext.Carousel, {
     }   
 });
 
-SH.Overview.Indicator = Ext.extend(Ext.Carousel.Indicator, {
+SH.Overview.Indicator = Ext.extend(Ext.Component, {
     baseCls: 'sh-carousel-indicator',
 
     initComponent: function() {
@@ -108,7 +108,8 @@ SH.Overview.Indicator = Ext.extend(Ext.Carousel.Indicator, {
         if (this.carousel.rendered) {
             this.render(this.carousel.body);
             this.onBeforeCardSwitch(null, null, this.carousel.items.indexOf(this.carousel.layout.getActiveItem()));
-        } else {
+        }
+        else {
             this.carousel.on('render', function() {
                 this.render(this.carousel.body);
             }, this, {single: true});
@@ -118,18 +119,20 @@ SH.Overview.Indicator = Ext.extend(Ext.Carousel.Indicator, {
 
     // @private
     onRender: function() {
-        Ext.Carousel.Indicator.superclass.onRender.apply(this, arguments);
         
+    	SH.Overview.Indicator.superclass.onRender.apply(this, arguments);
+
         for (var i = 0, ln = this.carousel.items.length; i < ln; i++) {
-            this.createIndicator();
+            this.createIndicator(i);
         }
-        
+
         this.mon(this.carousel, {
             beforecardswitch: this.onBeforeCardSwitch,
             scope: this
         });
         
         this.el.addCls(this.baseCls + '-' + this.direction);
+        
     },
     
     // @private
@@ -137,8 +140,41 @@ SH.Overview.Indicator = Ext.extend(Ext.Carousel.Indicator, {
     	if (Ext.isNumber(index) && index != -1 && this.indicators[index]) {
             this.indicators[index].radioCls('x-carousel-indicator-active');
         }
+    },
+    
+    
+    // @private
+    createIndicator: function(item) {
+        this.indicators = this.indicators || [];
+        this.indicators.push(this.el.createChild({
+            tag: 'span',
+            html:'item'
+        }));
+    },
+    
+    // @private
+    onBeforeCardSwitch: function(carousel, card, old, index) {
+        if (Ext.isNumber(index) && index != -1 && this.indicators[index]) {
+            this.indicators[index].radioCls('x-carousel-indicator-active');
+        }
+    },
+
+    // @private
+    onCardAdd: function() {
+        if (this.rendered) {
+            this.createIndicator();
+        }
+    },
+
+    // @private
+    onCardRemove: function() {
+        if (this.rendered) {
+            this.indicators.pop().remove();
+        }
     }
-}) ; 
+    
+}) ;
+
 
 SH.ImagePanel = Ext.extend(Ext.Panel, {
 
