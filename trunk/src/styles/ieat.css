@@ -332,3 +332,14 @@ width:100px;height:100px;font-size:24px;text-align:center;overflow: hidden;
 .page .itemctl.f11 .control .order{
 	background-color: white;
 }
+.test{
+ margin:0 auto;
+ -webkit-border-radius: 30px;
+ margin-top:20px;
+}
+
+.csPanel{
+background-image:url(../images/%E6%AC%A2%E8%BF%8E.png);
+background-repeat:no-repeat;
+background-position: center;
+}
