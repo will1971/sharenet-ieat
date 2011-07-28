@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>TestBufferdCarousel</title>
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    
+    <script type="text/javascript" src="scripts/sencha-touch-debug-w-comments.js"></script>
+   
+    <style>
+		body {
+			background-color: #376daa;
+		}
+		
+		.x-tab img.callphone, .x-button img.x-icon-mask.callphone {
+  			-webkit-mask-image: url('images/phone1.png');
+		}
+	</style>
+    
+
+    <script type="text/javascript" charset="utf-8">
+ActionBar = Ext.extend(Ext.Sheet, {
+	
+	componentCls: 'x-sheet-action',
+	
+    modal: false,
+    centered : false,
+    hideOnMaskTap : false,
+    stretchX: true,
+    defaultType: 'button',
+    ui: 'plain',
+    
+    /**
+     * Here we just set up the items that will go in the carousel and add a button to make it easy for the
+     * user to lend money to the loanee.
+     */
+    initComponent: function() {
+    	console.log("======ActionBar.initComponent()======");
+        Ext.apply(this, {
+        	layout: {
+        			type: 'hbox' ,
+                    pack: 'center'
+                },
+        	height: 80 ,
+        	ui: 'light',
+        	    defaults: {
+                    iconMask: true,
+                    iconAlign: 'top' ,
+                    margin:'0 5 0 5'
+                },
+        	    items:[{
+	    	    		xtype:'button' ,
+	    	        	iconCls: 'callphone',
+	    	            text: '短信',
+    	        	} ,{
+        	    		xtype:'button' ,
+        	        	iconCls: 'bookmarks',
+        	            text: '短信',
+        	        } ,
+        	        {
+        	        	xtype:'button' ,
+        	        	iconCls: 'settings',
+        	            text: '设置'
+
+        	        } 
+        	    ]
+        	// }]
+            });
+            
+        ActionBar.superclass.initComponent.apply(this, arguments);
+    }
+});
+    
+	Ext.setup({
+				tabletStartupScreen : 'images/tablet_startup.png',
+				icon : 'icon.png',
+				glossOnIcon : true,
+
+				onReady : function() {
+
+				   
+					var actionbar = new ActionBar();
+					var panel = new Ext.Panel(
+							{
+								fullscreen : true,
+								layout : 'card',
+								cls : 'pagesheets' , 
+								items:[{
+									xtype: "button" ,
+									text: "tap" ,
+									listeners:{
+										scope: this ,
+										tap : function(){
+											console.log("======tap:function()======");
+											actionbar.show();
+										}
+									}
+								}]
+							}
+						)
+				}
+			}) ;
+    
+</script>
+</head>
+
+<body>
+</body></html>               
