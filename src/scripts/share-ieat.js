@@ -378,8 +378,8 @@ function createDishPanel(self)
 	var list = new Ext.List(
 			{
 				id:'Dishlist',
-				grouped : true,
-				pinHeaders : false ,
+				//grouped : true,
+				//pinHeaders : false ,
 				itemTpl : new Ext.XTemplate(
 						'<div class="dish" id="pos_horizontal">',
 							'<img class="loan_img" src="{image}" >',
@@ -393,7 +393,7 @@ function createDishPanel(self)
 				store : self.orderStore,
 				//scroll : 'vertical' ,
 				//region:'center',
-                height: 1000,
+                height: 480,
                 selModel: {
                     mode: 'SINGLE',
                     allowDeselect: true
@@ -414,6 +414,8 @@ function createDishPanel(self)
 	        xtype: 'panel',
 	        id: 'listform',
 	        scroll: 'vertical',
+	        height:480,
+	        margin:10,
 	        items: [list]};
 	
      var btn = new Ext.Button(
@@ -421,9 +423,10 @@ function createDishPanel(self)
     			 cls:'ok-button',
                  ui  : 'decline', 
                  scope: this,
-                 height:80,
+                 height:50,
     		   text: '请确认菜单',
     		   centerd:true,
+    		   
     		   hasDisabled:false,
     		   listeners:
     		   {
@@ -445,17 +448,88 @@ function createDishPanel(self)
     		 }
     		   });
 
+	var tablenum ="";
+	var numfield =
+			 {
+                 xtype: 'textfield',
+                 id:'tablebum',
+                 name : 'number',
+                 label: '桌号',
+                 useClearIcon: true,
+                 listeners:{
+                	 blur:function(){
+                	tablenum = Ext.getCmp('tablebum').getValue(); 
+                	 }
+                 }
+                 //autoCapitalize : false
+             };
+	  
+	var submitbtn = new Ext.Button({
+			cls:'submit-button',
+			ui  : 'confirm-round', 
+			scope: this,
+			height:30,
+			margin:5,
+			text: '提交后台',
+            handler: function() {
+            	var jsondata=tablenum+',';
+            	self.orderStore.each(function(item){
+            		jsondata += item.get('name');
+            		jsondata+=',';
+            		jsondata += item.get('price');
+            		jsondata+=',';
+            	});
+            	//console.log(jsondata);
+            	 Ext.Ajax.request({
+                     url: '/ExtAjax/CustomerServlet',
+                     method : 'POST' ,
+                     jsonData : {
+                    	type: 'dishsubmit' , // "download"
+                        data:jsondata
+                    	} ,				                       	
+                     success: function(response, opts) {
+                     	console.log(response.responseText);
+                     	Ext.Msg.alert('', response.responseText , Ext.emptyFn);
+                     }
+                 });
+            }		
+	});
+	
+    var resetbtn = new Ext.Button({
+    	id:'reset',
+    	cls:'reset-button',
+    	ui:'decline-round',
+    	scope: this,
+    	margin:5,
+		height:30,
+		text: '重           置',
+        handler: function() {
+        	Ext.Msg.confirm("提示信息", "您确认是要重置本菜单?" , 
+        			function(button,text)
+        			{ if(button=='yes')
+        			{ 
+        			tablenum = "";
+                	self.orderStore.removeAll();
+                	 Ext.getCmp('tablebum').setValue(tablenum);
+                	self.mainPanel.setActiveItem(self.csPanel);
+                	}
+        			
+        			});
+        			
+        	      
+        	
+        	
+        }//handle
+    });
 	
 	
-	
-        
 	var dishPanel = new Ext.Panel( {
 		//floating : true,
 		id:'dishpanel',
 		modal : true,
 		centered : false,
 		cls: 'dishpanel' ,
-		height: 760,
+		height: 1280,
 		width:820,
 		layout: {
 		    type: 'vbox'
@@ -468,7 +542,7 @@ function createDishPanel(self)
         defaults: {
             //scroll: 'vertical'
         },
-		items : [self.dishbar,btn,listform]});
+		items : [self.dishbar,btn,listform,numfield,submitbtn,resetbtn]});
     
 	updateOrderStatus( self );
 	return dishPanel ;
@@ -528,7 +602,7 @@ function getPackList(index,self)//由index获取套餐列表
 					store : dishStore,
 					region:'center',
 					scroll : 'vertical' ,
-	                height: 700,
+	                height: 400,
 	                selModel: {
 	                    mode: 'SINGLE',
 	                    allowDeselect: true
@@ -590,7 +664,7 @@ function getPackList(index,self)//由index获取套餐列表
 		
 		 itemList.push({ title : record.get('desc'), cls:'card'+record.get('id') ,items:[{
 	            title: record.get('desc'),
-	            html: '<h1 style="text-align:center;">'+record.get('desc')+'</h1><div align="center"><img src="'+record.get('image')+'" width="400" height="300"></div>',
+	            html: '<h1 style="text-align:center;">'+record.get('desc')+'</h1><div align="center"><img src="'+record.get('image')+'" width="240" height="180"></div>',
 	            region:'north',
 	            iconCls: 'pack'
 	        },
