@@ -339,7 +339,31 @@ width:100px;height:100px;font-size:24px;text-align:center;overflow: hidden;
 }
 
 .csPanel{
-background-image:url(../images/welcome.png);
+background-image:url(%E6%AC%A2%E8%BF%8E.png);
 background-repeat:no-repeat;
 background-position: center;
+}
+
+#btngroup
+{
+ 
+ display:-moz-inline-box;
+ display:inline-block;
+ width:500px;
+ height:40px;
+}
+#btnsubmit
+{
+	float:left;
+	width:200px;
+	height:40px;
+	margin-left:50px;
+}
+
+#reset
+{
+	float:left;
+	width:200px;
+	height:40px;
+	margin-left:50px;
 }
