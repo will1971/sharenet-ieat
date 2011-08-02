@@ -418,6 +418,35 @@ function createDishPanel(self)
 	        margin:10,
 	        items: [list]};
 	
+	var clickCus = function(button,text)
+	{
+		var score = Math.ceil(self.totalprice/10);
+		var coupon = Math.ceil(self.totalprice/10);
+		
+		if(button=='ok')
+	{ 
+			if (!this.popup) {
+                this.popup = new Ext.Panel({
+                    floating: true,
+                    modal: true,
+                    centered: true,
+                    width: 300,
+                    height: 200,
+                    styleHtmlContent: true,
+                    scroll: 'vertical',
+                    html: '<p>尊敬的客户，您本次消费共计'+self.totalprice+' 元，获得积分'+score+',可获取赠券'+ coupon+'元一张，已发送电子赠券至您手机，请注意查收.</p>',
+                    dockedItems: [{
+                        dock: 'top',
+                        xtype: 'toolbar',
+                        title: '客户积分信息'
+                    }]
+                });
+            }
+            this.popup.show('pop');
+	}
+	
+	};
+	
      var btn = new Ext.Button(
     		 { 
     			 cls:'ok-button',
@@ -442,6 +471,9 @@ function createDishPanel(self)
                      form.disable();
                      btn.hasDisabled = true;
                      btn.setText('已锁定，点击解锁');
+                     //积分号输入和查询
+                     Ext.Msg.prompt("客户积分", "请输入您的客户号（手机号）",clickCus);
+                     
                  }
     	        }  
     			 
@@ -455,6 +487,7 @@ function createDishPanel(self)
                  id:'tablebum',
                  name : 'number',
                  label: '桌号',
+                 margin:5,
                  useClearIcon: true,
                  listeners:{
                 	 blur:function(){
@@ -465,6 +498,7 @@ function createDishPanel(self)
              };
 	  
 	var submitbtn = new Ext.Button({
+		    id:'btnsubmit',
 			cls:'submit-button',
 			ui  : 'confirm-round', 
 			scope: this,
@@ -509,6 +543,7 @@ function createDishPanel(self)
         			{ if(button=='yes')
         			{ 
         			tablenum = "";
+        			self.totalprice = 0;
                 	self.orderStore.removeAll();
                 	 Ext.getCmp('tablebum').setValue(tablenum);
                 	self.mainPanel.setActiveItem(self.csPanel);
@@ -522,7 +557,15 @@ function createDishPanel(self)
         }//handle
     });
 	
-	
+	var btngroup =new Ext.Panel({
+	        id: 'btngroup',	 
+	        margin:25,
+	        centered:true,
+	        left:50,
+	        height:40,
+	        widht:800,
+	        items: [submitbtn,resetbtn]});
+    
 	var dishPanel = new Ext.Panel( {
 		//floating : true,
 		id:'dishpanel',
@@ -542,7 +585,7 @@ function createDishPanel(self)
         defaults: {
             //scroll: 'vertical'
         },
-		items : [self.dishbar,btn,listform,numfield,submitbtn,resetbtn]});
+		items : [self.dishbar,btn,listform,numfield,btngroup]});
     
 	updateOrderStatus( self );
 	return dishPanel ;
@@ -958,6 +1001,7 @@ function updateDishStatus( self ){
 	
 	var txt ="已点菜（" + count + "份）总价格:" + price + "元";
 	self.dishbar.items.items[0].setText( txt  ) ;
+	self.totalprice = price;
 	
 }
 /**
@@ -1080,8 +1124,6 @@ function updateCurrentPage(self , index){
 	var page = self.pageStore.getAt(index);
 	var type = page.get('type') ;
 	
-	console.log(self.toolbar.items);
-	
 	var pressedBtn = self.toolbar.items.get(4).getPressed();
 	if(!pressedBtn || (pressedBtn.id != type) ){
 		// FIXIT: the segment button is toolbar.items.get(3), buggie
@@ -1117,6 +1159,7 @@ Ext.setup( {
 				 */
 	             //建立应用通用变量
 				 this.DishNum = 0;
+				 this.totalprice = 0; //最后总价
 				 //建立点菜单
 				createStoreModule();
 				this.orderStore = createOrderStore();
