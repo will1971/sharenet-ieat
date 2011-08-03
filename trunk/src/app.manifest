@@ -6,6 +6,8 @@ CACHE MANIFEST
 #version Share-IEat Beta 1.0
 #$Id$
 
+#version updated 2011.8.3
+
 #scripts
 scripts/BufferedCarousel.js
 scripts/page-data.js
@@ -21,6 +23,7 @@ styles/anim.css
 styles/ieat.css
 styles/sencha-touch.css
 styles/apple.css
+
 
 images/icon.jpg
 images/tablet_startup.jpg
