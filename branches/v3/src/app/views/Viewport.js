@@ -9,6 +9,7 @@ SH.Viewport = Ext.extend(Ext.Panel, {
     	//put instances of cards into viewport
     	Ext.apply(this, {
             items: [
+                    ieat.views.viewpage  , ieat.views.cover 
             ]
         });
     	

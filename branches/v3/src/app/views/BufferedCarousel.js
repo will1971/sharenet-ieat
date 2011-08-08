@@ -9,13 +9,13 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
 
     constructor: function(options) {
         options = Ext.apply({}, options, {
-            bufferSize: 2
+            bufferSize: 1
         });
         SH.BufferedCarousel.superclass.constructor.call(this, options);
     },
     
     initComponent: function() {
-        this.items = [];
+    	this.items = [];
         var indicator = this.indicator;
         this.indicator = false;
         
@@ -52,7 +52,7 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
 			animated) {
         this.bufferCards(card.carouselPosition);
     },
-
+    
     /**
      * Creates/removes cards to the left and right of the current card
      */    
