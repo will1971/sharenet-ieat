@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>TestBufferdCarousel</title>
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    
+    <script type="text/javascript" src="scripts/sencha-touch-debug-w-comments.js"></script>
+   
+    <style>
+		body {
+			background-color: #376daa;
+		}
+		
+		.x-tab img.callphone, .x-button img.x-icon-mask.callphone {
+  			-webkit-mask-image: url('images/phone1.png');
+		}
+	</style>
+    
+
+    <script type="text/javascript" charset="utf-8">
+    
+    /**
+     * 系统配置对象
+     */
+   Config = Ext.extend(Object, {
+    	
+    	constructor : function(cfg){
+    		console.log("========== constructor config object ==========");
+    		this.user = window.localStorage.getItem('SHC_USERNAME') ;
+    		this.pass = window.localStorage.getItem('SHC_PASS') ;
+    		this.server = window.localStorage.getItem('SHC_SERVER') ;
+    	},
+    	
+    	/**
+    	 * 是否已经配置
+    	 */
+    	isConfiged : function(){
+    		// check or init database
+    		return user != null ; 	
+    	},
+    	
+    	setConfiged : function(username , pass , server){
+    		window.localStorage.setItem('SHC_USERNAME' , username );
+    		window.localStorage.setItem('SHC_PASS' , pass );
+    		window.localStorage.setItem('SHC_SERVER' , server );
+    	},
+    	
+    	getCategery : function(){
+    		var cates = window.localStorage.getItem('SHC_CATEGERYS') ;
+    		if(cates != null){
+    			return cateds.splite(',') ;
+    		}else{
+    			return [] ;
+    		}
+    	},
+    	
+    	setCategery : function(cates){
+    		window.localStorage.setItem('SHC_CATEGERYS', cates.join(','));
+    	},
+    	
+    	setUserCategery : function(userID , category){
+    		window.localStorage.setItem('SHC_CATEGERYS_'+userID, category);
+    	},
+    	
+    	getUserCategery : function(userID){
+    		return window.localStorage.getItem('SHC_CATEGERYS_'+userID) ;
+    	},
+    	
+    });
+    
+	Ext.setup({
+				tabletStartupScreen : 'images/tablet_startup.png',
+				icon : 'icon.png',
+				glossOnIcon : true,
+
+				onReady : function() {
+					
+					var config = new Config(); 
+
+				   new Ext.Panel({
+					   fullscreen : true ,
+					   dockedItems: [{
+					        xtype: 'toolbar',
+					        title: '系统配置',
+					        items: [
+					            {
+					                id: 'cancel',
+					                text: '退出',
+					                ui: 'back'
+					            },
+					            {xtype:'spacer'},
+					            {
+					                id: 'apply',
+					                text: '保存',
+					                ui: 'action'
+					            }
+					        ]
+					    }],
+					   items : [{
+					            	xtype: 'formpanel' ,
+					            	items: [{
+									    xtype: 'fieldset',
+									    title: '用户信息',
+									    items: [{
+										        name : 'name',
+										        label: '用户名',
+										        xtype: 'textfield'
+										    }, {
+										        name : 'pass',
+										        label: '密码',
+										        xtype: 'textfield'
+										    },{
+										        name : 'server',
+										        label: '服务器',
+										        xtype: 'textfield',
+										        value: 'http://www.share-net.cn/contacts'
+										    },{
+												height: 60 ,
+												xtype:'button',
+												text: '上传联系人'
+											},{xtype: 'spacer'} ,{
+												height: 60 ,
+												xtype: 'button',
+												text: '下载联系人'
+										}]
+					            	}]
+					   			},{
+									height: 60 ,
+									xtype:'button',
+									text: '上传联系人'
+								},{xtype: 'spacer'} ,{
+									height: 60 ,
+									xtype: 'button',
+									text: '下载联系人'
+						}]
+				   });
+				}
+			}) ;
+    
+</script>
+</head>
+
+<body>
+</body></html>               
