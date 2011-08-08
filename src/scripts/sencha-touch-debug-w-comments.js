@@ -18209,7 +18209,7 @@ Ext.Application = Ext.extend(Ext.util.Observable, {
     useLoadMask: false,
 
     /**
-     * @cfg {Number} loadMaskFadeDuration The number of milliseconds the load mask takes to fade out. Defaults to 1000
+     * @cfg {Number} kFadeDuration The number of milliseconds the load mask takes to fade out. Defaults to 1000
      */
     loadMaskFadeDuration: 1000,
 
