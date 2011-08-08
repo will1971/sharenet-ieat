@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="styles/ieat.css" type="text/css">
     
     <script type="text/javascript" src="scripts/sencha-touch-debug-w-comments.js"></script>
-    <script type="text/javascript" src="scripts/library.js"></script>
+    <!--  <script type="text/javascript" src="scripts/library.js"></script>
     <script type="text/javascript" src="scripts/BufferedCarousel.js"></script>
     <script type="text/javascript" src="scripts/PageViewPanel.js"></script>
     <script type="text/javascript" src="scripts/page-data.js"></script>
-    
+     -->
     <style>
 		body {
 			background-color: #376daa;
@@ -21,13 +21,51 @@
     
 
     <script type="text/javascript" charset="utf-8">
+    
+    ActionBar = Ext.extend(Ext.Sheet, {
+    	
+    	componentCls: 'x-sheet-action',
+    	
+        modal: true,
+        centered : false,
+        hideOnMaskTap : true,
+        
+        stretchY: true,
+        stretchX: true,
+        
+        defaultType: 'button',
+        
+        /**
+         * Here we just set up the items that will go in the carousel and add a button to make it easy for the
+         * user to lend money to the loanee.
+         */
+        initComponent: function() {
+        	console.log("======ActionBar.initComponent()======");
+            Ext.apply(this, {
+            	layout: 'hbox' ,
+            	height: 50 ,
+            	items: [
+            	        {
+            	            text: 'Delete'
+            	        },
+            	        {
+            	            text: 'Save'
+            	        }
+            	    ]
+                });
+                
+            ActionBar.superclass.initComponent.apply(this, arguments);
+        }
+    });
+    
 	Ext.setup({
 				tabletStartupScreen : 'images/tablet_startup.png',
 				icon : 'icon.png',
 				glossOnIcon : true,
 
 				onReady : function() {
-					createStoreModule() ;
+
+				    /* createStoreModule() ;
 					
 					cardswitch = function(container, newCard, oldCard, index,
 							animated) {
@@ -62,7 +100,51 @@
 					
 					
 					panel.on('order', beforeorder , this);
-					panel.on('afterorder', afterorder , this);
+					panel.on('afterorder', afterorder , this); */
+					
+					var actionbar = new ActionBar();
+					var myMask = null ;
+					
+					var panel = new Ext.Panel(
+							{
+								fullscreen : true,
+								layout : 'vbox',
+								cls : 'pagesheets' , 
+								items:[{
+									xtype: "button" ,
+									text: "tap" ,
+									listeners:{
+										scope: this ,
+										tap : function(){
+											console.log("======tap:function()======");
+											//console.dir(actionbar);
+											//actionbar.show();
+											myMask = new Ext.LoadMask('target', {msg:"Please wait..."});						
+											// Basic mask:
+											myMask.show();
+										}
+									}
+								},{
+									xtype: "button" ,
+									text: "tap2" ,
+									listeners:{
+										scope: this ,
+										tap : function(){
+											console.log("======tap:function()======");
+											//console.dir(actionbar);
+											//actionbar.show();
+											
+											// Basic mask:
+											myMask.hide();
+										}
+									}
+								},{
+									xtype: 'panel' ,
+									id: 'target' ,
+									html: "<p color='white'>xxxxx xxxx xxxx</p>"  
+								}]
+							}
+						)
 				}
 			}) ;
     
