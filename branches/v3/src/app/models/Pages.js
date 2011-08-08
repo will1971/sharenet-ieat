@@ -1,5 +1,5 @@
 /**
- * Type Define
+ * 定义菜品和页面模型
  */
 var moduleDefined = false ;
 //food type
