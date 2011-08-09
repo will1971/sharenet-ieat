@@ -8,6 +8,19 @@ body {
 .overview {
 	background-color: rgba(0,0,0,0.6) ;
 	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+.ordered{
+	background-color: rgba(0,0,0,0.6) ;
+	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+.info , .suggestion{
+	background-color: rgba(0,0,0,0.6) ;
+	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
 

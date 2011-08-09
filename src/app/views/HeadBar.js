@@ -24,10 +24,44 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				text : '结单'
 			}, {
 				xtype : 'button' ,
-				text : '已点菜'
+				text : '已点菜' , 
+				listeners: {
+                    scope : this,
+                    tap: function(){
+                    	if( ieat.ordered == undefined ){
+                    		console.log("create") ;
+                    		ieat.ordered = new SH.OrderedSheet();
+                    	}
+                    	ieat.ordered.show();
+                    }
+                }	
 			}, {xtype : 'spacer'} ,{
     			xtype : 'button' ,
-    			text : '类别',listeners: {
+    			text : '详情',
+    			listeners: {
+                    scope : this,
+                    tap: function(){
+                    	if( ieat.infoview == undefined ){
+                    		ieat.infoview = new SH.InfoSheet();
+                    	}
+                    	ieat.infoview.show();
+                    }
+                }
+    		}, {
+    			xtype : 'button' ,
+    			text : '推荐菜' ,
+    			listeners: {
+                    scope : this,
+                    tap: function(){
+                    	if( ieat.infoview == undefined ){
+                    		ieat.suggestion = new SH.SuggestionSheet();
+                    	}
+                    	ieat.suggestion.show();
+                    }
+                }
+    		},{
+    			xtype : 'button' ,
+    			text : '挑选菜系',listeners: {
                     scope : this,
                     tap: function(){
                     	if( ieat.overview == undefined ){
@@ -36,9 +70,6 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     	ieat.overview.show();
                     }
                 }	
-    		}, {
-    			xtype : 'button' ,
-    			text : '推荐'
     		}]
         });
     	
