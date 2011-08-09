@@ -245,7 +245,8 @@ SH.Data = Ext.extend(Object, {
 					
 					
 					/**
-					 * 初始化所有数据
+					 * 初始化所有数据，在这个函数中处理原始数据，
+					 * 需要的话可以编制二次索引和HaspMap，提高查询速度。
 					 */
 					initData : function (){
 						
