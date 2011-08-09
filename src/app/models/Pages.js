@@ -32,7 +32,7 @@ SH.Data = Ext.extend(Object, {
 
 					// 页面数据，指定任何一个菜都需要给出 [页面index , 菜品index]
 					pages : [{
-								image : 'images/p1.jpg',
+								image : 'images/p1w.jpg',
 								snapshot : 'images/p1-small.jpg',
 								items : [ {
 									name : '翡翠黄瓜',
@@ -50,7 +50,7 @@ SH.Data = Ext.extend(Object, {
 									hotarea : [ 10, 10, 20, 20 ]
 								} ]
 							},{
-								image : 'images/p2.jpg',
+								image : 'images/p2w.jpg',
 								snapshot : 'images/p2-small.jpg',
 								items : [
 										{
@@ -69,7 +69,7 @@ SH.Data = Ext.extend(Object, {
 											hotarea : [ 10, 10, 20, 20 ]
 										} ]
 							},{
-								image : 'images/p3.jpg',
+								image : 'images/p3w.jpg',
 								snapshot : 'images/p3-small.jpg',
 								cls : 'page',
 								items : [
@@ -98,7 +98,7 @@ SH.Data = Ext.extend(Object, {
 											hotarea : [ 10, 10, 20, 20 ]
 										} ]
 							},{
-								image : 'images/p4.jpg',
+								image : 'images/p4w.jpg',
 								snapshot : 'images/p4-small.jpg',
 								items : [ {
 									name : '吴山贡鹅',
@@ -116,7 +116,7 @@ SH.Data = Ext.extend(Object, {
 									hotarea : [ 10, 10, 20, 20 ]
 								} ]
 							},{
-								image : 'images/p5.jpg',
+								image : 'images/p5w.jpg',
 								snapshot : 'images/p5-small.jpg',
 								cls : 'page',
 								items : [ {
@@ -135,7 +135,7 @@ SH.Data = Ext.extend(Object, {
 									controlCls : 'push_1 vpush_5 grid_6 f2'
 								} ]
 							},{
-								image : 'images/p6.jpg',
+								image : 'images/p6w.jpg',
 								snapshot : 'images/p6-small.jpg',
 								items : [ {
 									name : '片儿鸭',
@@ -146,7 +146,7 @@ SH.Data = Ext.extend(Object, {
 									controlCls : 'push_1 vpush_9 f11'
 								} ]
 							},{
-								image : 'images/p7.jpg',
+								image : 'images/p7w.jpg',
 								snapshot : 'images/p7-small.jpg',
 								items : [ {
 									name : '东坡肉',
@@ -156,7 +156,7 @@ SH.Data = Ext.extend(Object, {
 									detail : '优质五花肉 西兰花'
 								} ]
 							},{
-								image : 'images/p8.jpg',
+								image : 'images/p8w.jpg',
 								snapshot : 'images/p8-small.jpg',
 								items : [
 										{
@@ -173,7 +173,7 @@ SH.Data = Ext.extend(Object, {
 											detail : '牛肚 香茹 西兰花等'
 										} ]
 							},{
-								image : 'images/p9.jpg',
+								image : 'images/p9w.jpg',
 								snapshot : 'images/p9-small.jpg',
 								items : [ {
 									name : '密汁凤爪',
@@ -189,7 +189,7 @@ SH.Data = Ext.extend(Object, {
 									detail : '东北人参 乳鸽 枸杞'
 								} ]
 							},{
-								image : 'images/p10.jpg',
+								image : 'images/p10w.jpg',
 								snapshot : 'images/p10-small.jpg',
 								items : [
 										{
@@ -207,7 +207,7 @@ SH.Data = Ext.extend(Object, {
 											detail : '糯米 鲜瘦肉'
 										} ]
 							}, {
-								image : 'images/p11.jpg',
+								image : 'images/p11w.jpg',
 								snapshot : 'images/p11-small.jpg',
 								cls : 'page',
 								items : [ {
@@ -257,7 +257,11 @@ SH.Data = Ext.extend(Object, {
 					 * @returns
 					 */
 					getPage : function (index){
-						return pages[index] ;
+						return this.pages[index] ;
+					},
+					
+					getPages : function(){
+						return this.pages ;
 					}
 					
 				});
