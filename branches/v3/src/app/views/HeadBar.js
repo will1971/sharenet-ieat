@@ -15,14 +15,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-    		items: [
-			{
-				xtype : 'button' ,
-				text : '返回'
-			}, {
-				xtype : 'button' ,
-				text : '结单'
-			}, {
+    		items: [{
 				xtype : 'button' ,
 				text : '已点菜' , 
 				listeners: {
@@ -35,7 +28,13 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     	ieat.ordered.show();
                     }
                 }	
-			}, {xtype : 'spacer'} ,{
+			},{
+				xtype : 'button' ,
+				text : '结单'
+			},{
+				xtype : 'button' ,
+				text : '开新台'
+			} , {xtype : 'spacer'} ,{
     			xtype : 'button' ,
     			text : '详情',
     			listeners: {
