@@ -1,9 +1,8 @@
 Ext.ns("SH");
 
 /**
- * a buffered carousel, will create the panel when needed. so if have multiple page, still
- * can keep high interactive speed. 
- * part of code got from: http://touchstyle.mobi/ 
+ * 缓冲Carousel，因为当Carousel的页面过多的时候，页面的翻动速度会变的很慢
+ * 需要在将要翻到该页面的时候才提前创建页面
  */
 SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
 
@@ -44,6 +43,9 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
         this.mon(this, 'cardswitch', this.handleCardSwitch, this);
     },
     
+    /**
+     * TODO: what is this working for?
+     */
     onTouchStart: function() {
         this.onTransitionEnd();
     },
@@ -243,3 +245,33 @@ SH.BufferedCarousel.Indicator = Ext.extend(Ext.Carousel.Indicator, {
 	    }
 
 }) ; 
+
+
+
+SH.PageView = Ext.extend(SH.BufferedCarousel, {
+
+	initComponent : function() {
+		
+		console.log("ieat.data.getPages().length") ;
+		
+		Ext.apply(this, {
+			indicator : false,
+			itemCount : ieat.data.getPages().length
+		});
+
+		SH.PageView.superclass.initComponent.apply(this, arguments);
+	},
+
+	/**
+	 * 创建Page
+	 * @param index
+	 * @returns {SH.ImagePanel}
+	 */
+	createItem : function(index) {
+		var page = ieat.data.getPage(index);
+		console.log(page.image) ;
+		return new SH.ImagePanel({
+			bgImg : page.image
+		});
+	}
+});

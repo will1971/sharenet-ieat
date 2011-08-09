@@ -52,7 +52,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     			listeners: {
                     scope : this,
                     tap: function(){
-                    	if( ieat.infoview == undefined ){
+                    	if( ieat.suggestion == undefined ){
                     		ieat.suggestion = new SH.SuggestionSheet();
                     	}
                     	ieat.suggestion.show();
