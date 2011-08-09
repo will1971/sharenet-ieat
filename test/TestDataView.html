@@ -42,20 +42,12 @@
 				tabletStartupScreen : 'images/tablet_startup.png',
 				icon : 'icon.png',
 				glossOnIcon : true,
+				
+				
 
 				onReady : function() {
-					var store = new Ext.data.JsonStore({
-						/* url: 'get-images.php', */
-						/* root: 'images', */
-						fields : [ 'name', 'url', {
-							name : 'size',
-							type : 'float'
-						}, {
-							name : 'lastmod',
-							type : 'date',
-							dateFormat : 'timestamp'
-						} ],
-						data : [ {
+				
+					var sample = [ {
 							name : "test1",
 							url : "images/p3-small.gif",
 							size : 10.0,
@@ -126,8 +118,18 @@
 							size : 10.0,
 							shortName : "showName2"
 						} ]
+						
+					var store = new Ext.data.Store({
+						fields : [ 'name', 'url', {
+							name : 'size',
+							type : 'float'
+						}, {
+							name : 'lastmod',
+							type : 'date',
+							dateFormat : 'timestamp'
+						} ],
+						data : sample
 					});
-					/* store.load(); */
 
 					var tpl = new Ext.XTemplate(
 							'<div class="productlist-container">',
