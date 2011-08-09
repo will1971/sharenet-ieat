@@ -15,6 +15,9 @@ Ext.regApplication({
     launch: function() {
     	//播放启动动画，后台创建其他控件
     	
+    	//创建数据
+    	ieat.data = new SH.Data();
+    	
     	//创建对象
     	Ext.apply(ieat.views , {
             cover: new SH.ImagePanel({ bgImg:'images/p1w.jpg' }),
@@ -43,7 +46,7 @@ Ext.regApplication({
 	                		bgImg:'images/p2w.jpg' 
 	                	});
                 	}
-                },
+                }
             })
         });
     	
