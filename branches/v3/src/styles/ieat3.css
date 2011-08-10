@@ -30,6 +30,10 @@ body {
 	color: #FFFFFF;
 }
 
+.overview .x-toolbar .x-button .x-button-label{
+	font-size: 1em;
+}
+
 .ordered {
 	background-color: rgba(0, 0, 0, 0.6);
 	background-image: none;
@@ -42,9 +46,13 @@ body {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
-.toolbar {
+#headbar{
 	background-color: #000000;
 	background-image: none;
-	font-size: 100%;
+	font-size: 1em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+#headbar.x-toolbar .x-button .x-button-label{
+	font-size: 1em;
 }
