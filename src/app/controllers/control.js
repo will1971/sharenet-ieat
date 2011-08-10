@@ -1,14 +1,14 @@
 /**
  * 控制器内，定义了大部分的控制方法
  */
-Ext.regController("control", {
+ieat.control = Ext.regController("control", {
 
 	/**
 	 * 显示封面
 	 * @param options
 	 */
 	showCover : function(options) {
-		ieat.viewport.setActiveItem(app.views.cover, options.animation);
+		ieat.viewport.setActiveItem(ieat.views.cover, options.animation);
 	},
 
 	/**
@@ -16,6 +16,6 @@ Ext.regController("control", {
 	 * @param options
 	 */
 	showViewPage : function(options) {
-		ieat.viewport.setActiveItem(app.views.viewpage, options.animation);
+		ieat.viewport.setActiveItem(ieat.views.viewpage, options.animation);
 	}
 });

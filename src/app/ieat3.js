@@ -21,7 +21,21 @@ Ext.regApplication({
     	
     	//创建对象
     	Ext.apply(ieat.views , {
-            cover: new SH.ImagePanel({ bgImg:'images/p1w.jpg' }),
+            cover: new SH.ImagePanel({ 
+            	bgImg:'images/frontcover.jpg' ,
+            	listeners: {
+            		tap:{
+	            		element: 'el',
+	            		fn: function(){
+		            		Ext.dispatch({
+		                      	controller: ieat.control ,
+		                        action: 'showViewPage',
+		                        animation: {type:'slide', direction:'left'}
+		                      });		
+	            		}
+            		}
+            	}
+            }),
             viewpage: new SH.PageView()
         });
     	
