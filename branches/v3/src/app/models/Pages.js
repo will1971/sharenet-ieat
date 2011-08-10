@@ -33,7 +33,7 @@ SH.Data = Ext.extend(Object, {
 					// 页面数据，指定任何一个菜都需要给出 [页面index , 菜品index]
 					pages : [{
 								image : 'images/p1w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p1ws.jpg',
 								items : [ {
 									name : '翡翠黄瓜',
 									image : 'images/p1f1-small.gif',
@@ -51,7 +51,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p2w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p2ws.jpg',
 								items : [
 										{
 											name : '荷叶虾仁',
@@ -70,7 +70,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p3w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p3ws.jpg',
 								cls : 'page',
 								items : [
 										{
@@ -99,7 +99,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p4w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p4ws.jpg',
 								items : [ {
 									name : '吴山贡鹅',
 									image : 'images/p4f1-small.gif',
@@ -117,7 +117,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p5w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p5ws.jpg',
 								cls : 'page',
 								items : [ {
 									name : '扣肉白馍',
@@ -265,7 +265,9 @@ SH.Data = Ext.extend(Object, {
 					 * @returns
 					 */
 					getPage : function (index){
-						return this.pages[index] ;
+						if(index >= 0 && index<= this.pages.length -1 ){
+							return this.pages[index] ;
+						}else{ return null ;} 
 					},
 					
 					getPages : function(){

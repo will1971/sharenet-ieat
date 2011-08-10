@@ -5,7 +5,7 @@
 Ext.ns("SH");
 
 SH.OverviewSheet = Ext.extend(Ext.Sheet, {
-	height : '500px',
+	height : '440px',
 	dock : 'buttom',
 	cls : 'overview',
     hideOnMaskTap : true,
@@ -30,8 +30,8 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
 			// head bar
         	dockedItems:[{
         		floatingCls : 'overview' ,
-        		height: 60 ,
-    			html : "热菜<br>胡氏一品锅 胡氏一品锅 胡氏一品锅"
+        		height: 140 ,
+    			html : '<div class="pageintro"> <span>胡氏一品锅</span> <span>胡氏一品锅</span> <span>胡氏一品锅</span></div>'
     		}],
     		items: [{
     			xtype : 'tabpanel' ,
@@ -90,12 +90,11 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 		'<tpl for=".">' +
 		'<div class="pageoverview" id="{index}" '+
 		'style="background : url(\'{snapshot}\') center no-repeat ;'+ 
-		'height:206px ; width: 284px"></div>' +
+		'height:199px ; width: 284px"></div>' +
 		'</tpl>' +
 		'<div class="x-clear"></div></div>' ,
 		
 	selectedItemCls : 'selected',
-	scroll : 'horizontal',
 	itemSelector : 'div.pageoverview',
 	emptyText : '没有缩略图数据 ...',
 	autoHeight : true,
@@ -103,6 +102,7 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	multiSelect : true,
 	overItemCls : 'x-view-over',
 	width: '100%',
+	gridWidth : 304 ,
 	
 	listeners:{
 		itemtap : function(dv, index, item, e){
@@ -113,7 +113,91 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
                 index : index
               });	
 		}
-	}
+	} ,
+	
+	/**
+     * @private
+     */
+    initComponent : function() {
+        this.scroll = {
+                direction: 'horizontal',
+                friction: 0.7,
+                acceleration: 25,
+                snapDuration: 200 ,
+                animationDuration: 200
+            };
+        SH.PageOverview.superclass.initComponent.call(this);
+    },
+	
+	
+	/**
+     * @private
+     */
+    setupBar: function() {
+    	this.scroller.updateBoundary();
+        this.scroller.setSnap(this.gridWidth);
+    },
+    
+    /**
+     * @private
+     */
+    afterComponentLayout: function() {
+        // 延迟执行，等待所有资源创建完成
+        Ext.defer(this.setupBar, 200, this);
+    },
+    
+    /**
+     * @private
+     */
+    initEvents: function() {
+        this.mon(this.scroller, {
+            scrollend: this.onScrollEnd,
+            scroll : this.onScroll,
+            scope: this
+        });
+    },
+    
+    /**
+     * 滚动结束事件
+     * @private
+     */
+    onScrollEnd: function(scroller, offset) {
+    	this.selectedNode = this.getNode(Math.round(offset.x / this.gridWidth));
+        this.selectedIndex = this.indexOf(this.selectedNode);
+        this.onSlot(this.selectedIndex , this.selectedNode);
+    },
+    
+    onSlot :  function(index, item){
+		//TODO 改变窗口内的页面样式
+	},
+    
+    /**
+     * 滚动事件
+     */
+    onScroll: function(scroller , offset) {
+    	var grid = Math.round(offset.x / this.gridWidth) + 1 ;
+    	
+    	if(grid != this.grid){
+    		var oldgrid = this.grid ;
+    		this.grid = grid ;
+    		this.onWindowChange(this.grid , oldgrid );
+    	}
+    },
+    
+    onWindowChange : function(grid, oldgrid){
+    	console.log("===onWindowChagne, Grid=" + grid );
+    	
+    	Ext.dispatch({
+          	controller: ieat.control ,
+            action: 'showPageIntoInfo',
+            index : grid
+          });
+    }
+
 });
 
 Ext.reg('pageoverview', SH.PageOverview);
+
+SH.PageIntroPanel = Ext.extend(Ext.Panel , {
+	
+});

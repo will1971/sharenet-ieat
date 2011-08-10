@@ -151,7 +151,7 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
             var activeItem = this.layout.getActiveItem();
             
             if (activeCard && activeItem != activeCard) {
-                this.layout.setActiveItem(activeCard);
+                this.layout.setActiveItem(activeCard , {type:'fade' , duration: 500 } );
                 this.doLayout();
             }            
         }

@@ -19,10 +19,31 @@ ieat.control = Ext.regController("control", {
 		ieat.viewport.setActiveItem(ieat.views.viewpage, options.animation);
 	},
 	
+	
 	/**
 	 * 翻到指定页
 	 */
 	openPage : function(options) {
 		ieat.views.viewpage.setActiveItemByIndex(options.index) ;
+	},
+	
+	
+	/**
+	 * 显示该页的相关信息
+	 * @param index
+	 */
+	showPageIntoInfo : function(options) {
+		if(ieat.overview.isVisible()){
+			var page = ieat.data.getPage(options.index);
+			
+			if(page != null){
+				var ovheader = ieat.overview.getDockedItems()[0].getEl().query('.pageintro');
+				console.log(ovheader);
+				ovheader[0].innerHTML= "页："+options.index ;
+			}else{
+				console.log("错误：无效的页面索引 index=" + index) ;
+			}	
+		}
 	}
+	
 });
