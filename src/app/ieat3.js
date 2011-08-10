@@ -3,10 +3,9 @@
  */ 
 Ext.regApplication({
     name: "ieat",
-    
     icon: 'images/icon.jpg',
-    glossOnIcon: false,
-    tabletStartupScreen: 'images/screen.jpg',
+    tabletStartupScreen: 'images/cover.jpg',
+    glossOnIcon: true ,
     
     /**
      * This function is automatically called when the document has finished loading. All we do here

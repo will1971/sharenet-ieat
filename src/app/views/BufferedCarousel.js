@@ -259,7 +259,7 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
         	// head bar
         	dockedItems:[{
     		    xtype: 'ieatheadbar',
-    		    title: '标题栏'
+    		    title: '一品翰林宴天下'
     		}] ,
 			
 			indicator : false,

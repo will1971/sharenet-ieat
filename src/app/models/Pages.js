@@ -3,15 +3,26 @@
  */
 SH.Data = Ext.extend(Object, {
 																			// 类别数据
-					types : [ '凉菜', '热菜', '酒水', '点心', '特色套餐' ],
+					types : [ '特色徽菜', '精品凉菜', '鲜美肉类', '海鲜', '特色主食','蔬菜' ],
 
 					// 每页类别数据
 					typesIndex : {
-						'凉菜' : [ 1, 2, 3, 4, 5 ],
-						'热菜' : [ 5, 6, 7, 8, 9 ],
-						'酒水' : [ 9, 10, 11 ],
-						'点心' : [ 12, 13, 14 ],
-						'特色套餐' : [ 15, 16, 17, 18, 19, 20 ]
+						'特色徽菜' : [ 0 , 1, 2, 3, 4],
+						'精品凉菜' : [ 5, 6, 7, 8 ],
+						'鲜美肉类' : [ 9, 10, 11, 12, 13],
+						'海鲜' : [ 14 , 15 ],
+						'特色主食' : [ 16, 17, 18 ],
+						'蔬菜': [19]
+					},
+					
+					//在initData()函数中对typePages数据进行初始化
+					typePages : {
+						'特色徽菜' : [], 
+						'精品凉菜' : [], 
+						'鲜美肉类' : [], 
+						'海鲜' :[] , 
+						'特色主食' : [],
+						'蔬菜' : [] 
 					},
 
 					// 封面，封底数据
@@ -136,7 +147,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p6w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p6ws.jpg',
 								items : [ {
 									name : '片儿鸭',
 									image : 'images/p6f1-small.gif',
@@ -147,7 +158,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p7w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p7ws.jpg',
 								items : [ {
 									name : '东坡肉',
 									image : 'images/p7-small.jpg',
@@ -157,7 +168,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p8w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p8ws.jpg',
 								items : [
 										{
 											name : '蜜汁龙虾',
@@ -174,7 +185,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p9w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p9ws.jpg',
 								items : [ {
 									name : '密汁凤爪',
 									image : 'images/p9f1-small.gif',
@@ -190,7 +201,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p10w.jpg',
-								snapshot : 'images/p1w_s.jpg',
+								snapshot : 'images/p10ws.jpg',
 								items : [
 										{
 											name : '翡翠黑米糕',
@@ -208,8 +219,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							}, {
 								image : 'images/p11w.jpg',
-								snapshot : 'images/p1w_s.jpg',
-								cls : 'page',
+								snapshot : 'images/p11ws.jpg',
 								items : [ {
 									name : '法国香槟',
 									image : 'images/p11f1-small.gif',
@@ -223,6 +233,96 @@ SH.Data = Ext.extend(Object, {
 									price : 80,
 									detail : ''
 								} ]
+							} , {
+								image : 'images/p12w.jpg',
+								snapshot : 'images/p12ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p13w.jpg',
+								snapshot : 'images/p13ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p14w.jpg',
+								snapshot : 'images/p14ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p15w.jpg',
+								snapshot : 'images/p15ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p16w.jpg',
+								snapshot : 'images/p16ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p17w.jpg',
+								snapshot : 'images/p17ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p18w.jpg',
+								snapshot : 'images/p18ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p19w.jpg',
+								snapshot : 'images/p19ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							}, {
+								image : 'images/p20w.jpg',
+								snapshot : 'images/p20ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
 							} ],
 
 					//套餐数据
@@ -257,6 +357,32 @@ SH.Data = Ext.extend(Object, {
 								items[j].index = j ;
 							}
 						}
+						
+						for(var i=0; i<= this.types.length - 1 ; i++){
+							var pageIndexArrayOfType = this.typesIndex[this.types[i]] ;
+							var pagesOfType = this.typePages[this.types[i]];
+							
+							for(var j = 0 ; j<= pageIndexArrayOfType.length -1 ; j++){
+								pagesOfType.push( this.getPage( pageIndexArrayOfType[j] ));
+							}
+						}
+					},
+					
+					/**
+					 * 返回所有的类型
+					 * @returns
+					 */
+					getTypes : function(){
+						return this.types ;
+					},
+					
+					/**
+					 * 返回每种类型对应的页面列表，用户构建该类型对应的OverView
+					 * @param type
+					 * @returns
+					 */
+					getPagesOfType : function(type){
+						return this.typePages[type] ;
 					},
 					
 					/**
