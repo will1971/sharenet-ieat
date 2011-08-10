@@ -107,6 +107,11 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	listeners:{
 		itemtap : function(dv, index, item, e){
 			console.log("index:"+ index);
+			Ext.dispatch({
+              	controller: ieat.control ,
+                action: 'openPage',
+                index : index
+              });	
 		}
 	}
 });
