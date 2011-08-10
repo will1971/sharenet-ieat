@@ -33,7 +33,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
         		height: 60 ,
     			html : "热菜<br>胡氏一品锅 胡氏一品锅 胡氏一品锅"
     		}],
-    		items: [/*{
+    		items: [{
     			xtype : 'tabpanel' ,
     			floatingCls : 'overview' ,
     		    tabBar: {
@@ -51,25 +51,23 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     		        title: '凉菜',
     		        iconCls: 'info',
     		        store: pagestore 
-    		    },
-    		    {
-    		        title: '热菜',
-    		        html: 'Favorites Card',
-    		        iconCls: 'favorites',
-    		        badgeText: '4'
     		    },{
-    		        title: '海鲜',
-    		        html: 'Favorites Card',
-    		        iconCls: 'favorites',
+    		    	xtype: 'pageoverview' ,
+    		        title: '凉菜',
+    		        iconCls: 'info',
+    		        store: pagestore 
     		    },{
-    		        title: '特色推荐',
-    		        html: 'Favorites Card',
-    		        iconCls: 'favorites',
+    		    	xtype: 'pageoverview' ,
+    		        title: '凉菜',
+    		        iconCls: 'info',
+    		        store: pagestore 
+    		    },{
+    		    	xtype: 'pageoverview' ,
+    		        title: '凉菜',
+    		        iconCls: 'info',
+    		        store: pagestore 
     		    }]
-    		}*/{
-		    	xtype: 'pageoverview' ,
-		        store: pagestore 
-		    }]
+    		}]
         });
     	
     	SH.OverviewSheet.superclass.initComponent.apply(this, arguments);
@@ -90,7 +88,9 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	tpl : 
 		'<div class="pageovcontainer">' +
 		'<tpl for=".">' +
-		'<div class="pageoverview" id="{index}" style="background : url(\'{snapshot}\') center no-repeat ; height:206px ; width: 284px"></div>' +
+		'<div class="pageoverview" id="{index}" '+
+		'style="background : url(\'{snapshot}\') center no-repeat ;'+ 
+		'height:206px ; width: 284px"></div>' +
 		'</tpl>' +
 		'<div class="x-clear"></div></div>' ,
 		
@@ -106,10 +106,7 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	
 	listeners:{
 		itemtap : function(dv, index, item, e){
-			console.dir(dv) ;
-			console.log("index:"+ index)
-			console.log(item.id);
-			console.dir(e);
+			console.log("index:"+ index);
 		}
 	}
 });

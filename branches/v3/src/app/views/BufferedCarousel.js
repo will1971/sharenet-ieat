@@ -255,6 +255,13 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 		console.log("ieat.data.getPages().length") ;
 		
 		Ext.apply(this, {
+
+        	// head bar
+        	dockedItems:[{
+    		    xtype: 'ieatheadbar',
+    		    title: '标题栏'
+    		}] ,
+			
 			indicator : false,
 			itemCount : ieat.data.getPages().length
 		});

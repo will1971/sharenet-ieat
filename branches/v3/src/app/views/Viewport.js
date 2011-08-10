@@ -11,15 +11,10 @@ SH.Viewport = Ext.extend(Ext.Panel, {
 		
     	//put instances of cards into viewport
     	Ext.apply(this, {
-        	// head bar
-        	dockedItems:[{
-    		    xtype: 'ieatheadbar',
-    		    title: '标题栏'
-    		}] ,
     		
             items: [
-               ieat.views.viewpage  , 
-               ieat.views.cover 
+               ieat.views.cover , 
+               ieat.views.viewpage
             ]
         });
     	
