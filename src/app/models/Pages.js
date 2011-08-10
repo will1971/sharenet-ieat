@@ -249,9 +249,9 @@ SH.Data = Ext.extend(Object, {
 					 * 需要的话可以编制二次索引和HaspMap，提高查询速度。
 					 */
 					initData : function (){
-						for(var i=0; i<=this.pages.length; i++){
-							pages[i].index = i ;
-							var items = pages.items ;
+						for(var i=0; i<=this.pages.length - 1 ; i++){
+							this.pages[i].index = i ;
+							var items = this.pages[i].items ;
 							for(var j =0 ; j<= items.length -1 ; j++){
 								items[j].pindex = i ;
 								items[j].index = j ;
