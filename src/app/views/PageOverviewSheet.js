@@ -11,20 +11,33 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     hideOnMaskTap : true,
 	modal: true,
 	stretchX: true,
-	scroll : 'horizontal',
 	layout : 'fit',
+	padding : '5 0 0 0', 
+	scroll : false ,
+	
 	
 	initComponent: function() {
+		
+		var pagestore = new Ext.data.Store({
+		    fields: [
+		             {name: 'index' , type: 'int' },
+		             {name: 'snapshot', type: 'string'}
+		    ],
+			data : ieat.data.getPages() 
+		});
+		
 		Ext.apply(this, {
 			// head bar
         	dockedItems:[{
-    			html : "预览区Head"
+        		floatingCls : 'overview' ,
+        		height: 60 ,
+    			html : "热菜<br>胡氏一品锅 胡氏一品锅 胡氏一品锅"
     		}],
-    		items: [{
+    		items: [/*{
     			xtype : 'tabpanel' ,
+    			floatingCls : 'overview' ,
     		    tabBar: {
     		        dock: 'bottom',
-    		        ui: 'light',
     		        layout: {
     		            pack: 'center'
     		        }
@@ -33,45 +46,72 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     		        type: 'slide',
     		        cover: true
     		    },
-    		    defaults: {
-    		        scroll: 'vertical'
-    		    },
     		    items: [{
-    		        title: 'About',
-    		        html: '<p>Docking tabs to the bottom will automatically change their style. The tabs below are ui="light", though the standard type is dark. Badges (like the 4 below) can be added by setting <code>badgeText</code> when creating a tab/card or by using <code>setBadge()</code> on the tab later.</p>',
+    		    	xtype: 'pageoverview' ,
+    		        title: '凉菜',
     		        iconCls: 'info',
-    		        cls: 'card card1'
+    		        store: pagestore 
     		    },
     		    {
-    		        title: 'Favorites',
+    		        title: '热菜',
     		        html: 'Favorites Card',
     		        iconCls: 'favorites',
-    		        cls: 'card card2',
     		        badgeText: '4'
-    		    },
-    		    {
-    		        title: 'Downloads',
-    		        id: 'tab3',
-    		        html: 'Downloads Card',
-    		        badgeText: 'Text can go here too, but it will be cut off if it is too long.',
-    		        cls: 'card card3',
-    		        iconCls: 'download'
-    		    },
-    		    {
-    		        title: 'Settings',
-    		        html: 'Settings Card',
-    		        cls: 'card card4',
-    		        iconCls: 'settings'
-    		    },
-    		    {
-    		        title: 'User',
-    		        html: 'User Card',
-    		        cls: 'card card5',
-    		        iconCls: 'user'
+    		    },{
+    		        title: '海鲜',
+    		        html: 'Favorites Card',
+    		        iconCls: 'favorites',
+    		    },{
+    		        title: '特色推荐',
+    		        html: 'Favorites Card',
+    		        iconCls: 'favorites',
     		    }]
-    		}]
+    		}*/{
+		    	xtype: 'pageoverview' ,
+		        store: pagestore 
+		    }]
         });
     	
     	SH.OverviewSheet.superclass.initComponent.apply(this, arguments);
 	}
 });
+
+
+//Set up a model to use in our Store
+Ext.regModel('pageoverview', {
+    fields: [
+        {name: 'index' , type: 'int' },
+        {name: 'snapshot', type: 'string'}
+    ]
+});
+
+
+SH.PageOverview = Ext.extend(Ext.DataView, {
+	tpl : 
+		'<div class="pageovcontainer">' +
+		'<tpl for=".">' +
+		'<div class="pageoverview" id="{index}">' +
+		'<div class="page"><img src="{snapshot}" title="{index}"></div>' +
+		'<span class="x-editable">{index}</span></div>'+
+			//'<div class="pageoverview"><img src="{snapshot}" title="{name}"></div>' +
+		'</tpl>' +
+		'<div class="x-clear"></div></div>' ,
+	selectedItemCls : 'selected',
+	scroll : 'horizontal',
+	itemSelector : 'div.pageoverview',
+	emptyText : '没有缩略图数据 ...',
+	autoHeight : true,
+	selectedItemCls : 'selected',
+	multiSelect : true,
+	overItemClass : 'x-view-over',
+	width: '100%',
+	
+	listeners:{
+		itemtap : function(dv, index, item, e){
+			// open the page in main area
+			// show the page introduce in title
+		}
+	}
+});
+
+Ext.reg('pageoverview', SH.PageOverview);
