@@ -1,31 +1,50 @@
 /* ieat3.css */
-
 body {
 	background-color: #000000;
 }
 
-
 .overview {
-	background-color: rgba(0,0,0,0.6) ;
+	background-color: rgba(0, 0, 0, 0.6);
 	background-image: none;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
-.ordered{
-	background-color: rgba(0,0,0,0.6) ;
+.pageovcontainer {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+}
+
+.pageoverview {
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-box-align: stretch;
+			height: 100%;
+			border: solid 1px #DDD;
+			padding: 10px ;
+			margin: 10px ;
+}
+
+.overview .x-panel-body,.overview .x-carousel-body {
+	background-color: rgba(0, 0, 0, 0);
+	color: #FFFFFF;
+}
+
+.ordered {
+	background-color: rgba(0, 0, 0, 0.6);
 	background-image: none;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
-.info , .suggestion{
-	background-color: rgba(0,0,0,0.6) ;
+.info,.suggestion {
+	background-color: rgba(0, 0, 0, 0.6);
 	background-image: none;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
-
 
 .toolbar {
-	background-color: #000000 ;
+	background-color: #000000;
 	background-image: none;
 	font-size: 100%;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;

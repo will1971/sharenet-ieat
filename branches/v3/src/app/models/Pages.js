@@ -33,7 +33,7 @@ SH.Data = Ext.extend(Object, {
 					// 页面数据，指定任何一个菜都需要给出 [页面index , 菜品index]
 					pages : [{
 								image : 'images/p1w.jpg',
-								snapshot : 'images/p1-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [ {
 									name : '翡翠黄瓜',
 									image : 'images/p1f1-small.gif',
@@ -51,7 +51,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p2w.jpg',
-								snapshot : 'images/p2-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [
 										{
 											name : '荷叶虾仁',
@@ -70,7 +70,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p3w.jpg',
-								snapshot : 'images/p3-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								cls : 'page',
 								items : [
 										{
@@ -99,7 +99,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p4w.jpg',
-								snapshot : 'images/p4-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [ {
 									name : '吴山贡鹅',
 									image : 'images/p4f1-small.gif',
@@ -117,7 +117,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p5w.jpg',
-								snapshot : 'images/p5-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								cls : 'page',
 								items : [ {
 									name : '扣肉白馍',
@@ -136,7 +136,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p6w.jpg',
-								snapshot : 'images/p6-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [ {
 									name : '片儿鸭',
 									image : 'images/p6f1-small.gif',
@@ -147,7 +147,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p7w.jpg',
-								snapshot : 'images/p7-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [ {
 									name : '东坡肉',
 									image : 'images/p7-small.jpg',
@@ -157,7 +157,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p8w.jpg',
-								snapshot : 'images/p8-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [
 										{
 											name : '蜜汁龙虾',
@@ -174,7 +174,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							},{
 								image : 'images/p9w.jpg',
-								snapshot : 'images/p9-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [ {
 									name : '密汁凤爪',
 									image : 'images/p9f1-small.gif',
@@ -190,7 +190,7 @@ SH.Data = Ext.extend(Object, {
 								} ]
 							},{
 								image : 'images/p10w.jpg',
-								snapshot : 'images/p10-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								items : [
 										{
 											name : '翡翠黑米糕',
@@ -208,7 +208,7 @@ SH.Data = Ext.extend(Object, {
 										} ]
 							}, {
 								image : 'images/p11w.jpg',
-								snapshot : 'images/p11-small.jpg',
+								snapshot : 'images/p1w_s.jpg',
 								cls : 'page',
 								items : [ {
 									name : '法国香槟',
@@ -249,7 +249,14 @@ SH.Data = Ext.extend(Object, {
 					 * 需要的话可以编制二次索引和HaspMap，提高查询速度。
 					 */
 					initData : function (){
-						
+						for(var i=0; i<=this.pages.length; i++){
+							pages[i].index = i ;
+							var items = pages.items ;
+							for(var j =0 ; j<= items.length -1 ; j++){
+								items[j].pindex = i ;
+								items[j].index = j ;
+							}
+						}
 					},
 					
 					/**
