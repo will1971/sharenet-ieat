@@ -30,7 +30,7 @@ Ext.regApplication({
 		            		Ext.dispatch({
 		                      	controller: ieat.control ,
 		                        action: 'showViewPage',
-		                        animation: {type:'slide', direction:'left'}
+		                        animation: {type:'slide', direction:'left' ,duration: 600 }
 		                      });		
 	            		}
             		}
