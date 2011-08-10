@@ -17,5 +17,12 @@ ieat.control = Ext.regController("control", {
 	 */
 	showViewPage : function(options) {
 		ieat.viewport.setActiveItem(ieat.views.viewpage, options.animation);
+	},
+	
+	/**
+	 * 翻到指定页
+	 */
+	openPage : function(options) {
+		ieat.views.viewpage.setActiveItemByIndex(options.index) ;
 	}
 });
