@@ -23,8 +23,12 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
 		             {name: 'index' , type: 'int' },
 		             {name: 'snapshot', type: 'string'}
 		    ],
-			data : ieat.data.getPages() 
+			data : ieat.data.getPagesOfType('特色徽菜') 
 		});
+		
+		var tapHandler = function(){
+			
+		}
 		
 		Ext.apply(this, {
 			// head bar
@@ -32,42 +36,61 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
         		floatingCls : 'overview' ,
         		height: 140 ,
     			html : '<div class="pageintro"> <span>胡氏一品锅</span> <span>胡氏一品锅</span> <span>胡氏一品锅</span></div>'
-    		}],
-    		items: [{
-    			xtype : 'tabpanel' ,
-    			floatingCls : 'overview' ,
-    		    tabBar: {
-    		        dock: 'bottom',
-    		        layout: {
-    		            pack: 'center'
-    		        }
-    		    },
-    		    cardSwitchAnimation: {
-    		        type: 'slide',
-    		        cover: true
-    		    },
+    		}, {
+    			xtype : 'tabbar' ,
+                dock: 'bottom',
+                scroll: 'horizontal',
+                sortable: true,
+                layout: {
+                    pack: 'center'
+                }
+            }, {
+            	xtype : 'toolbar' ,
+    			dock: 'bottom',
+    			heigth: '60' ,
+    			layout: {
+		            pack: 'center'
+		        },
     		    items: [{
-    		    	xtype: 'pageoverview' ,
-    		        title: '凉菜',
-    		        iconCls: 'info',
-    		        store: pagestore 
-    		    },{
-    		    	xtype: 'pageoverview' ,
-    		        title: '凉菜',
-    		        iconCls: 'info',
-    		        store: pagestore 
-    		    },{
-    		    	xtype: 'pageoverview' ,
-    		        title: '凉菜',
-    		        iconCls: 'info',
-    		        store: pagestore 
-    		    },{
-    		    	xtype: 'pageoverview' ,
-    		        title: '凉菜',
-    		        iconCls: 'info',
-    		        store: pagestore 
-    		    }]
-    		}]
+    	            text: '收回',
+    	            ui: 'back',
+    	        },{ xtype : 'spacer' } , {
+    	            xtype: 'segmentedbutton',
+    	            defaults : {
+    	            	width : 100 ,
+    	            	height : 50 ,
+    	            } ,
+    	            items: [{
+    	                text: '特色徽菜',
+    	                handler: tapHandler
+    	            }, {
+    	                text: '精品凉菜',
+    	                pressed : true,
+    	                handler: tapHandler
+    	            }, {
+    	                text: '鲜美肉类',
+    	                handler: tapHandler
+    	            }, {
+    	                text: ' 海  鲜 ',
+    	                handler: tapHandler
+    	            }, {
+    	                text: '特色主食 ',
+    	                handler: tapHandler
+    	            }, {
+    	                text: '蔬  菜 ',
+    	                handler: tapHandler
+    	            }]
+    	        },{ xtype : 'spacer' },{
+    	            text: '收回',
+    	            ui: 'forward',
+    	        }]
+            }],
+    		items: [{
+		    	xtype: 'pageoverview' ,
+		        title: '凉菜',
+		        iconCls: 'info',
+		        store: pagestore 
+		    }]
         });
     	
     	SH.OverviewSheet.superclass.initComponent.apply(this, arguments);
