@@ -90,12 +90,10 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	tpl : 
 		'<div class="pageovcontainer">' +
 		'<tpl for=".">' +
-		'<div class="pageoverview" id="{index}">' +
-		'<div class="page"><img src="{snapshot}" title="{index}"></div>' +
-		'<span class="x-editable">{index}</span></div>'+
-			//'<div class="pageoverview"><img src="{snapshot}" title="{name}"></div>' +
+		'<div class="pageoverview" id="{index}" style="background : url(\'{snapshot}\') center no-repeat ; height:206px ; width: 284px"></div>' +
 		'</tpl>' +
 		'<div class="x-clear"></div></div>' ,
+		
 	selectedItemCls : 'selected',
 	scroll : 'horizontal',
 	itemSelector : 'div.pageoverview',
@@ -103,13 +101,15 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	autoHeight : true,
 	selectedItemCls : 'selected',
 	multiSelect : true,
-	overItemClass : 'x-view-over',
+	overItemCls : 'x-view-over',
 	width: '100%',
 	
 	listeners:{
 		itemtap : function(dv, index, item, e){
-			// open the page in main area
-			// show the page introduce in title
+			console.dir(dv) ;
+			console.log("index:"+ index)
+			console.log(item.id);
+			console.dir(e);
 		}
 	}
 });

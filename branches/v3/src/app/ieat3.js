@@ -17,6 +17,7 @@ Ext.regApplication({
     	
     	//创建数据
     	ieat.data = new SH.Data();
+    	ieat.data.initData();
     	
     	//创建对象
     	Ext.apply(ieat.views , {
