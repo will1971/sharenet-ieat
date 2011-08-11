@@ -214,7 +214,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                 }
     		},{
     			xtype : 'button' ,
-    			text : '挑选菜系',listeners: {
+    			text : '选择菜系',listeners: {
                     scope : this,
                     tap: function(){
                     	if( ieat.overview == undefined ){
