@@ -1,6 +1,4 @@
 Ext.ns("SH");
-
-
 function setConfig(configObject) {
 	config = configObject;
 	
@@ -10,7 +8,6 @@ function setConfig(configObject) {
 
 	currentSceneIndex = -1;
 }
-
 
 function start() {	
 	goToScene(0);
@@ -23,8 +20,6 @@ function goToSceneID(id) {
 		}
 	}
 }
-
-
 //function to go directly to any scene
 function goToScene(index) {
     
@@ -73,25 +68,11 @@ function setup() {
 setConfig([{"jump":-1,"duration":2750,"id":0}]);
 start();
 }
-
-SH.AnimPanel = Ext.extend(Ext.Panel, {
-
-	html:'<ol><li id="scene-0"><div class="AN-sObj-stage" id="ext-gen878"><div class="AN-Object" id="AN-sObj-65"><div id="AN-sObj-val-65"><img src="images/bg.jpg"></div></div><div class="AN-Object" id="AN-sObj-66"><div id="AN-sObj-val-66"><img src="images/title.png"></div></div><div class="AN-Object" id="AN-sObj-68"><div id="AN-sObj-val-68"><img src="images/f1.png"></div></div></div></li></ol>' ,
-	initComponent : function() {
-		SH.AnimPanel.superclass.initComponent.call(this);
-	    this.monitorOrientation = true;
-        this.mon(this, "orientationChange", this.onOrientationChange, this);
-	}, 
-		afterRender: function() {
-        SH.AnimPanel.superclass.afterRender.apply(this, arguments);
-        this.setOrientation(Ext.getOrientation());
+SH.AnimPanel = Ext.extend(Ext.Panel,{
+	html:'<ol><li id="scene-0"><div class="AN-sObj-stage" id="ext-gen878"><div class="AN-Object" id="AN-sObj-65"><div id="AN-sObj-val-65"><img src="images/bg.jpg"></div></div><div class="AN-Object" id="AN-sObj-66"><div id="AN-sObj-val-66"><img src="images/title.png"></div></div><div class="AN-Object" id="AN-sObj-68"><div id="AN-sObj-val-68"><img src="images/f1.png"></div></div></div></li></ol>',
+	afterRender: function() {
         setup();
-
-    },
-	onOrientationChange: function(target, orientation) {
-		
-    }
-
+   }
 });
 
 
