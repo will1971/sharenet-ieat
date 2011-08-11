@@ -9,7 +9,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
 	dock : 'buttom',
 	cls : 'overview',
     hideOnMaskTap : true,
-	modal: true,
+	modal: false,
 	stretchX: true,
 	layout : 'fit',
 	padding : '5 0 0 0', 

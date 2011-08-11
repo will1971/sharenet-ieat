@@ -29,16 +29,16 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
     			defaults : {
     				ui : 'dark'
     			},
-    		    items:[{xtype:'spacer'},{
+    		    items:[{
     	            text: '收回',
-    	            ui: 'forward',
+    	            ui: 'back',
     	            listeners: {
                         scope : this,
                         tap: function(){
                         	this.setVisible(false);
                         }
     	            }
-    	        }]
+    	        },{xtype:'spacer'}]
     		}],
     		
     		items: [{
