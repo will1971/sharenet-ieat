@@ -43,6 +43,16 @@ SH.Data = Ext.extend(Object, {
 
 					// 页面数据，指定任何一个菜都需要给出 [页面index , 菜品index]
 					pages : [{
+								image : 'images/p0w.jpg',
+								snapshot : 'images/p0ws.jpg',
+								items : [ {
+									name : '特色菜',
+									image : 'images/p11f1-small.gif',
+									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
+									price : 680,
+									detail : ''
+								}]
+							},{
 								image : 'images/p1w.jpg',
 								snapshot : 'images/p1ws.jpg',
 								items : [ {
@@ -310,7 +320,8 @@ SH.Data = Ext.extend(Object, {
 									price : 680,
 									detail : ''
 								}]
-							}, {
+							},
+							{
 								image : 'images/p20w.jpg',
 								snapshot : 'images/p20ws.jpg',
 								items : [ {
@@ -320,7 +331,9 @@ SH.Data = Ext.extend(Object, {
 									price : 680,
 									detail : ''
 								}]
-							} ],
+							} 
+							
+							 ],
 
 					//推荐菜系
 					suggestionIndex : [ [1,1] , [ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 4, 1 ] ] ,
