@@ -30,7 +30,7 @@ body {
 	color: #FFFFFF;
 }
 
-.overview .x-toolbar .x-button .x-button-label{
+.overview .x-toolbar .x-button .x-button-label, .sheethead.x-toolbar .x-button .x-button-label{
 	font-size: 1em;
 }
 
@@ -46,11 +46,34 @@ body {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
+.item {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+	margin : 10px ;
+}
+
+.item h1,  .item .ordercontrol{
+	color: #FFFFFF;
+	font-size: 1.2em;
+}
+
+.item h2{
+	color: #FFFFFF;
+	font-size: 1em;
+}
+
 #headbar{
 	background-color: #000000;
 	background-image: none;
 	font-size: 1em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+.sheethead{
+	background-color: #000000;
+	background-image: none;
+	font-size: 1em;
 }
 
 #headbar.x-toolbar .x-button .x-button-label{

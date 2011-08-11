@@ -15,9 +15,31 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 	layout : {
 		pack : 'right'
 	},
+	padding: '0 0 0 0',
 	
 	initComponent: function() {
 		Ext.apply(this, {
+			
+			dockedItems: [{
+				cls: 'sheethead',
+			    xtype: 'toolbar',
+			    title: '菜品详细介绍',
+			    height : '50px',
+				dock : 'top',
+				defaults : {
+					ui : 'dark'
+				},
+			    items:[{xtype:'spacer'},{
+		            text: '收回',
+		            ui: 'forward',
+		            listeners: {
+	                    scope : this,
+	                    tap: function(){
+	                    	this.setVisible(false);
+	                    }
+		            }
+		        }]
+			}],
     		items: [{
     			html : "详细信息区"
     		}]
