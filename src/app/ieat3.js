@@ -20,9 +20,9 @@ Ext.regApplication({
     	
     	//创建对象
     	Ext.apply(ieat.views , {
-            cover: new SH.ImagePanel({ 
-            	bgImg:'images/frontcover.jpg' ,
+            cover: new SH.AnimPanel({ 
             	listeners: {
+            		
             		tap:{
 	            		element: 'el',
 	            		fn: function(){
@@ -37,7 +37,6 @@ Ext.regApplication({
             }),
             viewpage: new SH.PageView()
         });
-    	
     	ieat.viewport = new SH.Viewport() ;
     }
 });
