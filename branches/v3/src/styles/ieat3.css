@@ -35,31 +35,32 @@ body {
 }
 
 .ordered {
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.8);
 	background-image: none;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
 .info, .suggestion {
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.8);
 	background-image: none;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 0.2em 0.6em;
 }
 
 .item {
-	display: -webkit-box;
-	-webkit-box-orient: horizontal;
-	-webkit-box-align: stretch;
 	margin : 10px ;
+	padding: 0px 0px 0px 90px;
+	position: relative;
+	border-bottom: 1px dotted #D1D1D1
 }
 
 .item h1,  .item .ordercontrol{
 	color: #FFFFFF;
 	font-size: 1.2em;
+	font-weight: bold;
 }
 
 .item h2{
-	color: #FFFFFF;
+	color: #DDD;
 	font-size: 1em;
 }
 

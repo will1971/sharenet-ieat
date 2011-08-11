@@ -22,7 +22,6 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     scope : this,
                     tap: function(){
                     	if( ieat.ordered == undefined ){
-                    		console.log("create") ;
                     		ieat.ordered = new SH.OrderedSheet();
                     	}
                     	ieat.ordered.show();
@@ -35,7 +34,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     scope : this,
                     tap: function(){
 						var form = new Ext.form.FormPanel({
-							modal: true ,
+							modal: false,
+						    hideOnMaskTap : true,
 							floating : true ,
 							items : [{
 					            xtype: 'fieldset',
@@ -66,8 +66,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     scope : this,
                     tap: function(){
 						var form = new Ext.form.FormPanel({
-							modal: true ,
-							//hideOnMaskTap : true ,
+							modal: false,
+						    hideOnMaskTap : true,
 							floating : true ,
 							items : [{
 					            xtype: 'fieldset',
@@ -98,8 +98,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     scope : this,
                     tap: function(){
 						var form = new Ext.form.FormPanel({
-							modal: true ,
-							//hideOnMaskTap : true ,
+							modal: false,
+						    hideOnMaskTap : true,
 							floating : true ,
 							items : [{
 					            xtype: 'fieldset',
@@ -138,8 +138,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     scope : this,
                     tap: function(){
 						var form = new Ext.form.FormPanel({
-							modal: true ,
-							//hideOnMaskTap : true ,
+							modal: false,
+						    hideOnMaskTap : true,
 							floating : true ,
 							items : [{
 					            xtype: 'fieldset',

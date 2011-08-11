@@ -4,7 +4,7 @@
 Ext.ns("SH");
 
 SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
-	width :  600 ,
+	width :  512 ,
 	enter : 'right',
 	cls : 'suggestion',
     hideOnMaskTap : true,
@@ -69,9 +69,10 @@ SH.ItemsList = Ext.extend(Ext.DataView, {
 	tpl :  new Ext.XTemplate(
 		'<tpl for=".">' +
 	         '<div class="item">',
-	            '<div class="itemimg" style="background: url({image}) center no-repeat ; width:88px ; height: 61px ;"></div>',
+	            '<div class="itemimg" style="background: url({image}) center no-repeat ; width:88px ; height: 100%; position: absolute; left: 0px; top: 0px;"></div>',
 	            '<h1>{name}</h1>',
-	            '<h2>{desc} {price}元</h2>',
+	            '<h2>{desc}</h2>',
+	            '<h2>￥{price}元</h2>',
 	        '</div>',
         '</tpl>'),
     selectedItemCls : 'selected',

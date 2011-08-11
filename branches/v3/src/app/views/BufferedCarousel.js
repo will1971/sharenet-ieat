@@ -278,7 +278,8 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 		var page = ieat.data.getPage(index);
 		console.log(page.image) ;
 		return new SH.ImagePanel({
-			bgImg : page.image
+			bgImg : page.image ,
+			
 		});
 	}
 });
