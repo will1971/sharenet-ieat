@@ -35,15 +35,15 @@ body {
 }
 
 .ordered {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.75);
 	background-image: none;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
 .info, .suggestion {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.75);
 	background-image: none;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 0.2em 0.6em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0.2em 0.6em;
 }
 
 .item {
