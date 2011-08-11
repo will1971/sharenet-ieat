@@ -35,7 +35,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
         	dockedItems:[{
         		floatingCls : 'overview' ,
         		height: 140 ,
-    			html : '<div class="pageintro"> <span>胡氏一品锅</span> <span>胡氏一品锅</span> <span>胡氏一品锅</span></div>'
+    			html : '<div class="pageintro"> <span>每页菜品介绍</span></div>'
     		}, {
     			xtype : 'tabbar' ,
                 dock: 'bottom',
@@ -54,18 +54,24 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     		    items: [{
     	            text: '收回',
     	            ui: 'back',
+    	            listeners: {
+                        scope : this,
+                        tap: function(){
+                        	this.setVisible(false);
+                        }
+    	            }
     	        },{ xtype : 'spacer' } , {
     	            xtype: 'segmentedbutton',
     	            defaults : {
     	            	width : 100 ,
-    	            	height : 50 ,
+    	            	height : 50 
     	            } ,
     	            items: [{
     	                text: '特色徽菜',
+       	                pressed : true,
     	                handler: tapHandler
     	            }, {
     	                text: '精品凉菜',
-    	                pressed : true,
     	                handler: tapHandler
     	            }, {
     	                text: '鲜美肉类',
@@ -83,27 +89,22 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     	        },{ xtype : 'spacer' },{
     	            text: '收回',
     	            ui: 'forward',
+    	            listeners: {
+                        scope : this,
+                        tap: function(){
+                        	this.setVisible(false);
+                        }
+    	            }
     	        }]
             }],
     		items: [{
 		    	xtype: 'pageoverview' ,
-		        title: '凉菜',
-		        iconCls: 'info',
 		        store: pagestore 
 		    }]
         });
     	
     	SH.OverviewSheet.superclass.initComponent.apply(this, arguments);
 	}
-});
-
-
-//Set up a model to use in our Store
-Ext.regModel('pageoverview', {
-    fields: [
-        {name: 'index' , type: 'int' },
-        {name: 'snapshot', type: 'string'}
-    ]
 });
 
 
