@@ -214,8 +214,6 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
     },
     
     onWindowChange : function(grid, oldgrid){
-    	console.log("===onWindowChagne, Grid=" + grid );
-    	
     	Ext.dispatch({
           	controller: ieat.control ,
             action: 'showPageIntoInfo',

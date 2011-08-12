@@ -279,7 +279,20 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 		console.log(page.image) ;
 		return new SH.ImagePanel({
 			bgImg : page.image ,
-			
+			listeners: {
+                scope : this,
+                tap: {
+                	element: 'el',
+                	fn : this.handleTap
+                }
+            }	
 		});
+	},
+	
+	handleTap: function( event , target ){
+		Ext.dispatch({
+          	controller: ieat.control ,
+            action: 'showOverView'
+          });
 	}
 });

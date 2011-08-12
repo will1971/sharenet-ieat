@@ -217,10 +217,10 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     			text : '选择菜系',listeners: {
                     scope : this,
                     tap: function(){
-                    	if( ieat.overview == undefined ){
-                    		ieat.overview = new SH.OverviewSheet();
-                    	}
-                    	ieat.overview.show();
+            			Ext.dispatch({
+                          	controller: ieat.control ,
+                            action: 'showOverView'
+                          });
                     }
                 }	
     		}]
