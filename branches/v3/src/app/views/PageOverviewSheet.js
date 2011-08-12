@@ -35,7 +35,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
         	dockedItems:[{
         		floatingCls : 'overview' ,
         		height: 140 ,
-    			html : '<div class="pageintro"><span>每页菜品介绍</span></div><div class="x-anchor" style="left: 446px; bottom: 0px; background-color: #FFF; "></div>'
+    			html : '<div class="pageintro"></div><div class="x-anchor" style="left: 446px; bottom: 0px; background-color: #FFF; "></div>'
     		}, {
     			xtype : 'tabbar' ,
                 dock: 'bottom',
@@ -98,6 +98,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     	        }]
             }],
     		items: [{
+    			overview : this ,
 		    	xtype: 'pageoverview' ,
 		        store: pagestore 
 		    }]
@@ -135,7 +136,11 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
               	controller: ieat.control ,
                 action: 'openPage',
                 index : index
-              });	
+              });
+			
+			Ext.defer(function(){
+				this.overview.setVisible(false);	
+			} , 300 , this) ;			
 		}
 	} ,
 	
