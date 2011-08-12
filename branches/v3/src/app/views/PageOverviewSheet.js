@@ -35,7 +35,7 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
         	dockedItems:[{
         		floatingCls : 'overview' ,
         		height: 140 ,
-    			html : '<div class="pageintro"> <span>每页菜品介绍</span></div>'
+    			html : '<div class="pageintro"><span>每页菜品介绍</span></div><div class="x-anchor" style="left: 446px; bottom: 0px; background-color: #FFF; "></div>'
     		}, {
     			xtype : 'tabbar' ,
                 dock: 'bottom',

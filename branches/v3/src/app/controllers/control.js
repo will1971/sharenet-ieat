@@ -36,10 +36,15 @@ ieat.control = Ext.regController("control", {
 		if(ieat.overview.isVisible()){
 			var page = ieat.data.getPage(options.index);
 			
-			if(page != null){
+			if(page != null && page.items.length > 0){
+				var divs = [] ;
+				for(var i = 0 ; i <= page.items.length - 1 ; i++){
+					divs.push( {tag: 'h1', html: page.items[i].name } );
+					divs.push( {tag: 'h2', html: page.items[i].desc } );
+				}
 				var ovheader = ieat.overview.getDockedItems()[0].getEl().query('.pageintro');
-				console.log(ovheader);
-				ovheader[0].innerHTML= "页："+options.index ;
+				var list = Ext.DomHelper.overwrite( ovheader[0] , divs);
+				
 			}else{
 				console.log("错误：无效的页面索引 index=" + index) ;
 			}	

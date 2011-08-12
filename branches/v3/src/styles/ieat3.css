@@ -25,6 +25,12 @@ body {
 			margin: 10px ;
 }
 
+.pageintro {
+	border-bottom: 2px solid #FFF;
+	height: 126px;
+	padding: 0px 0px 0px 304px;
+}
+
 .overview .x-panel-body, .overview .x-carousel-body {
 	background-color: rgba(0, 0, 0, 0);
 	color: #FFFFFF;
@@ -53,13 +59,13 @@ body {
 	border-bottom: 1px dotted #D1D1D1
 }
 
-.item h1,  .item .ordercontrol{
+.item h1, .item .ordercontrol , .pageintro h1 {
 	color: #FFFFFF;
 	font-size: 1.2em;
 	font-weight: bold;
 }
 
-.item h2{
+.item h2, .pageintro h2 {
 	color: #DDD;
 	font-size: 1em;
 }
