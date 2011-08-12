@@ -68,7 +68,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '富含蛋白质  滋阴润燥 补虚养血 美容养颜',
 									price : 25,
 									detail : '优质猪肉',
-									hotarea : [ 10, 10, 20, 20 ]
+									hotarea : [ 10, 10, 200, 200 ]
 								} ]
 							},{
 								image : 'images/p2w.jpg',

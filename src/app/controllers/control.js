@@ -19,7 +19,6 @@ ieat.control = Ext.regController("control", {
 		ieat.viewport.setActiveItem(ieat.views.viewpage, options.animation);
 	},
 	
-	
 	/**
 	 * 翻到指定页
 	 */
@@ -27,6 +26,16 @@ ieat.control = Ext.regController("control", {
 		ieat.views.viewpage.setActiveItemByIndex(options.index) ;
 	},
 	
+	/**
+	 * 显示预览窗口
+	 * @param options
+	 */
+	showOverView : function(options) {
+		if( ieat.overview == undefined ){
+    		ieat.overview = new SH.OverviewSheet();
+    	}
+    	ieat.overview.show();
+	},
 	
 	/**
 	 * 显示该页的相关信息
