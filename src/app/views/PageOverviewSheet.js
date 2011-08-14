@@ -26,10 +26,6 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
 			data : ieat.data.getPagesOfType('特色徽菜') 
 		});
 		
-		var tapHandler = function(){
-			
-		}
-		
 		Ext.apply(this, {
 			// head bar
         	dockedItems:[{
@@ -62,30 +58,34 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     	            }
     	        },{ xtype : 'spacer' } , {
     	            xtype: 'segmentedbutton',
+    	            allowMultiple: false,
     	            defaults : {
     	            	width : 100 ,
     	            	height : 50 
     	            } ,
     	            items: [{
     	                text: '特色徽菜',
-       	                pressed : true,
-    	                handler: tapHandler
+       	                pressed : true
     	            }, {
-    	                text: '精品凉菜',
-    	                handler: tapHandler
+    	                text: '精品凉菜'
     	            }, {
-    	                text: '鲜美肉类',
-    	                handler: tapHandler
+    	                text: '鲜美肉类'
     	            }, {
-    	                text: ' 海  鲜 ',
-    	                handler: tapHandler
+    	                text: '海鲜'
     	            }, {
-    	                text: '特色主食 ',
-    	                handler: tapHandler
+    	                text: '特色主食'
     	            }, {
-    	                text: '蔬  菜 ',
-    	                handler: tapHandler
-    	            }]
+    	                text: '蔬菜'
+    	            }],
+    	            listeners: {
+    	                toggle: function(container, button, pressed){
+    	                    console.log("User toggled the '" + button.text + "' button: " + (pressed ? 'on' : 'off'));
+    	                    if(pressed){
+    	                    	var pages = ieat.data.getPagesOfType(button.text);
+    	                    	pagestore.loadData(pages);
+    	                    }
+    	                }
+    	            }
     	        },{ xtype : 'spacer' },{
     	            text: '收回',
     	            ui: 'forward',
@@ -131,16 +131,19 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
 	
 	listeners:{
 		itemtap : function(dv, index, item, e){
-			console.log("index:"+ index);
-			Ext.dispatch({
-              	controller: ieat.control ,
-                action: 'openPage',
-                index : index
-              });
 			
-			Ext.defer(function(){
-				this.overview.setVisible(false);	
-			} , 300 , this) ;			
+			var page = this.store.getAt(index) ;
+			if(page){
+				Ext.dispatch({
+	              	controller: ieat.control ,
+	                action: 'openPage',
+	                index : page.get('index')
+	              });
+				
+				Ext.defer(function(){
+					this.overview.setVisible(false);	
+				} , 300 , this) ;
+			}
 		}
 	} ,
 	
@@ -214,11 +217,18 @@ SH.PageOverview = Ext.extend(Ext.DataView, {
     },
     
     onWindowChange : function(grid, oldgrid){
-    	Ext.dispatch({
-          	controller: ieat.control ,
-            action: 'showPageIntoInfo',
-            index : grid
-          });
+    	Ext.defer( function(){
+	    		if(grid == this.grid){
+	    			var page = this.store.getAt(grid) ;
+	    			if(page){
+				    	Ext.dispatch({
+				          	controller: ieat.control ,
+				            action: 'showPageIntoInfo',
+				            index : page.get('index')
+				          });
+	    			};
+		    	}
+	    	} , 200 , this ) ;
     }
 
 });

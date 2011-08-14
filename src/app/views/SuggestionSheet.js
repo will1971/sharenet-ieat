@@ -59,11 +59,6 @@ SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
 	}
 });
 
-//Set up a model to use in our Store
-Ext.regModel('itemview', {
-    
-});
-
 
 SH.ItemsList = Ext.extend(Ext.DataView, {
 	tpl :  new Ext.XTemplate(

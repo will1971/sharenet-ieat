@@ -46,11 +46,26 @@ SH.Data = Ext.extend(Object, {
 								image : 'images/p0w.jpg',
 								snapshot : 'images/p0ws.jpg',
 								items : [ {
-									name : '特色菜',
-									image : 'images/p11f1-small.gif',
-									desc : '馥郁芳香 口感绵延持久 乃节日庆典 必备良酒',
-									price : 680,
-									detail : ''
+									name : '胡适一品锅',
+									image : 'images/p0f1.png',
+									desc : '清爽可口，口感浓厚',
+									price : 60,
+									detail : '',
+									hotarea : [ 125, 30 + 50, 475 , 285 + 50 ]
+								},{
+									name : '爽芹手撕鸡',
+									image : 'images/p0f2.png',
+									desc : '清爽可口，口感浓厚',
+									price : 60,
+									detail : '',
+									hotarea : [ 360 , 300 + 50, 675, 530 + 50 ]
+								},{
+									name : '巧味鱼头',
+									image : 'images/p0f3.png',
+									desc : '清爽可口，口感浓厚',
+									price : 60,
+									detail : '',
+									hotarea : [ 685, 300 + 50 , 1000, 530 + 50 ]
 								}]
 							},{
 								image : 'images/p1w.jpg',
@@ -61,7 +76,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '清热解毒   富含维生素   绿白相间   赏心悦目',
 									price : 10,
 									detail : '黄瓜 木耳 茭白木耳适量',
-									hotarea : [ 10, 10, 20, 20 ]
+									hotarea : [ 125, 30, 475 , 285 ]
 								}, {
 									name : '蜜汁卤肉',
 									image : 'images/p1f1.png',
@@ -360,6 +375,13 @@ SH.Data = Ext.extend(Object, {
 					} ] ,
 					
 					
+					// 客户订餐信息， 
+					// { cid : [ { id:ID , item : ITEM , count: count } , 
+					//           { id:ID , item : ITEM , count: count } , 
+					//           { id:ID , item : ITEM , count: count } , ]
+					orders : {},
+					
+					
 					/**
 					 * 初始化所有数据，在这个函数中处理原始数据，
 					 * 需要的话可以编制二次索引和HaspMap，提高查询速度。
@@ -444,6 +466,20 @@ SH.Data = Ext.extend(Object, {
 					 */
 					getSuggestion : function(){
 						return this.suggestionData ;
-					}
+					},
+					
+					/**
+					 * 取得指定用户的点菜信息
+					 */
+					getCustomeOrder : function(cid){
+						if( ! this.orders[cid] ){
+							this.orders[cid] = [{ id : 'p1i1' ,
+								  item : this.pages[0].items[0] ,
+								  count : 1}] ;
+						}
+						return this.orders[cid] ;
+					},
+					
+					
 					
 				});
