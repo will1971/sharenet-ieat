@@ -19,6 +19,19 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 	padding: '0 0 0 0',
 	
 	initComponent: function() {
+		
+		// TODO 把store的创建过程推后可以改善交互体验
+		var store = new Ext.data.Store({
+			fields: [
+			         {name: 'id', type: 'string'},
+			         {name: 'item', type: 'auto'},
+			         {name: 'count', type: 'int'}
+			     ],
+			data : ieat.data.getCustomeOrder('default')
+		});
+		
+		console.log(ieat.data.getCustomeOrder('default'));
+		
 		Ext.apply(this, {
 			dockedItems: [{
 				cls: 'sheethead',
@@ -41,11 +54,29 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
     	        },{xtype:'spacer'}]
     		}],
     		
-    		items: [{
-    			html : "已点菜区"
-    		}]
+    		items: [new SH.OrderItemsList({
+		        store: store 
+		    })]
         });
     	
     	SH.OrderedSheet.superclass.initComponent.apply(this, arguments);
 	}
+});
+
+SH.OrderItemsList = Ext.extend(Ext.DataView, {
+	tpl :  new Ext.XTemplate(
+		'<tpl for=".">' +
+	         '<div class="item">',
+	            '<div class="itemimg" style="background: url({item.image}) center no-repeat ; width:88px ; height: 100%; position: absolute; left: 0px; top: 0px;"></div>',
+	            '<h1>{item.name}</h1>',
+	            '<h2>￥{item.price}元</h2>',
+	            '<h2>￥{count}份</h2>',
+	        '</div>',
+        '</tpl>'),
+    selectedItemCls : 'selected',
+	itemSelector : 'div.item',
+	emptyText : '尚未点菜...',
+	height : '100%',
+	selectedItemCls : 'selected',
+	scroll: 'vertical'
 });

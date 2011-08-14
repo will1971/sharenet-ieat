@@ -34,7 +34,8 @@ ieat.control = Ext.regController("control", {
 		if( ieat.overview == undefined ){
     		ieat.overview = new SH.OverviewSheet();
     	}
-    	ieat.overview.show();
+		
+		ieat.overview.show();
 	},
 	
 	/**
@@ -55,9 +56,27 @@ ieat.control = Ext.regController("control", {
 				var list = Ext.DomHelper.overwrite( ovheader[0] , divs);
 				
 			}else{
-				console.log("错误：无效的页面索引 index=" + index) ;
+				console.log("错误：无效的页面索引 index=" + options.index) ;
 			}	
 		}
+	},
+	
+	/**
+	 * 将制定的菜加入已点菜簿
+	 * @param pindex
+	 * @param index
+	 * @param item
+	 */
+	takeOrder : function( pindex , index, item ){
+		
+	},
+	
+	
+	/**
+	 * 设置某页面中的菜品点中情况
+	 */
+	showItemOrderStatus : function(pindex) {
+		
 	}
 	
 });
