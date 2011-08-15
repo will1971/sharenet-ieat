@@ -536,6 +536,9 @@ SH.Data = Ext.extend(Object, {
 						items : [ [ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 4, 1 ] ]
 					} ] ,
 					
+					//点餐数据 Map
+					// eg : { USER1_ID: [] , USER2_ID: [] }
+					orders : {} ,
 					
 					/**
 					 * 初始化所有数据，在这个函数中处理原始数据，
