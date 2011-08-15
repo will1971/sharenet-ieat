@@ -39,6 +39,16 @@ ieat.control = Ext.regController("control", {
 	},
 	
 	/**
+	 * 显示点菜窗口
+	 */
+	showOrderedView : function(options) {
+		if( ieat.ordered == undefined ){
+			ieat.ordered = new SH.OrderedSheet();
+		}
+		ieat.ordered.show();
+	},
+	
+	/**
 	 * 显示该页的相关信息
 	 * @param index
 	 */
@@ -62,15 +72,24 @@ ieat.control = Ext.regController("control", {
 	},
 	
 	/**
-	 * 将制定的菜加入已点菜簿
+	 * 将指定的菜加入已点菜簿
 	 * @param pindex
 	 * @param index
 	 * @param item
 	 */
-	takeOrder : function( pindex , index, item ){
+	takeOrder : function( options /*pindex , index, item , event*/ ){
+		console.log("touch at item:" + options.index + "," + options.index);
+		if( ieat.ordered == undefined ){
+			ieat.ordered = new SH.OrderedSheet();
+		}
+		ieat.ordered.order(options.item);
+		//run animation
+		/* var fly = Ext.getBody().get('#orderingfood') ; 
+		console.dir(fly) ; */
 		
 		
-		
+		// TODO the store object should move to ieat.data object
+		ieat.headbar.udpateOrder( ieat.ordered.store.getCount() , "NoUsed") ;
 	},
 	
 	

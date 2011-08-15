@@ -87,6 +87,14 @@ body {
 	font-size: 1em;
 }
 
+#orderingfood {
+	position: absolute;
+    display: none ;
+    z-index: 999999 ;
+    width:88px ;
+    height: 61px ;
+}
+
 @-webkit-keyframes move {
     0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-out; } 
     50% {  -webkit-transform: scale(0.4) ; top : -30px ; left : 50px ; opacity: 1; }
