@@ -252,15 +252,14 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 
 	initComponent : function() {
 		
-		console.log("ieat.data.getPages().length") ;
+		ieat.headbar = new SH.HeadBar({
+				//xtype: 'ieatheadbar',
+		    title: '一品翰林宴天下'
+		});
 		
 		Ext.apply(this, {
-
         	// head bar
-        	dockedItems:[{
-    		    xtype: 'ieatheadbar',
-    		    title: '一品翰林宴天下'
-    		}] ,
+        	dockedItems:[ieat.headbar] ,
 			
 			indicator : false,
 			itemCount : ieat.data.getPages().length
@@ -276,12 +275,10 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 	 */
 	createItem : function(index) {
 		var page = ieat.data.getPage(index);
-		console.log(page.image) ;
 		return new SH.ImagePanel({
 			bgImg : page.image,  
 			page : page
 		});
-	},
-	
+	}
 
 });

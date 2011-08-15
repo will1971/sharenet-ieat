@@ -34,13 +34,18 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 	onTap: function( event , target ){
 		var items = this.page.items ;
 		
-		console.dir(event) ;
-		console.dir(target) ;
 		for(var i = 0 ; i<= items.length - 1 ; i++){
 			var hotarea = items[i].hotarea ;
 			if( hotarea[0] <= event.pageX && hotarea[1] <= event.pageY &&
 					hotarea[2] >= event.pageX && hotarea[3] >= event.pageY){
-					console.log("touch at item:" + items[i].pindex + "," + items[i].index);
+				Ext.dispatch({
+			       	controller: ieat.control ,
+			        action: 'takeOrder',
+			        pindex : this.page.index ,
+			        index : items[i].index ,
+			        item : items[i],
+			        event : event
+			    });
 				return ;
 			}
 		}

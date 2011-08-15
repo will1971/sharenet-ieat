@@ -21,10 +21,10 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				listeners: {
                     scope : this,
                     tap: function(){
-                    	if( ieat.ordered == undefined ){
-                    		ieat.ordered = new SH.OrderedSheet();
-                    	}
-                    	ieat.ordered.show();
+                    	Ext.dispatch({
+                          	controller: ieat.control ,
+                            action: 'showOrderedView'
+                          });
                     }
                 }	
 			},{
@@ -227,7 +227,11 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
         });
     	
     	SH.HeadBar.superclass.initComponent.apply(this, arguments);
-	}
+	},
+	
+	udpateOrder : function(count , price ){
+		this.items.get(0).setBadge(count) ;
+	} 
 });
 
 Ext.reg('ieatheadbar', SH.HeadBar);

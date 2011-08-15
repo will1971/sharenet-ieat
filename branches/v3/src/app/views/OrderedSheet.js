@@ -32,6 +32,7 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 		
 		
 		Ext.apply(this, {
+			store : store ,
 			dockedItems: [{
 				cls: 'sheethead',
     		    xtype: 'toolbar',
@@ -59,6 +60,18 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
         });
     	
     	SH.OrderedSheet.superclass.initComponent.apply(this, arguments);
+	},
+	
+	order : function( item ){
+		this.store.add( {
+			id : this.getItemId(item) ,
+			item : item ,
+			count : 1 
+			} );
+	},
+	
+	getItemId : function(item){
+		return 'p'+ item.pindex + 'f' + item.index ;
 	}
 });
 
