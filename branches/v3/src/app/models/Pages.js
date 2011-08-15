@@ -145,14 +145,14 @@ SH.Data = Ext.extend(Object, {
 									hotarea : [ 25, 25, 420, 310 ]
 								}, {
 									name : '鸡腿菇拼环虾',
-									image : 'images/p4f2-small.gif',
+									image : 'images/p4f2.png',
 									desc : '鲜爽可口，香味不腻',
 									price : 30,
 									detail : '鸡腿、鲜虾等',
 									hotarea : [ 565, 25, 865, 240 ]
 								},{
 									name : '青芥牛仔骨',
-									image : 'images/p4f3-small.gif',
+									image : 'images/p4f3.png',
 									desc : '外香里嫩，口感独特',
 									price : 30,
 									detail : '排骨、胡萝卜等',
@@ -168,7 +168,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '喷香四溢，健牙生津',
 									price : 30,
 									detail : '鸭翅、鸭爪、香干',
-									hotarea : [ 405, 25, 800, 310 ]
+									hotarea : [ 405, 25, 695, 310 ]
 								}, {
 									name : '五谷丰登',
 									image : 'images/p5f2.png',
