@@ -168,7 +168,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '喷香四溢，健牙生津',
 									price : 30,
 									detail : '鸭翅、鸭爪、香干',
-									hotarea : [ 305, 25, 695, 310 ]
+									hotarea : [ 405, 25, 800, 310 ]
 								}, {
 									name : '五谷丰登',
 									image : 'images/p5f2.png',
