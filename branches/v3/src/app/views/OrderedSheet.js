@@ -30,7 +30,6 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 			data : ieat.data.getCustomeOrder('default')
 		});
 		
-		console.log(ieat.data.getCustomeOrder('default'));
 		
 		Ext.apply(this, {
 			dockedItems: [{

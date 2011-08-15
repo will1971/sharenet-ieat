@@ -478,8 +478,7 @@ SH.Data = Ext.extend(Object, {
 								  count : 1}] ;
 						}
 						return this.orders[cid] ;
-					},
-					
+					}
 					
 					
 				});
