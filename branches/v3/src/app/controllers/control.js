@@ -98,14 +98,25 @@ ieat.control = Ext.regController("control", {
 		ieat.fly.applyStyles("display: block; background: url('"+ options.item.image +"') center no-repeat ; top: "+ 
 				options.event.pageY +"px ; left: "+ options.event.pageX +"px ;");
 		ieat.fly.addCls('ordering');
+		
+		// 点菜之后更新菜品的显示状况
+		this.showItemStatus() ;
 	},
 	
 	
 	/**
 	 * 设置某页面中的菜品点中情况
 	 */
-	showItemOrderStatus : function(pindex) {
-		
+	showItemStatus : function(pindex) {
+		//只显示当前页的状况
+		if(pindex == ieat.views.viewpage.getCurrentPageIdx() ){
+			var items = ieat.data.getPage(pindex).items;
+			for(var i = 0 ; i<= items.length -1 ; i++){
+				if(ieat.ordered.getOrdered(items[i])){
+					;	
+				}
+			}
+		}
 	}
 	
 });
