@@ -88,15 +88,22 @@ body {
 }
 
 #orderingfood {
-	position: absolute;
+	position: absolute ;
     display: none ;
-    z-index: 999999 ;
     width:88px ;
     height: 61px ;
 }
 
+.ordering {
+	z-index: 9999;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 1.8s;
+    -webkit-animation-name: move;
+}
+
 @-webkit-keyframes move {
     0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-out; } 
-    50% {  -webkit-transform: scale(0.4) ; top : -30px ; left : 50px ; opacity: 1; }
-    100% {  -webkit-transform: scale(1.5) ;top : -30px ; left : 50px ; opacity: 0; }
+    50% {  -webkit-transform: scale(0.4) ; top : 0px ; left : 10px ; opacity: 1; }
+    100% {  -webkit-transform: scale(1.5) ;top : 00px ; left : 10px ; opacity: 0; }
 }

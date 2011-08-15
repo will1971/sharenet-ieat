@@ -83,13 +83,21 @@ ieat.control = Ext.regController("control", {
 			ieat.ordered = new SH.OrderedSheet();
 		}
 		ieat.ordered.order(options.item);
-		//run animation
-		/* var fly = Ext.getBody().get('#orderingfood') ; 
-		console.dir(fly) ; */
 		
-		
-		// TODO the store object should move to ieat.data object
-		ieat.headbar.udpateOrder( ieat.ordered.store.getCount() , "NoUsed") ;
+		if(ieat.fly == undefined){
+			ieat.fly = Ext.getBody().child('#orderingfood') ; 
+			ieat.fly.on('webkitAnimationEnd' , function(){
+				
+				console.log("webkitAnimationEnd");
+				ieat.fly.applyStyles('');
+				ieat.fly.removeCls('ordering');
+				// TODO the store object should move to ieat.data object
+				ieat.headbar.udpateOrder( ieat.ordered.store.getCount() , "NoUsed") ;	
+			});
+		}
+		ieat.fly.applyStyles("display: block; background: url('"+ options.item.image +"') center no-repeat ; top: "+ 
+				options.event.pageY +"px ; left: "+ options.event.pageX +"px ;");
+		ieat.fly.addCls('ordering');
 	},
 	
 	
