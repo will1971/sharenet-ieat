@@ -279,6 +279,10 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 			bgImg : page.image,  
 			page : page
 		});
+	},
+	
+	getCurrentPageIdx: function(){
+		return this.getIndex();
 	}
 
 });

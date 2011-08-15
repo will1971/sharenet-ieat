@@ -63,12 +63,22 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 	},
 	
 	order : function( item ){
-		this.store.add( {
-			id : this.getItemId(item) ,
-			item : item ,
-			count : 1 
-			} );
+		var id = this.getItemId(item) ;
+		var target = this.store.getById(id) ;
+		if( target != undefined ){
+			target.set('count', target.get('count') + 1 );
+		}else{
+			this.store.add( {
+				id : id,
+				item : item ,
+				count : 1 
+				} );
+		}
 	},
+	
+	getOrdered : function ( item ){
+		return this.store.getById(this.getItemId(item)) ;
+	} ,
 	
 	getItemId : function(item){
 		return 'p'+ item.pindex + 'f' + item.index ;
@@ -81,8 +91,7 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	         '<div class="item">',
 	            '<div class="itemimg" style="background: url({item.image}) center no-repeat ; width:88px ; height: 100%; position: absolute; left: 0px; top: 0px;"></div>',
 	            '<h1>{item.name}</h1>',
-	            '<h2>￥{item.price}元</h2>',
-	            '<h2>￥{count}份</h2>',
+	            '<h2>￥{item.price}元 {count}份</h2>',
 	        '</div>',
         '</tpl>'),
     selectedItemCls : 'selected',
