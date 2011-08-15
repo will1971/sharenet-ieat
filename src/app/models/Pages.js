@@ -621,6 +621,16 @@ SH.Data = Ext.extend(Object, {
 					 */
 					getSuggestion : function(){
 						return this.suggestionData ;
+					},
+					
+					/**
+					 * 取得指定用户的点菜信息
+					 */
+					getCustomeOrder : function(cid){
+						if( ! this.orders[cid] ){
+							this.orders[cid] = [] ;
+						}
+						return this.orders[cid] ;
 					}
 					
 				});
