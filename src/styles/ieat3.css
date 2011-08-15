@@ -86,3 +86,9 @@ body {
 #headbar.x-toolbar .x-button .x-button-label{
 	font-size: 1em;
 }
+
+@-webkit-keyframes move {
+    0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-out; } 
+    50% {  -webkit-transform: scale(0.4) ; top : -30px ; left : 50px ; opacity: 1; }
+    100% {  -webkit-transform: scale(1.5) ;top : -30px ; left : 50px ; opacity: 0; }
+}

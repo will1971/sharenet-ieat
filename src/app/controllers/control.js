@@ -69,6 +69,8 @@ ieat.control = Ext.regController("control", {
 	 */
 	takeOrder : function( pindex , index, item ){
 		
+		
+		
 	},
 	
 	
