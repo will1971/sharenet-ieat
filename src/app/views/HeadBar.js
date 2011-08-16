@@ -194,10 +194,12 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     			listeners: {
                     scope : this,
                     tap: function(){
-                    	if( ieat.infoview == undefined ){
-                    		ieat.infoview = new SH.InfoSheet();
-                    	}
-                    	ieat.infoview.show();
+                        var pindex = ieat.views.viewpage.getCurrentPageIdx();
+            			Ext.dispatch({
+                          	controller: ieat.control ,
+                            action: 'showDetails',
+							pindex: pindex
+                          });
                     }
                 }
     		}, {
