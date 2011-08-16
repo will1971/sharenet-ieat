@@ -115,4 +115,18 @@ ieat.control = Ext.regController("control", {
 		}
 	}
 	
+	/**
+	 * 显示某页的详细信息
+ 	 */
+	 showDetails : function(option){
+		  if( ieat.infoview == undefined){
+          	ieat.infoview = new SH.InfoSheet();
+          }
+		  
+		  ieat.infoview.show();
+		  ieat.infoview.setPage(option.pindex);
+		  
+	 }
+	
+	
 });
