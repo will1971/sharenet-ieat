@@ -59,10 +59,22 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 	
 	
 	/**
-	 * 显示当前页面的
+	 * 显示当前页面的点菜状态
 	 */
 	showItemStatus : function(){
-		console.log("==== showItemStatus ===");
+		var items = this.page.items ;
+		var divs = [] ;
+		for(var i = 0 ; i<= items.length - 1 ; i++ ){
+			var item = items[i] ;
+			if(ieat.ordered.getOrdered(item)){
+				divs.push( {tag: 'div', style: 'position: absolute; width:60px; height: 60px; top: '+ (item.hotarea[3] - 110) 
+					+ 'px; left: '+ ( item.hotarea[2] - 30 ) +'px' ,  cls : 'orderedbox' } );
+			}
+		}
+		
+		if(divs.length > 0){
+			Ext.DomHelper.overwrite( this.getEl() , divs);
+		}
 	}
 
 });

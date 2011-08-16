@@ -53,6 +53,7 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
     handleCardSwitch: function(carousel, card , oldCard, index,
 			animated) {
         this.bufferCards(card.carouselPosition);
+        this.fireEvent('afterswitch', card , oldCard , index);
     },
     
     /**
@@ -271,6 +272,8 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 		});
 
 		SH.PageView.superclass.initComponent.apply(this, arguments);
+		
+		this.mon(this, "afterswitch", this.onAfterSwitch , this);
 	},
 
 	/**
@@ -292,6 +295,12 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 	
 	getCurrentPage: function(){
 		return this.layout.getActiveItem();
+	},
+	
+	onAfterSwitch : function( card , oldCard , index ){
+		Ext.defer( function(){
+			card.showItemStatus();
+		} , 200 , this );
 	}
 
 });
