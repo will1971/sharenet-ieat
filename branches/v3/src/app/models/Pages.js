@@ -315,7 +315,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '清爽可口，果味浓厚，色泽艳丽 <br>风味独特，入口鲜甜，软化醇美 ',
 									price : 60,
 									detail : '瘦猪肉、虾片、果汁、鸡蛋 <br>花生油、高汤等',
-									hotarea : [ 630, 385, 985, 625 ]
+									hotarea : [ 630, 385, 985, 625]
 								} ]
 							} , {
 								image : 'images/p12w.jpg',
@@ -326,21 +326,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '名贵海珍品，肉质细嫩 <br>营养丰富，清而味浓',
 									price : 75,
 									detail : '新鲜鲍鱼、油等',
-									hotarea : [ 25, 25, 420, 310 ]
+									hotarea : [ 25, 25, 420, 310]
 								},{
 									name : '炕锅麻椒羊排',
 									image : 'images/p12f2.png',
 									desc : '肥瘦结合，质地松软 <br>色呈焦黄，香嫩可口',
 									price : 55,
 									detail : '羊排、孜然等',
-									hotarea : [ 25, 335, 420, 615 ]
+									hotarea : [ 25, 335, 420, 615]
 								  },{
 									name : '砂锅炖肉',
 									image : 'images/p12f3.png',
 									desc : '肉软烂而不散，整齐 <br>肉味醇厚浓郁，食而不腻',
 									price : 45,
 									detail : '五花肉、酒糟等',
-									hotarea : [ 725, 310, 995, 505 ]
+									hotarea : [ 725, 310, 995, 505]
 								    } ]
 							}, {
 								image : 'images/p13w.jpg',
@@ -351,14 +351,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '香醇爽口，低油低脂 <br>口感细腻，回味无穷',
 									price : 79,
 									detail : '鲜活大闸蟹、蒜 <br>辣椒、槐盐等',
-									hotarea : [ 555, 55, 985, 320 ]
+									hotarea : [ 555, 55, 985, 320]
 								},{
 									name : '四季富贵',
 									image : 'images/p13f2.png',
 									desc : '爽口不腻，味道醇厚，色泽艳丽 <br>风味独特，入口香醇，咸淡适宜',
 									price : 15,
 									detail : '鸭肉、卤料、鸭蛋、海蜇等 <br>八角等香料佐料',
-									hotarea : [ 35, 365, 470, 635 ]
+									hotarea : [ 35, 365, 470, 635]
 									} ]
 							}, {
 								image : 'images/p14w.jpg',
@@ -376,14 +376,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '荷香袭人，肉软酥烂 <br>鲜香味没，营养丰富',
 									price : 23,
 									detail : '荷叶、肉类等',
-									hotarea : [ 25, 350, 345, 585 ]
+									hotarea : [ 25, 350, 345, 585]
 								},{
 									name : '蜜汁南瓜',
 									image : 'images/p14f3.png',
 									desc : '香甜宜人，口感绵柔',
 									price : 20,
 									detail : '优质南瓜、冰糖、蜜糖等',
-									hotarea : [ 680, 295, 995, 525 ]
+									hotarea : [ 680, 295, 995, 525]
 								    } ]
 							}, {
 								image : 'images/p15w.jpg',
@@ -394,14 +394,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '色泽金黄油亮，入口柔滑细嫩 <br>柔软粘稠，齿颊留香，回味甘甜',
 									price : 23,
 									detail : '精致糯米、白糖、猪油、精盐 <br>甜栗子、豆沙等',
-									hotarea : [ 40, 60, 400, 300 ]
+									hotarea : [ 40, 60, 400, 300]
 								},{
 								    name : '竹蒸米粉肉',
 									image : 'images/p15f2.png',
 									desc : '竹香浓郁，肉酥爽口，滋味丰富 <br>嫩而不糜，密封油润，粉糯而清香',
 									price : 60,
 									detail : '带皮花肉、姜、莲藕、葱丝 <br>花生油、高汤等',
-									hotarea : [ 505, 385, 865, 620 ]
+									hotarea : [ 505, 385, 865, 620]
 									}]
 							}, {
 								image : 'images/p16w.jpg',
@@ -412,21 +412,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '肉红润油亮，肥瘦适宜 <br>肉香四溢，醇香味浓',
 									price : 40,
 									detail : '猪肉馅、胡萝卜等',
-									hotarea : [ 205, 25, 600, 310 ]
+									hotarea : [ 205, 25, 600, 310]
 								},{
 									name : '脆口三鲜丝',
 									image : 'images/p16f2.png',
 									desc : '肥瘦结合，质地松软 <br>色呈焦黄，香嫩可口',
 									price : 55,
 									detail : '胡萝卜、黄瓜、红甜椒',
-									hotarea : [ 25, 330, 415, 615 ]
+									hotarea : [ 25, 330, 415, 615]
 								},{
 									name : '香酥盐焦虾',
 									image : 'images/p16f3.png',
 									desc : '外焦香咸辣，肉软嫩鲜 <br>酥嫩金黄',
 									price : 45,
 									detail : '鲜河虾、植物油 <br>绍兴酒、大葱等',
-									hotarea : [ 725, 310, 995, 505 ]
+									hotarea : [ 725, 310, 995, 505]
 								  } ]
 							}, {
 								image : 'images/p17w.jpg',
@@ -437,14 +437,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '皮薄酥脆，馅心香软 <br>口感极佳，回味无穷',
 									price : 18,
 									detail : '春卷皮、花生酱 <br>蛋清、油、盐等',
-									hotarea : [ 565, 25, 995, 295 ]
+									hotarea : [ 565, 25, 995, 295]
 								},{
 									name : '葱香鸡蛋羹',
 									image : 'images/p17f2.png',
 									desc : '爽口不腻，味道醇厚，色泽艳丽 <br>营养丰富，老少咸宜，味美质嫩',
 									price : 28,
 									detail : '鸡蛋、盐、水、葱花、油 <br>水等辅料',
-									hotarea : [ 130, 360, 560, 635 ]
+									hotarea : [ 130, 360 , 560, 635]
 									} ]
 							}, {
 								image : 'images/p18w.jpg',
@@ -455,14 +455,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '色香味俱全，清新爽口，清淡 <br>颜色美观，齿颊留香，老少咸宜',
 									price : 7,
 									detail : '香醋、白糖、鸡精、精盐 <br>香油、辣油等',
-									hotarea : [ 35, 60, 395, 295 ]
+									hotarea : [ 35, 60, 395, 295]
 								},{
 									name : '金玉满堂',
 									image : 'images/p18f2.png',
 									desc : '香味浓郁，口感爽滑，滋味丰富 <br>鲜甜可口，老少咸宜',
 									price : 60,
 									detail : '红椒、黄椒、盐、黄瓜、葱末 <br>姜丝、料酒、淀粉、香油、胡萝卜',
-									hotarea : [ 625, 385, 985, 620 ]
+									hotarea : [ 625, 385, 985, 620]
 									} ]
 							}, {
 								image : 'images/p19w.jpg',
@@ -473,14 +473,14 @@ SH.Data = Ext.extend(Object, {
 									desc : '色泽鲜脆，圆润，入口柔嫩 <br>可煮可煎，齿颊留香，回味甘甜',
 									price : 10,
 									detail : '豌豆',
-									hotarea : [ 105, 60, 465, 295 ]
+									hotarea : [ 105, 60, 465, 295]
 								},{
 									name : '黄瓜紫茄',
 									image : 'images/p19f2.png',
 									desc : '清香爽嫩，鲜脆爽口，滋味丰富 <br>多种配合，凉拌烩炒，变化万千',
 									price : 7,
 									detail : '黄瓜、紫茄',
-									hotarea : [ 615, 385, 970, 615 ]
+									hotarea : [ 615, 385, 970, 615]
 									} ]
 							},
 							{
@@ -492,21 +492,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '酱红油亮，肉滑醇香 <br>汤粘稠鲜美，柔烂醇香',
 									price : 27,
 									detail : '五花肉、梅干菜',
-									hotarea : [ 25, 25, 405, 300 ]
+									hotarea : [ 25, 25, 405, 300]
 								},{
 									name : '秘制东坡肉',
 									image : 'images/p20f2.png',
 									desc : '薄皮肉嫩，色泽红亮 <br>味醇汁浓，酥烂不腻',
 									price : 65,
 									detail : '五花肉、绍兴酒等',
-									hotarea : [ 25, 350, 340, 585 ]
+									hotarea : [ 25, 350, 340, 585]
 							   },{
 								    name : '脆皮乳鸽',
 									image : 'images/p20f3.png',
 									desc : '乳鸽鲜美，皮脆肉嫩',
 									price : 68,
 									detail : '乳鸽、油、醋等',
-									hotarea : [ 680, 285, 995, 515 ]
+									hotarea : [ 680, 285, 995, 515]
 								  } ]
 							} 
 							
@@ -552,6 +552,8 @@ SH.Data = Ext.extend(Object, {
 							for(var j =0 ; j<= items.length -1 ; j++){
 								items[j].pindex = i ;
 								items[j].index = j ;
+								items[j].hotarea[1] += 50 ;
+								items[j].hotarea[3] += 50 ;
 							}
 						}
 						//初始化类别数据
