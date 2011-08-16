@@ -133,7 +133,7 @@ body {
 	z-index: 9999;
     /*-webkit-transform-origin: 50% 50%;*/
     -webkit-animation-iteration-count: 1;
-    -webkit-animation-duration: 2.0s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-name: move;
 }
 
