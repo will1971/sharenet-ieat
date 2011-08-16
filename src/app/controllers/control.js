@@ -110,12 +110,7 @@ ieat.control = Ext.regController("control", {
 	showItemStatus : function(pindex) {
 		//只显示当前页的状况
 		if(pindex == ieat.views.viewpage.getCurrentPageIdx() ){
-			var items = ieat.data.getPage(pindex).items;
-			for(var i = 0 ; i<= items.length -1 ; i++){
-				if(ieat.ordered.getOrdered(items[i])){
-					;	
-				}
-			}
+			ieat.views.viewpage.getCurrentPage().showItemStatus();
 		}
 	}
 	
