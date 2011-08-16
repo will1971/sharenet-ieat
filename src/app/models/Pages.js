@@ -65,7 +65,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '清爽可口，口感醇厚',
 									price : 70,
 									detail : '肉类、豆制品等',
-									hotarea : [ 685, 295, 995, 530 ]
+									hotarea : [ 685, 295, 985, 530 ]
 									} ]
 							},{
 								image : 'images/p1w.jpg',
@@ -90,7 +90,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '粒粒滑爽，口感纯正',
 									price : 60,
 									detail : '葡萄糖酸、豆浆 <br>榨菜、花生米、辣酱等',
-									hotarea : [ 725, 310, 995, 500 ]
+									hotarea : [ 725, 310, 985, 500 ]
 								} ]
 							},{
 								image : 'images/p2w.jpg',
@@ -340,7 +340,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '肉软烂而不散，整齐 <br>肉味醇厚浓郁，食而不腻',
 									price : 45,
 									detail : '五花肉、酒糟等',
-									hotarea : [ 725, 310, 995, 505]
+									hotarea : [ 725, 310, 985, 505]
 								    } ]
 							}, {
 								image : 'images/p13w.jpg',
@@ -383,7 +383,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '香甜宜人，口感绵柔',
 									price : 20,
 									detail : '优质南瓜、冰糖、蜜糖等',
-									hotarea : [ 680, 295, 995, 525]
+									hotarea : [ 680, 295, 985, 525]
 								    } ]
 							}, {
 								image : 'images/p15w.jpg',
@@ -426,7 +426,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '外焦香咸辣，肉软嫩鲜 <br>酥嫩金黄',
 									price : 45,
 									detail : '鲜河虾、植物油 <br>绍兴酒、大葱等',
-									hotarea : [ 725, 310, 995, 505]
+									hotarea : [ 725, 310, 985, 505]
 								  } ]
 							}, {
 								image : 'images/p17w.jpg',
@@ -437,7 +437,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '皮薄酥脆，馅心香软 <br>口感极佳，回味无穷',
 									price : 18,
 									detail : '春卷皮、花生酱 <br>蛋清、油、盐等',
-									hotarea : [ 565, 25, 995, 295]
+									hotarea : [ 565, 25, 985, 295]
 								},{
 									name : '葱香鸡蛋羹',
 									image : 'images/p17f2.png',
@@ -506,7 +506,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '乳鸽鲜美，皮脆肉嫩',
 									price : 68,
 									detail : '乳鸽、油、醋等',
-									hotarea : [ 680, 285, 995, 515]
+									hotarea : [ 680, 285, 985, 515]
 								  } ]
 							} 
 							
