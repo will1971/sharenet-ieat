@@ -18,6 +18,17 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 	padding: '0 0 0 0',
 	
 	initComponent: function() {
+		
+		this.foodinfo = new Ext.data.Store({
+			fields: [
+			         {name: 'image', type: 'string'},
+			         {name: 'name', type: 'string'},
+			         {name: 'desc', type: 'string'},
+			         {name: 'price', type: 'string'},
+			     ],
+			data : ieat.data.getPage(0).items
+		});
+		
 		Ext.apply(this, {
 			
 			dockedItems: [{
@@ -42,9 +53,34 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 			}],
     		items: [{
     			html : "详细信息区"
-    		}]
+    		}],
+			items: [new SH.ItemsList({
+		        store:this.foodinfo
+		    })]
         });
     	
     	SH.InfoSheet.superclass.initComponent.apply(this, arguments);
+	},
+	setPage: function(pindex){
+		console.log("======index:" + pindex);
+		this.foodinfo.loadData(ieat.data.getPage(pindex).items);
 	}
+});
+
+SH.ItemsList = Ext.extend(Ext.DataView, {
+	tpl :  new Ext.XTemplate(
+		'<tpl for=".">' +
+	         '<div class="item">',
+	            '<div class="itemimg" style="background: url({image}) center no-repeat;position: 50% 50%;"></div>',
+	            '<h3>{name}</h3>',
+	            '<h2>{desc}</h2>',
+	            '<h2>￥{price}元</h2>',
+	        '</div>',
+        '</tpl>'),
+    selectedItemCls : 'selected',
+	itemSelector : 'div.item',
+	emptyText : '当前菜单没有详情说明 ...',
+	height : '100%',
+	selectedItemCls : 'selected',
+	scroll: 'vertical'
 });
