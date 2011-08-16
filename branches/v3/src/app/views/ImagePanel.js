@@ -55,6 +55,14 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
           	controller: ieat.control ,
             action: 'showOverView'
           });
+	},
+	
+	
+	/**
+	 * 显示当前页面的
+	 */
+	showItemStatus : function(){
+		console.log("==== showItemStatus ===");
 	}
 
 });

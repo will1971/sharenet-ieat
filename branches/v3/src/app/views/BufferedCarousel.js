@@ -151,7 +151,7 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
             var activeItem = this.layout.getActiveItem();
             
             if (activeCard && activeItem != activeCard) {
-                this.layout.setActiveItem(activeCard , {type:'fade' , duration: 500 } );
+                this.layout.setActiveItem(activeCard , { type:'fade' , duration: 500 });
                 this.doLayout();
             }            
         }
@@ -171,6 +171,11 @@ SH.BufferedCarousel = Ext.extend(Ext.Carousel, {
     getIndex: function() {
         var activeItem = this.layout.getActiveItem();
         return activeItem ? activeItem.carouselPosition : -1;
+    },
+    
+    
+    getActiveItem: function(){
+    	return this.layout.getActiveItem();
     },
     
     /**
@@ -283,6 +288,10 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 	
 	getCurrentPageIdx: function(){
 		return this.getIndex();
+	},
+	
+	getCurrentPage: function(){
+		return this.layout.getActiveItem();
 	}
 
 });
