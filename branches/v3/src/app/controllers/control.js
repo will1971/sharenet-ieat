@@ -95,8 +95,10 @@ ieat.control = Ext.regController("control", {
 				ieat.headbar.udpateOrder( ieat.ordered.store.getCount() , "NoUsed") ;	
 			} , this );
 		}
-		ieat.fly.applyStyles("display: block; background: url('"+ options.item.image +"') center no-repeat ; top: "+ 
-				options.event.pageY +"px ; left: "+ options.event.pageX +"px ;");
+		
+		ieat.fly.applyStyles("display: block; background: url('"+ options.item.image +"') center no-repeat ; "+"" +
+				"width:88px ; height: 61px ; top: "+ 
+				(options.event.pageY - 30) +"px ; left: "+ (options.event.pageX - 44) +"px ;");
 		ieat.fly.addCls('ordering');
 		
 		// 点菜之后更新菜品的显示状况
@@ -113,7 +115,7 @@ ieat.control = Ext.regController("control", {
 		if( pindex == ieat.views.viewpage.getCurrentPageIdx() ){
 			ieat.views.viewpage.getCurrentPage().showItemStatus();
 		}
-	}
+	},
 	
 	/**
 	 * 显示某页的详细信息

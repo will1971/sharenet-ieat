@@ -66,14 +66,25 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 		var divs = [] ;
 		for(var i = 0 ; i<= items.length - 1 ; i++ ){
 			var item = items[i] ;
-			if(ieat.ordered.getOrdered(item)){
-				divs.push( {tag: 'div', style: 'position: absolute; width:60px; height: 60px; top: '+ (item.hotarea[3] - 110) 
-					+ 'px; left: '+ ( item.hotarea[2] - 30 ) +'px' ,  cls : 'orderedbox' } );
+			var ordered = ieat.ordered.getOrdered(item) ;
+			var id = ieat.ordered.getItemId(item);
+			var div = this.getEl().child("#" + id) ;
+	
+			console.log("ordered:" + ordered + " div:" + div) ;
+			if(ordered && div){
+				console.log("setHTML:" );
+				div.setHTML( ordered.get('count') );
+			}else if(ordered && !div){
+				console.log("createNew:" );
+				divs.push( {tag: 'div', id: id , style: 'position: absolute; width:60px; height: 60px; top: '+ (item.hotarea[3] - 110) 
+						+ 'px; left: '+ ( item.hotarea[2] - 30 ) +'px ; ' ,  cls : 'orderedbox' , html : ordered.get('count') } );
+			}else if(!ordered && div){
+				div.remove();
 			}
 		}
 		
 		if(divs.length > 0){
-			Ext.DomHelper.overwrite( this.getEl() , divs);
+			Ext.DomHelper.append( this.getEl() , divs);
 		}
 	}
 
