@@ -102,8 +102,15 @@ body {
     -webkit-animation-name: move;
 }
 
+.orderedbox {
+	background-color: #00DB00 ;
+	-webkit-mask-image: url('../images/check2.png');
+}
+
 @-webkit-keyframes move {
     0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-out; } 
     50% {  -webkit-transform: scale(0.4) ; top : 0px ; left : 10px ; opacity: 1; }
     100% {  -webkit-transform: scale(1.5) ;top : 00px ; left : 10px ; opacity: 0; }
 }
+
+
