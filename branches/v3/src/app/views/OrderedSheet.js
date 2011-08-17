@@ -76,6 +76,24 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 		}
 	},
 	
+	addOrderByIdx : function(index){
+		var target = this.store.getAt(index) ;
+		if( target != undefined ){
+			target.set('count', target.get('count') + 1 );
+		}
+	},
+	
+	minusOrderByIdx : function(index){
+		var target = this.store.getAt(index) ;
+		if( target != undefined && target.get('count') > 0){
+			target.set('count', target.get('count') - 1 );
+		}
+	},
+	
+	removeOrderByIdx : function(index){
+		this.store.removeAt(index) ;
+	},
+	
 	getOrdered : function ( item ){
 		return this.store.getById(this.getItemId(item)) ;
 	} ,
@@ -100,5 +118,27 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	emptyText : '尚未点菜...',
 	height : '100%',
 	selectedItemCls : 'selected',
-	scroll: 'vertical'
+	scroll: 'vertical',
+	
+	listeners:{
+		itemtap : function(dv, index, item, e){
+			var target = e.target ;
+			if(target.className == 'add'){
+				ieat.ordered.addOrderByIdx(index) ;
+			}
+			
+			if(target.className == 'minus'){
+				ieat.ordered.minusOrderByIdx(index) ;
+			}
+			
+			if(target.className == 'remove'){
+				ieat.ordered.removeOrderByIdx(index) ;
+			}
+			
+			Ext.dispatch({
+              	controller: ieat.control ,
+                action: 'refereshCurrentItemStatus'
+              });
+		}
+	}
 });

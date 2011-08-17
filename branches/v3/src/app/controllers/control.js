@@ -118,6 +118,14 @@ ieat.control = Ext.regController("control", {
 	},
 	
 	/**
+	 * 刷新当前页面的点菜状况
+	 */
+	refereshCurrentItemStatus : function(options) {
+		ieat.headbar.udpateOrder( ieat.ordered.store.getCount() , "NoUsed") ;	
+		ieat.views.viewpage.getCurrentPage().showItemStatus();
+	},
+	
+	/**
 	 * 显示某页的详细信息
  	 */
 	 showDetails : function(option){
