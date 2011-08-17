@@ -533,14 +533,6 @@ function getPackList(index,self)//由index获取套餐列表
 	                    mode: 'SINGLE',
 	                    allowDeselect: true
 	                }
-	               /* listeners: 
-	                {
-	                
-	                	itemdoubletap: function(list, index, item, e)  {
-	                   // alert('删除菜 ' + record.get('name'));
-	                   console.log("busy");
-	                    }
-	                } */
 				});
 		
 		

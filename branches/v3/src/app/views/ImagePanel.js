@@ -70,12 +70,9 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 			var id = ieat.ordered.getItemId(item);
 			var div = this.getEl().child("#" + id) ;
 	
-			console.log("ordered:" + ordered + " div:" + div) ;
 			if(ordered && div){
-				console.log("setHTML:" );
 				div.setHTML( ordered.get('count') );
 			}else if(ordered && !div){
-				console.log("createNew:" );
 				divs.push( {tag: 'div', id: id , style: 'position: absolute; width:60px; height: 60px; top: '+ (item.hotarea[3] - 110) 
 						+ 'px; left: '+ ( item.hotarea[2] - 30 ) +'px ; ' ,  cls : 'orderedbox' , html : ordered.get('count') } );
 			}else if(!ordered && div){
