@@ -88,7 +88,6 @@ ieat.control = Ext.regController("control", {
 			ieat.fly = Ext.getBody().child('#orderingfood') ; 
 			ieat.fly.on('webkitAnimationEnd' , function(){
 				
-				console.log("webkitAnimationEnd");
 				ieat.fly.applyStyles('');
 				ieat.fly.removeCls('ordering');
 				// TODO the store object should move to ieat.data object

@@ -62,7 +62,6 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
     	SH.InfoSheet.superclass.initComponent.apply(this, arguments);
 	},
 	setPage: function(pindex){
-		console.log("======index:" + pindex);
 		this.foodinfo.loadData(ieat.data.getPage(pindex).items);
 	}
 });

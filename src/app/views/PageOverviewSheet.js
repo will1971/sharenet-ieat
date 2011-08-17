@@ -79,7 +79,6 @@ SH.OverviewSheet = Ext.extend(Ext.Sheet, {
     	            }],
     	            listeners: {
     	                toggle: function(container, button, pressed){
-    	                    console.log("User toggled the '" + button.text + "' button: " + (pressed ? 'on' : 'off'));
     	                    if(pressed){
     	                    	var pages = ieat.data.getPagesOfType(button.text);
     	                    	pagestore.loadData(pages);
