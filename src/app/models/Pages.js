@@ -233,7 +233,7 @@ SH.Data = Ext.extend(Object, {
 								items : [
 										{
 											name : '风味卤猪耳',
-											image : 'images/p1f1.png',
+											image : 'images/p8f1.png',
 											desc : '清爽可口，口感浓厚 <br>入口柔软，滋味纯正，清新',
 											price : 16,
 											detail : '新鲜猪耳、鲜汤 <br>花椒等香料佐料',
@@ -241,7 +241,7 @@ SH.Data = Ext.extend(Object, {
 										},
 										{
 											name : '吮指鸡翅',
-											image : 'images/p1f1.png',
+											image : 'images/p8f2.png',
 											desc : '喷香入味，果味浓厚，色泽艳丽 <br>风味独特，入口鲜甜，咸淡适宜',
 											price : 30,
 											detail : '鲜香鸡翅，料酒，鲜汤，油等 <br>八角等香料佐料',
