@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-#updated 2011.8.17
+#updated 2011.8.18.1
 #version Share-IEat Beta 1.0
 #$Id$
 
@@ -27,6 +27,8 @@ styles/ieat3.css
 styles/anim.css
 
 #img
+images/startup.jpg
+images/startup1.jpg
 images/add1.png
 images/p0w.jpg
 images/p13f1.png

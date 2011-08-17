@@ -4,8 +4,11 @@
 Ext.regApplication({
     name: "ieat",
     icon: 'images/icon.jpg',
-    tabletStartupScreen: 'images/cover.jpg',
+    tabletStartupScreen: 'images/startup.jpg',
     glossOnIcon: true ,
+    useLoadMask : true ,
+    loadMaskFadeDuration: 5000 ,
+    loadMaskRemoveDuration: 5000 ,
     
     /**
      * This function is automatically called when the document has finished loading. All we do here
