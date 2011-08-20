@@ -17,9 +17,6 @@ Ext.regApplication({
     launch: function() {
     	
     	//播放启动动画，后台创建其他控件
-//    	ieat.audio = new Ext.Audio({
-//    		url : 'media/bg.mp3'
-//    	});
     	
     	//创建数据
     	ieat.data = new SH.Data();
@@ -29,11 +26,10 @@ Ext.regApplication({
     	Ext.apply(ieat.views , {
             cover: new SH.AnimPanel({
             	items: [{
-            		autoResume : true ,
                     xtype: 'audio',
-                    loop: false ,
-                    preload : false ,
-                    url  : "media/sf.mp3"
+                    preload : true ,
+                    loop: true ,
+                    url  : 'media/sf.mp3'
                 }],
             	listeners: {
             		tap:{
@@ -52,7 +48,5 @@ Ext.regApplication({
             viewpage: new SH.PageView()
         });
     	ieat.viewport = new SH.Viewport() ;
-    	
-    	//ieat.audio.play();
     }
 });
