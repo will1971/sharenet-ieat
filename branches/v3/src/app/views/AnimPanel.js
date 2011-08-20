@@ -71,7 +71,7 @@ start();
 }
 
 SH.AnimPanel = Ext.extend(Ext.Panel,{
-	html:'<ol><li id="scene-0"><div class="AN-sObj-stage" id="ext-gen878"><div class="AN-Object" id="AN-sObj-65"><div id="AN-sObj-val-65"><img src="images/bg.jpg"></div></div><div class="AN-Object" id="AN-sObj-66"><div id="AN-sObj-val-66"><img src="images/title.png"></div></div><div class="AN-Object" id="AN-sObj-68"><div id="AN-sObj-val-68"><img src="images/f1.png"></div></div></div></li></ol>',
+	html:'<ol style="position: absolute; top: 0px; left: 0px;"><li id="scene-0"><div class="AN-sObj-stage" id="ext-gen878"><div class="AN-Object" id="AN-sObj-65"><div id="AN-sObj-val-65"><img src="images/bg.jpg"></div></div><div class="AN-Object" id="AN-sObj-66"><div id="AN-sObj-val-66"><img src="images/title.png"></div></div><div class="AN-Object" id="AN-sObj-68"><div id="AN-sObj-val-68"><img src="images/f1.png"></div></div></div></li></ol>',
 	afterRender: function() {
         setup();
         SH.AnimPanel.superclass.afterRender.apply(this, arguments);

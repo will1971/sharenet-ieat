@@ -1,10 +1,14 @@
 CACHE MANIFEST
 
-#updated 2011.8.18.1
+#updated 2011.8.18.2
 #version Share-IEat Beta 1.0
 #$Id$
 
+
 index.html
+
+#media
+media/sf.mp3
 
 #scripts
 lib/sencha-touch.js
@@ -140,6 +144,7 @@ images/p16f3.png
 images/p1f1.png
 images/p3f2.png
 images/p6ws.jpg
+
 
 NETWORK:
 *
