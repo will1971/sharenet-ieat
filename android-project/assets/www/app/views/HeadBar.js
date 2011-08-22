@@ -3,7 +3,7 @@
  * 提供各种功能的入口，包括：已点菜浏览，调出快速浏览Panel，TODO： 
  */
 SH.HeadBar = Ext.extend(Ext.Toolbar, {
-	height : '50px',
+	height : '30px',
 	dock : 'top',
 	id : 'headbar',
 	defaults : {
@@ -59,7 +59,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 						form.showBy(this);
                     }
 				}
-			},{
+			},/* {
 				xtype : 'button' ,
 				text : '积分赠券' ,
 				listeners: {
@@ -91,7 +91,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 						form.showBy(this);
                     }
 				}
-			},{
+			}, */{
 				xtype : 'button' ,
 				text : '开新台',
 				listeners: {
@@ -131,7 +131,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 						form.showBy(this);
                     }
 				}
-			} , {xtype : 'spacer'} ,{
+			} , {xtype : 'spacer'} , /* {
 				xtype : 'button' ,
 				text : '满意度调查' ,
 				listeners: {
@@ -188,7 +188,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 						form.showBy(this);
                     }
 				}
-			} , {
+			} ,  {
     			xtype : 'button' ,
     			text : '详情',
     			listeners: {
@@ -202,7 +202,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                           });
                     }
                 }
-    		}, {
+    		}, */ {
     			xtype : 'button' ,
     			text : '推荐菜' ,
     			listeners: {
