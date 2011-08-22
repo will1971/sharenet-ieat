@@ -51,21 +51,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '清爽可口，口感醇厚',
 									price : 60,
 									detail : '肉类、豆制品等',
-									hotarea : [ 125, 25, 455, 275]
+									hotarea : [ 95, 20, 370, 235]
 								},{
 									name : '爽芹手撕鸡',
 									image : 'images/p0f2.png',
 									desc : '清爽可口，口感醇厚',
 									price : 50,
 									detail : '肉类、豆制品等',
-									hotarea : [ 350, 300, 675, 530 ]
+									hotarea : [ 280, 250, 525, 440 ]
 							    },{
 								    name : '巧味鱼头',
 									image : 'images/p0f3.png',
 									desc : '清爽可口，口感醇厚',
 									price : 70,
 									detail : '肉类、豆制品等',
-									hotarea : [ 685, 295, 985, 530 ]
+									hotarea : [ 535, 250, 780, 440 ]
 									} ]
 							},{
 								image : 'images/p1w.jpg',
@@ -76,21 +76,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '鲜嫩爽口，营养丰富',
 									price : 60,
 									detail : '肉类、鲜菇等',
-									hotarea : [ 25, 25, 415, 310 ]
+									hotarea : [ 20, 20, 330, 260 ]
 								}, {
 									name : '香辣龙井茶皇虾',
 									image : 'images/p1f2.png',
 									desc : '味道鲜美，肉质酥软',
 									price : 60,
 									detail : '鲜活大虾、葱等',
-									hotarea : [ 25, 330, 415, 615 ]
+									hotarea : [ 20, 280, 330, 515 ]
 								},{
 									name : '刘安点丹',
 									image : 'images/p1f3.png',
 									desc : '粒粒滑爽，口感纯正',
 									price : 60,
 									detail : '葡萄糖酸、豆浆 <br>榨菜、花生米、辣酱等',
-									hotarea : [ 725, 310, 985, 500 ]
+									hotarea : [ 570, 260, 780, 425 ]
 								} ]
 							},{
 								image : 'images/p2w.jpg',
@@ -102,7 +102,7 @@ SH.Data = Ext.extend(Object, {
 											desc : '清脆可口，滑嫩细爽，营养丰富，老少咸宜',
 											price : 60,
 											detail : '海蜇皮、萝卜丝',
-											hotarea : [ 210, 35, 605, 315 ]
+											hotarea : [ 165, 30, 475, 265 ]
 										},
 										{
 											name : '西关私房羊腩',
@@ -110,7 +110,7 @@ SH.Data = Ext.extend(Object, {
 											desc : '红润油亮，口感浓厚',
 											price : 60,
 											detail : '羊腩、高汤等',
-											hotarea : [ 565, 360, 965, 645 ]
+											hotarea : [ 445, 305, 755, 540 ]
 										} ]
 							},{
 								image : 'images/p3w.jpg',
@@ -123,7 +123,7 @@ SH.Data = Ext.extend(Object, {
 											desc : '清爽滑嫩，口感爽韧',
 											price : 37,
 											detail : '牛肚、青椒等',
-											hotarea : [ 530, 85, 900, 355 ]
+											hotarea : [ 415, 70, 705, 300 ]
 										},
 										{
 											name : '凤城炭烧双拼',
@@ -131,7 +131,7 @@ SH.Data = Ext.extend(Object, {
 											desc : '营养丰富，口感鲜美',
 											price : 50,
 											detail : '肉类、葱、姜等',
-											hotarea : [ 30, 390, 445, 685 ]
+											hotarea : [ 25, 325, 350, 580 ]
 										} ]
 							},{
 								image : 'images/p4w.jpg',
@@ -142,21 +142,21 @@ SH.Data = Ext.extend(Object, {
 									desc : '脆嫩味浓，口感浓厚',
 									price : 50,
 									detail : '青芥、豆制品等',
-									hotarea : [ 25, 25, 420, 310 ]
+									hotarea : [ 20, 20, 330, 260 ]
 								}, {
 									name : '鸡腿菇拼环虾',
 									image : 'images/p4f2.png',
 									desc : '鲜爽可口，香味不腻',
 									price : 30,
 									detail : '鸡腿、鲜虾等',
-									hotarea : [ 565, 25, 865, 240 ]
+									hotarea : [ 440, 25, 675, 200 ]
 								},{
 									name : '青芥牛仔骨',
 									image : 'images/p4f3.png',
 									desc : '外香里嫩，口感独特',
 									price : 30,
 									detail : '排骨、胡萝卜等',
-									hotarea : [ 710, 460, 975, 650 ]
+									hotarea : [ 560, 385, 765, 545 ]
 								  } ]
 							},{
 								image : 'images/p5w.jpg',
