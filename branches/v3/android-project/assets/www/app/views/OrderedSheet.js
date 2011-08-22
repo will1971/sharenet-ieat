@@ -12,7 +12,6 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 	modal: false,
 	stretchX: false,
     stretchY: true,
-	scroll : 'vertical',
 	layout : {
 		pack : 'right'
 	},

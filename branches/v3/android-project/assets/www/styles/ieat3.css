@@ -37,7 +37,7 @@ body {
 }
 
 .overview .x-toolbar .x-button .x-button-label, .sheethead.x-toolbar .x-button .x-button-label{
-	font-size: 1em;
+	/*font-size: 1em;*/
 }
 
 .ordered {
@@ -61,13 +61,13 @@ body {
 
 .item h1, .item .ordercontrol , .pageintro h1 {
 	color: #FFFFFF;
-	font-size: 1.2em;
+	/*font-size: 1.2em;*/
 	font-weight: bold;
 }
 
 .item h2, .pageintro h2 {
 	color: #DDD;
-	font-size: 1em;
+	/*font-size: 1em;*/
 }
 
 .item .itemctl{
@@ -77,7 +77,7 @@ body {
 
  .item .itemctl span{
 	color: #FFFFFF ;
-	font-size: 1.2em ;
+	/*font-size: 1.2em ;*/
 }
 
 .item .itemctl img {
@@ -103,18 +103,18 @@ body {
 #headbar{
 	background-color: #000000;
 	background-image: none;
-	font-size: 1em;
+	/*font-size: 1em;*/
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
 }
 
 .sheethead{
 	background-color: #000000;
 	background-image: none;
-	font-size: 1em;
+	/* font-size: 1em; */
 }
 
 #headbar.x-toolbar .x-button .x-button-label{
-	font-size: 1em;
+	/*font-size: 1em;*/
 }
 
 #orderingfood {
@@ -125,7 +125,7 @@ body {
 .orderedbox {
 	background-color: #00DB00 ;
 	-webkit-mask-image: url('../images/check2.png');
-	font-size: 1.2em;
+	/*font-size: 1.2em;*/
     padding: 4px 0px 0px 14px ;
 }
 
