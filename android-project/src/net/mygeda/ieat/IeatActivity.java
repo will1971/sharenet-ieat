@@ -2,6 +2,8 @@ package net.mygeda.ieat;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
+
 import com.phonegap.*;
 
 public class IeatActivity extends DroidGap {
