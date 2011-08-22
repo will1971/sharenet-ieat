@@ -19,9 +19,9 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
         var el = this.getEl();
         
         if(Ext.isDefined(this.bgImg)){
-        	el.setStyle("background","url('"+this.bgImg+"') center no-repeat");
+        	el.setStyle("background","url('"+this.bgImg+"') no-repeat left top");
         }else{
-        	el.setStyle("background","url('"+this.defaultBgImg+"') center no-repeat");
+        	el.setStyle("background","url('"+this.defaultBgImg+"') no-repeat left top");
         }
         
         this.mon(el, "tap", this.onTap , this);
