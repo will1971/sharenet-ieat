@@ -259,8 +259,7 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 	initComponent : function() {
 		
 		ieat.headbar = new SH.HeadBar({
-				//xtype: 'ieatheadbar',
-		    title: '一品翰林宴天下'
+			title: '一品翰林宴天下'
 		});
 		
 		Ext.apply(this, {
