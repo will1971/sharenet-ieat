@@ -103,8 +103,11 @@ body {
 #headbar{
 	background-color: #000000;
 	background-image: none;
-	/*font-size: 1em;*/
 	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+#headbar .x-toolbar-title{
+	font-size: 1em;
 }
 
 .sheethead{

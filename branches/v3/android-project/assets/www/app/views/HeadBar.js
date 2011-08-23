@@ -3,7 +3,7 @@
  * 提供各种功能的入口，包括：已点菜浏览，调出快速浏览Panel，TODO： 
  */
 SH.HeadBar = Ext.extend(Ext.Toolbar, {
-	height : '30px',
+	height : '40px',
 	dock : 'top',
 	id : 'headbar',
 	defaults : {
