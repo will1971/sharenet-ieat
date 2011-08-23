@@ -412,7 +412,7 @@ SH.Data = Ext.extend(Object, {
 									desc : '肉红润油亮，肥瘦适宜 ，肉香四溢，醇香味浓',
 									price : 40,
 									detail : '猪肉馅、胡萝卜等',
-									hotarea : [ 205, 25, 600, 310]
+									hotarea : [ 30, 25, 600, 310]
 								},{
 									name : '脆口三鲜丝',
 									image : 'images/p16f2.png',
