@@ -118,6 +118,11 @@ body {
 	font-size: 1em;
 }
 
+
+#headbar .x-badge{
+	top: 1.2em;
+}
+
 #orderingfood {
 	position: absolute ;
     display: none ;
