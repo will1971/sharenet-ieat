@@ -35,6 +35,19 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                 }	
 			},{
 				xtype : 'button' ,
+				text : '积分赠券' ,
+				iconCls: 'arrow_down' ,
+				listeners: {
+                    scope : this,
+                    tap: function(){
+                    	Ext.dispatch({
+                          	controller: ieat.control ,
+                            action: 'showDeals'
+                          });
+                    }
+				}
+			},{
+				xtype : 'button' ,
 				iconCls: 'arrow_down' ,
 				text : '结单' ,
 				listeners: {
@@ -68,39 +81,6 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				}
 			},{
 				xtype : 'button' ,
-				text : '积分赠券' ,
-				iconCls: 'arrow_down' ,
-				listeners: {
-                    scope : this,
-                    tap: function(){
-						var form = new Ext.form.FormPanel({
-							modal: false,
-						    hideOnMaskTap : true,
-							floating : true ,
-							items : [{
-					            xtype: 'fieldset',
-					            title: '输入客户信息',
-					            instructions: '请输入您的客户信息，可以开始使用积分或者赠券',
-					            defaults: {
-					                labelWidth: '35%'
-					            },
-					            items: [{
-					                xtype: 'textfield',
-					                name: 'name',
-					                label: '姓名或电话',
-					                placeHolder: '姓名或电话',
-					                autoCapitalize : true,
-					                required: true,
-					                useClearIcon: true
-					            }]
-					        }]
-						});
-						
-						form.showBy(this);
-                    }
-				}
-			},{
-				xtype : 'button' ,
 				text : '开新台',
 				iconCls: 'arrow_down' ,
 				listeners: {
@@ -113,7 +93,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 							items : [{
 					            xtype: 'fieldset',
 					            title: '输入台号',
-					            instructions: '输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新取出',
+					            instructions: '输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新输入台号取出',
 					            defaults: {
 					                labelWidth: '35%'
 					            },
