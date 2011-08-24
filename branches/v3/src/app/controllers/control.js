@@ -135,7 +135,39 @@ ieat.control = Ext.regController("control", {
 		  ieat.infoview.show();
 		  ieat.infoview.setPage(option.pindex);
 		  
+	 },
+	 
+	 
+	 /**
+	  * 显示积分和赠券对话框
+	  */
+	 showDeals : function(option){
+		 if( ieat.dealform == undefined ){
+			 ieat.dealform = new Ext.form.FormPanel({
+					modal: false,
+				    hideOnMaskTap : true,
+					floating : true ,
+					items : [{
+			            xtype: 'fieldset',
+			            title: '输入客户信息',
+			            instructions: '请输入您的客户信息，可以开始使用积分或者赠券',
+			            defaults: {
+			                labelWidth: '35%'
+			            },
+			            items: [{
+			                xtype: 'textfield',
+			                name: 'name',
+			                label: '姓名或电话',
+			                placeHolder: '姓名或电话',
+			                autoCapitalize : true,
+			                required: true,
+			                useClearIcon: true
+			            }]
+			        }]
+				});
+		 }
+			
+		 ieat.dealform.showBy(this);
 	 }
-	
 	
 });
