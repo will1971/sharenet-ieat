@@ -78,7 +78,6 @@ ieat.control = Ext.regController("control", {
 	 * @param item
 	 */
 	takeOrder : function( options /*pindex , index, item , event*/ ){
-		console.log("touch at item:" + options.index + "," + options.index);
 		if( ieat.ordered == undefined ){
 			ieat.ordered = new SH.OrderedSheet();
 		}

@@ -25,12 +25,6 @@ Ext.regApplication({
     	//创建对象
     	Ext.apply(ieat.views , {
             cover: new SH.AnimPanel({
-            	items: [{
-                    xtype: 'audio',
-                    preload : true ,
-                    loop: true ,
-                    url  : 'media/sf.mp3'
-                }],
             	listeners: {
             		tap:{
 	            		element: 'el',

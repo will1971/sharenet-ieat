@@ -82,9 +82,10 @@ body {
 
 .item .itemctl img {
 	background-color: #FFFFFF ;
-	margin : 0px 15px 0px 15px ;
-	-webkit-mask-size: 1.2em;
-	width: 1.2em;
+	-webkit-mask-size: 1.2em 1.2em ;
+	-webkit-mask-repeat: no-repeat ;
+	-webkit-mask-position: 15px 0px ;
+	width: 2.8em;
 	height: 1.2em;
 }
 
@@ -108,6 +109,10 @@ body {
 
 #headbar .x-toolbar-title{
 	font-size: 1em;
+}
+
+#headbar .x-badge{
+	top: 1.2em;
 }
 
 .sheethead{

@@ -15,8 +15,13 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
+			defaults : {
+				iconMask: true,
+				ui: 'plain'
+			},
     		items: [{
 				xtype : 'button' ,
+				iconCls: 'compose',
 				text : '已点菜' , 
 				listeners: {
                     scope : this,
@@ -29,6 +34,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                 }	
 			},{
 				xtype : 'button' ,
+				iconCls: 'arrow_down' ,
 				text : '结单' ,
 				listeners: {
                     scope : this,
@@ -94,6 +100,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 			}, */{
 				xtype : 'button' ,
 				text : '开新台',
+				iconCls: 'arrow_down' ,
 				listeners: {
                     scope : this,
                     tap: function(){
@@ -205,6 +212,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     		}, */ {
     			xtype : 'button' ,
     			text : '推荐菜' ,
+    			iconCls: 'star',
     			listeners: {
                     scope : this,
                     tap: function(){
@@ -216,6 +224,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                 }
     		},{
     			xtype : 'button' ,
+    			iconCls: 'search' ,
     			text : '选择菜系',listeners: {
                     scope : this,
                     tap: function(){
