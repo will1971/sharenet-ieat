@@ -25,6 +25,7 @@ SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
 			         {name: 'name', type: 'string'},
 			         {name: 'desc', type: 'string'},
 			         {name: 'price', type: 'string'},
+			         {name: 'pindex', type: 'int'},
 			     ],
 			data : ieat.data.getSuggestion()
 		});
@@ -75,5 +76,19 @@ SH.ItemsList = Ext.extend(Ext.DataView, {
 	emptyText : '没有设置推荐菜 ...',
 	height : '100%',
 	selectedItemCls : 'selected',
-	scroll: 'vertical'
+	scroll: 'vertical',
+		
+	listeners:{
+		itemtap : function(dv, index, item, e){
+			
+			var pindex = this.store.getAt(index).get('pindex') ;
+				Ext.dispatch({
+	              	controller: ieat.control ,
+	                action: 'openPage',
+	                index: pindex
+	              });
+			ieat.suggestion.setVisible(false);
+			return ;
+		}
+	}
 });

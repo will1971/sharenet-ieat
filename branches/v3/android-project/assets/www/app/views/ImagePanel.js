@@ -62,10 +62,15 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 	 * 显示当前页面的点菜状态
 	 */
 	showItemStatus : function(){
+		if( ieat.ordered == undefined ){
+			return ;
+		}
+		
 		var items = this.page.items ;
 		var divs = [] ;
 		for(var i = 0 ; i<= items.length - 1 ; i++ ){
 			var item = items[i] ;
+			
 			var ordered = ieat.ordered.getOrdered(item) ;
 			var id = ieat.ordered.getItemId(item);
 			var div = this.getEl().child("#" + id) ;
