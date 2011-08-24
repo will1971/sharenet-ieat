@@ -122,16 +122,22 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	listeners:{
 		itemtap : function(dv, index, item, e){
 			var target = e.target ;
+			
 			if(target.className == 'add'){
 				ieat.ordered.addOrderByIdx(index) ;
-			}
-			
-			if(target.className == 'minus'){
+			}else if(target.className == 'minus'){
 				ieat.ordered.minusOrderByIdx(index) ;
-			}
-			
-			if(target.className == 'remove'){
+			}else if(target.className == 'remove'){
 				ieat.ordered.removeOrderByIdx(index) ;
+			}else{
+				var pindex = this.store.getAt(index).get('item').pindex ;
+				console.dir(pindex);
+				Ext.dispatch({
+	              	controller: ieat.control ,
+	                action: 'openPage',
+	                index: pindex
+	              });
+				return ;
 			}
 			
 			Ext.dispatch({

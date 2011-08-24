@@ -15,7 +15,6 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-			//ui: 'light',
 			defaults : {
 				iconMask: true,
 				ui: 'plain'
