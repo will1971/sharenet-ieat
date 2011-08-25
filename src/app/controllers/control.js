@@ -8,9 +8,7 @@ ieat.control = Ext.regController("control", {
 	 * 播放声音效果
 	 */
 	playfgaudio: function(url){
-		console.log("play audio:" + url) ;
 		ieat.fgaudio.url = url;
-		console.dir(ieat.fgaudio);
 		ieat.fgaudio.play();
 	},
 	
