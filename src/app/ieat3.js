@@ -17,6 +17,8 @@ Ext.regApplication({
     launch: function() {
     	
     	//播放启动动画，后台创建其他控件
+
+    	
     	
     	//创建数据
     	ieat.data = new SH.Data();
@@ -25,17 +27,12 @@ Ext.regApplication({
     	//创建对象
     	Ext.apply(ieat.views , {
             cover: new SH.AnimPanel({
-            	items: [{
-                    xtype: 'audio',
-                    preload : true ,
-                    loop: true ,
-                    url  : 'media/sf.mp3'
-                }],
+            	//items: [ieat.bgaudio ],
             	listeners: {
             		tap:{
 	            		element: 'el',
 	            		fn: function(){
-	            			ieat.views.cover.getComponent(0).play();
+	            			//ieat.bgaudio.play();
 	            			Ext.dispatch({
 		                      	controller: ieat.control ,
 		                        action: 'showViewPage',
@@ -47,6 +44,7 @@ Ext.regApplication({
             }),
             viewpage: new SH.PageView()
         });
+    	
     	ieat.viewport = new SH.Viewport() ;
     }
 });
