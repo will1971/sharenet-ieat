@@ -298,6 +298,9 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 	},
 	
 	onAfterSwitch : function( card , oldCard , index ){
+		
+		ieat.control.playfgaudio('media/flip.wav');
+		
 		Ext.defer( function(){
 			card.showItemStatus();
 		} , 200 , this );
