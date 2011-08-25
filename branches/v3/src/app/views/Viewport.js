@@ -7,14 +7,9 @@ SH.Viewport = Ext.extend(Ext.Panel, {
     
     initComponent: function() {
     	
+
     	
-    	ieat.bgaudio = new Ext.Audio({
-    		url  : 'media/sf.mp3'
-        });
-    	
-    	ieat.fgaudio = new Ext.Audio({
-    		url : 'media/flip.wav'
-    	});
+    	ieat.fgaudio = new Ext.Audio();
 
     	//put instances of cards into viewport
     	Ext.apply(this, {

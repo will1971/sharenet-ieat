@@ -8,7 +8,7 @@ ieat.control = Ext.regController("control", {
 	 * 播放声音效果
 	 */
 	playfgaudio: function(url){
-		ieat.fgaudio.url = url;
+		ieat.fgaudio.media.dom.src = url;
 		ieat.fgaudio.play();
 	},
 	
@@ -87,7 +87,9 @@ ieat.control = Ext.regController("control", {
 	 * @param item
 	 */
 	takeOrder : function( options /*pindex , index, item , event*/ ){
-		console.log("touch at item:" + options.index + "," + options.index);
+		// play sound
+		ieat.control.playfgaudio('media/01audio01.wav');
+		
 		if( ieat.ordered == undefined ){
 			ieat.ordered = new SH.OrderedSheet();
 		}

@@ -17,7 +17,6 @@ Ext.regApplication({
     launch: function() {
     	
     	//播放启动动画，后台创建其他控件
-
     	
     	
     	//创建数据
@@ -27,12 +26,11 @@ Ext.regApplication({
     	//创建对象
     	Ext.apply(ieat.views , {
             cover: new SH.AnimPanel({
-            	//items: [ieat.bgaudio ],
             	listeners: {
             		tap:{
 	            		element: 'el',
 	            		fn: function(){
-	            			//ieat.bgaudio.play();
+	            			ieat.bgaudio.play();
 	            			Ext.dispatch({
 		                      	controller: ieat.control ,
 		                        action: 'showViewPage',
