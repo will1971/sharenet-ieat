@@ -1,0 +1,152 @@
+/* ieat3.css */
+body {
+	background-color: #000000;
+}
+
+.overview {
+	background-color: rgba(0, 0, 0, 0.6);
+	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0em 0.6em;
+}
+
+.pageovcontainer {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+}
+
+.pageoverview {
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-box-align: stretch;
+			height: 100%;
+			padding: 10px ;
+			margin: 10px ;
+}
+
+.pageintro {
+	border-bottom: 2px solid #FFF;
+	height: 126px;
+	padding: 0px 0px 0px 304px;
+}
+
+.overview .x-panel-body, .overview .x-carousel-body {
+	background-color: rgba(0, 0, 0, 0);
+	color: #FFFFFF;
+}
+
+.overview .x-toolbar .x-button .x-button-label, .sheethead.x-toolbar .x-button .x-button-label{
+	font-size: 1em;
+}
+
+.ordered {
+	background-color: rgba(0, 0, 0, 0.75);
+	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+.info, .suggestion {
+	background-color: rgba(0, 0, 0, 0.75);
+	background-image: none;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0.2em 0.6em;
+}
+
+.item {
+	margin : 10px ;
+	padding: 0px 0px 0px 90px;
+	position: relative;
+	border-bottom: 1px dotted #D1D1D1
+}
+
+.item h1, .item .ordercontrol , .pageintro h1 {
+	color: #FFFFFF;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.item h2, .pageintro h2 {
+	color: #DDD;
+	font-size: 1em;
+}
+
+.item .itemctl{
+	width:12em ; 
+	height: 1.4em ; 
+}
+
+ .item .itemctl span{
+	color: #FFFFFF ;
+	font-size: 1.2em ;
+}
+
+.item .itemctl img {
+	background-color: #FFFFFF ;
+	-webkit-mask-size: 1.2em 1.2em ;
+	-webkit-mask-repeat: no-repeat ;
+	-webkit-mask-position: 15px 0px ;
+	width: 2.8em;
+	height: 1.2em;
+}
+
+.item .itemctl img.add {
+	-webkit-mask-image: url('../images/add1.png');
+}
+
+.item .itemctl img.minus {
+	-webkit-mask-image: url('../images/minus2.png');
+}
+
+.item .itemctl img.remove{
+	-webkit-mask-image: url('../images/delete1.png');
+}
+
+#headbar{
+	background-color: #000000;
+	background-image: none;
+	font-size: 1em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.796875) 0px 0.2em 0.6em;
+}
+
+.sheethead{
+	background-color: #000000;
+	background-image: none;
+	font-size: 1em;
+}
+
+#headbar.x-toolbar .x-button .x-button-label{
+	font-size: 1em;
+}
+
+
+#headbar .x-badge{
+	top: 1.2em;
+}
+
+#orderingfood {
+	position: absolute ;
+    display: none ;
+}
+
+.orderedbox {
+	background-color: #00DB00 ;
+	-webkit-mask-image: url('../images/check2.png');
+	font-size: 1.2em;
+    padding: 4px 0px 0px 14px ;
+}
+
+.ordering {
+	z-index: 9999;
+    /*-webkit-transform-origin: 50% 50%;*/
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 1.8s;
+    -webkit-animation-name: move;
+}
+
+@-webkit-keyframes move {
+    0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-in-out; } 
+    60% {  -webkit-transform: scale(0.8);  top : 0px ; left : 10px ; opacity: 1; }
+    100% {  -webkit-transform: scale(1.5) ; top : 0px ; left : 10px ; opacity: 0; }
+}
+
+

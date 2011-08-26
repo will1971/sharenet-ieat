@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    <link rel="stylesheet" href="styles/ieat3.css" type="text/css">
+    <link rel="stylesheet" href="styles/anim.css" type="text/css">
+</head>
+<body>
+    <!-- 
+        This is your development file. This should load the debug versions of third party library, and load
+        your application file by file (the Sencha Command generators help automate this). See deploy/index.html
+        for the production version of this file
+     -->
+	<div id="loading-mask"><img src="images/backconver.jpg"></div>
+    <div id="audioeffect">
+        <audio hidden="true" src="media/sf.mp3" preload="auto" controls="false" id="audio"></audio>
+        <audio hidden="true" src="media/01audio01.wav" preload="auto" controls="false" id="order"></audio>
+        <audio hidden="true" src="media/flip.wav" preload="auto" controls="false" id="flip"></audio>        
+    </div>
+	<div id="orderingfood"></div>
+	 
+    <script type="text/javascript" src="lib/sencha-touch.js"></script>
+    
+    <div id="sencha-app">
+        <script type="text/javascript" src="app/ieat3.js"></script>
+        <!-- Place your view files here -->
+        <div id="sencha-views">
+     	<script type="text/javascript" src="app/views/Viewport.js"></script>
+            <script type="text/javascript" src="app/views/ImagePanel.js"></script>
+            <script type="text/javascript" src="app/views/AnimPanel.js"></script>
+            <script type="text/javascript" src="app/views/HeadBar.js"></script>
+            <script type="text/javascript" src="app/views/PageOverviewSheet.js"></script>
+            <script type="text/javascript" src="app/views/OrderedSheet.js"></script>
+            <script type="text/javascript" src="app/views/InfoSheet.js"></script>
+            <script type="text/javascript" src="app/views/SuggestionSheet.js"></script>
+            <script type="text/javascript" src="app/views/BufferedCarousel.js"></script>
+        </div>
+        
+        <!-- Place your model files here -->
+        <div id="sencha-models">
+            <script type="text/javascript" src="app/models/Pages.js"></script>
+        </div>
+        
+        <!-- Place your controller files here -->
+        <div id="sencha-controllers">
+            <script type="text/javascript" src="app/controllers/control.js"></script> 
+        </div>
+    </div>
+</body>
+</html>
