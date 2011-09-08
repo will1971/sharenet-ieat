@@ -6,21 +6,12 @@ SH.Viewport = Ext.extend(Ext.Panel, {
     cardSwitchAnimation: 'slide',
     
     initComponent: function() {
-    	
-    	
-    	ieat.bgaudio = new Ext.Audio({
-    		url  : 'media/sf.mp3'
-        });
-    	
-    	ieat.fgaudio = new Ext.Audio();
 
     	//put instances of cards into viewport
     	Ext.apply(this, {
             items: [
                ieat.views.cover , 
-               ieat.views.viewpage,
-               ieat.bgaudio ,
-               ieat.fgaudio
+               ieat.views.viewpage
             ]
         });
     	
