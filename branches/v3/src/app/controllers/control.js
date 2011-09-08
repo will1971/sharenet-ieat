@@ -78,9 +78,6 @@ ieat.control = Ext.regController("control", {
 	 * @param item
 	 */
 	takeOrder : function( options /*pindex , index, item , event*/ ){
-		// play sound
-		ieat.control.playfgaudio('media/01audio01.wav');
-		
 		if( ieat.ordered == undefined ){
 			ieat.ordered = new SH.OrderedSheet();
 		}
