@@ -7,8 +7,8 @@ Ext.regApplication({
     tabletStartupScreen: 'images/startup.jpg',
     glossOnIcon: true ,
     useLoadMask : true ,
-    loadMaskFadeDuration: 5000 ,
-    loadMaskRemoveDuration: 5000 ,
+    loadMaskFadeDuration: 2000 ,
+    loadMaskRemoveDuration: 2000 ,
     
     /**
      * This function is automatically called when the document has finished loading. All we do here
@@ -17,7 +17,7 @@ Ext.regApplication({
     launch: function() {
     	
     	//播放启动动画，后台创建其他控件
-    	
+    	startAnim();
     	
     	//创建数据
     	ieat.data = new SH.Data();
@@ -25,12 +25,11 @@ Ext.regApplication({
     	
     	//创建对象
     	Ext.apply(ieat.views , {
-            cover: new SH.AnimPanel({
+            /*cover: new SH.AnimPanel({
             	listeners: {
             		tap:{
 	            		element: 'el',
 	            		fn: function(){
-	            			ieat.bgaudio.play();
 	            			Ext.dispatch({
 		                      	controller: ieat.control ,
 		                        action: 'showViewPage',
@@ -39,10 +38,12 @@ Ext.regApplication({
 	            		}
             		}
             	} 
-            }),
+            }),*/
             viewpage: new SH.PageView()
         });
     	
-    	ieat.viewport = new SH.Viewport() ;
+    	Ext.defer( function(){
+    		ieat.viewport = new SH.Viewport() ;
+		} , 2000 , this );
     }
 });
