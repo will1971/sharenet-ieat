@@ -3,15 +3,6 @@
  */
 ieat.control = Ext.regController("control", {
 	
-	
-	/**
-	 * 播放声音效果
-	 */
-	playfgaudio: function(url){
-		ieat.fgaudio.media.dom.src = url;
-		ieat.fgaudio.play();
-	},
-	
 	/**
 	 * 显示封面
 	 * @param options
