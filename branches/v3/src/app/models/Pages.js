@@ -51,7 +51,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '清爽可口，口感醇厚',
 									price : 60,
 									detail : '肉类、豆制品等',
-									hotarea : [ 125, 25, 455, 275]
+									hotarea : [ 125, 25, 455, 275],
+									outofSales : true
 								},{
 									name : '爽芹手撕鸡',
 									image : 'images/p0f2.png',
@@ -76,7 +77,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '鲜嫩爽口，营养丰富',
 									price : 60,
 									detail : '肉类、鲜菇等',
-									hotarea : [ 25, 25, 415, 310 ]
+									hotarea : [ 25, 25, 415, 310 ],
+									outofSales : true
 								}, {
 									name : '香辣龙井茶皇虾',
 									image : 'images/p1f2.png',
@@ -102,7 +104,8 @@ SH.Data = Ext.extend(Object, {
 											desc : '清脆可口，滑嫩细爽，营养丰富，老少咸宜',
 											price : 60,
 											detail : '海蜇皮、萝卜丝',
-											hotarea : [ 210, 35, 605, 315 ]
+											hotarea : [ 210, 35, 605, 315 ],
+											outofSales : true
 										},
 										{
 											name : '西关私房羊腩',
@@ -110,7 +113,8 @@ SH.Data = Ext.extend(Object, {
 											desc : '红润油亮，口感浓厚',
 											price : 60,
 											detail : '羊腩、高汤等',
-											hotarea : [ 565, 360, 965, 645 ]
+											hotarea : [ 565, 360, 965, 645 ],
+											outofSales : true
 										} ]
 							},{
 								image : 'images/p3w.jpg',
@@ -149,7 +153,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '鲜爽可口，香味不腻',
 									price : 30,
 									detail : '鸡腿、鲜虾等',
-									hotarea : [ 565, 25, 865, 240 ]
+									hotarea : [ 565, 25, 865, 240 ],
+									outofSales : true
 								},{
 									name : '青芥牛仔骨',
 									image : 'images/p4f3.png',
@@ -237,7 +242,8 @@ SH.Data = Ext.extend(Object, {
 											desc : '清爽可口，口感浓厚 ，入口柔软，滋味纯正，清新',
 											price : 16,
 											detail : '新鲜猪耳、鲜汤 <br>花椒等香料佐料',
-											hotarea : [ 555, 50, 985, 320 ]
+											hotarea : [ 555, 50, 985, 320 ],
+											outofSales : true
 										},
 										{
 											name : '吮指鸡翅',
@@ -270,7 +276,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '色泽艳丽，鲜香酥软',
 									price : 30,
 									detail : '螺肉、虫草花等',
-									hotarea : [ 290, 500, 550, 690 ]
+									hotarea : [ 290, 500, 550, 690 ],
+									outofSales : true
 								   } ]
 							},{
 								image : 'images/p10w.jpg',
@@ -308,7 +315,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '瘦肉酥而不烂、皮和肥肉糯而不化 ，入口奇香、口感纯正、回味悠长',
 									price : 80,
 									detail : '新鲜猪蹄膀、白果、福菜、八角 <br>桂皮、高汤等',
-									hotarea : [ 35, 60, 395, 300 ]
+									hotarea : [ 35, 60, 395, 300 ],
+									outofSales : true
 								}, {
 									name : '果汁煎肉脯',
 									image : 'images/p11f2.png',
@@ -376,7 +384,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '荷香袭人，肉软酥烂，鲜香味没，营养丰富',
 									price : 23,
 									detail : '荷叶、肉类等',
-									hotarea : [ 25, 350, 345, 585]
+									hotarea : [ 25, 350, 345, 585],
+									outofSales : true
 								},{
 									name : '蜜汁南瓜',
 									image : 'images/p14f3.png',
@@ -437,7 +446,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '皮薄酥脆，馅心香软，口感极佳，回味无穷',
 									price : 18,
 									detail : '春卷皮、花生酱 <br>蛋清、油、盐等',
-									hotarea : [ 565, 25, 985, 295]
+									hotarea : [ 565, 25, 985, 295],
+									outofSales : true
 								},{
 									name : '葱香鸡蛋羹',
 									image : 'images/p17f2.png',
@@ -473,7 +483,8 @@ SH.Data = Ext.extend(Object, {
 									desc : '色泽鲜脆，圆润，入口柔嫩 ，可煮可煎，齿颊留香，回味甘甜',
 									price : 10,
 									detail : '豌豆',
-									hotarea : [ 105, 60, 465, 295]
+									hotarea : [ 105, 60, 465, 295],
+									outofSales : true
 								},{
 									name : '黄瓜紫茄',
 									image : 'images/p19f2.png',
@@ -517,6 +528,9 @@ SH.Data = Ext.extend(Object, {
 					
 					//推荐菜数据，在initData()函数中初始化
 					suggestionData : [],
+					
+					//缺菜记录
+					oosItems : [[1,1] , [2,1] , [3,1] , [4,1] , [5,1]] ,
 							
 					//套餐数据
 					packageData : [ {
@@ -636,6 +650,18 @@ SH.Data = Ext.extend(Object, {
 							this.orders[cid] = [] ;
 						}
 						return this.orders[cid] ;
+					},
+					
+					/**
+					 * oosItems 缺菜列表，格式为： [[1,1] , [2,1]] 
+					 */
+						refreshOutofSalesStatus : function(oosItems){
+						for(var i = 0; i <= oosItems.length; i++){
+							var items = this.pages[i].items ;
+							for(var j = 0; j<= oosItems[i].length; j++){
+								items[j].outofSales = true ;
+							}
+						}
 					}
 					
 				});

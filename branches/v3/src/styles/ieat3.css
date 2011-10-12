@@ -135,6 +135,13 @@ body {
     padding: 4px 0px 0px 14px ;
 }
 
+.outsales {
+	background-color: red ;
+	-webkit-mask-image: url('../images/outofsales.png');
+	font-size: 1.2em;
+    padding: 4px 0px 0px 14px ;
+}
+
 .ordering {
 	z-index: 9999;
     /*-webkit-transform-origin: 50% 50%;*/
