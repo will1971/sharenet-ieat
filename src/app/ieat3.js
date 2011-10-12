@@ -17,7 +17,7 @@ Ext.regApplication({
     launch: function() {
     	
     	//播放启动动画，后台创建其他控件
-    	startAnim();
+    	//startAnim();
     	
     	//创建数据
     	ieat.data = new SH.Data();

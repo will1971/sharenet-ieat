@@ -297,10 +297,15 @@ SH.PageView = Ext.extend(SH.BufferedCarousel, {
 		return this.layout.getActiveItem();
 	},
 	
+	afterRender: function() {
+    	SH.PageView.superclass.afterRender.apply(this , arguments);
+    	
+        Ext.defer( function(){
+			this.getCurrentPage().showItemStatus();
+		} , 200 , this );
+    },
+	
 	onAfterSwitch : function( card , oldCard , index ){
-		
-		ieat.control.playfgaudio('media/flip.wav');
-		
 		Ext.defer( function(){
 			card.showItemStatus();
 		} , 200 , this );

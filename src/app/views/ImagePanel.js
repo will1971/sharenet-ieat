@@ -35,9 +35,14 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 		var items = this.page.items ;
 		
 		for(var i = 0 ; i<= items.length - 1 ; i++){
+
 			var hotarea = items[i].hotarea ;
 			if( hotarea[0] <= event.pageX && hotarea[1] <= event.pageY &&
 					hotarea[2] >= event.pageX && hotarea[3] >= event.pageY){
+					if(items[i].outofSales){
+						return;
+					}
+						
 				Ext.dispatch({
 			       	controller: ieat.control ,
 			        action: 'takeOrder',
@@ -62,24 +67,40 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 	 * 显示当前页面的点菜状态
 	 */
 	showItemStatus : function(){
-		if(ieat.ordered == undefined){
-			return ;
-		}
-		
+
 		var items = this.page.items ;
 		var divs = [] ;
 		for(var i = 0 ; i<= items.length - 1 ; i++ ){
 			var item = items[i] ;
+			//TODO check outofSales status from Ajax
+			var outofSales = items[i].outofSales ;
+			//console.log("check outofsales:" + outofSales) ;
+			//console.dir(items[i]) ;
+			if(outofSales == true){
+		    	divs.push( {tag: 'div', id: id , style: 'position: absolute; width:123px; height: 76px; top: '+ (item.hotarea[3] - 130) 
+					+ 'px; left: '+ ( item.hotarea[2] - 120 ) +'px ; ' ,  cls : 'outsales'  } );
+			}
+			
+			if(ieat.ordered == undefined) {
+				continue;
+			}
+
 			var ordered = ieat.ordered.getOrdered(item) ;
 			var id = ieat.ordered.getItemId(item);
 			var div = this.getEl().child("#" + id) ;
 	
-			if(ordered && div){
-				div.setHTML( ordered.get('count') );
-			}else if(ordered && !div){
-				divs.push( {tag: 'div', id: id , style: 'position: absolute; width:60px; height: 60px; top: '+ (item.hotarea[3] - 110) 
-						+ 'px; left: '+ ( item.hotarea[2] - 30 ) +'px ; ' ,  cls : 'orderedbox' , html : ordered.get('count') } );
-			}else if(!ordered && div){
+
+			if(ordered && div) {
+				div.setHTML(ordered.get('count'));
+			} else if(ordered && !div) {
+				divs.push({
+					tag : 'div',
+					id : id,
+					style : 'position: absolute; width:60px; height: 60px; top: ' + (item.hotarea[3] - 110) + 'px; left: ' + (item.hotarea[2] - 30 ) + 'px ; ',
+					cls : 'orderedbox',
+					html : ordered.get('count')
+				});
+			} else if(!ordered && div) {
 				div.remove();
 			}
 		}

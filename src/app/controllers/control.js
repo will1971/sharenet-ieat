@@ -101,7 +101,7 @@ ieat.control = Ext.regController("control", {
 		
 		// 点菜之后更新菜品的显示状况
 		this.showItemStatus(options.pindex) ;
-
+		
 	},
 	
 	
@@ -169,4 +169,9 @@ ieat.control = Ext.regController("control", {
 		 ieat.dealform.showBy(this);
 	 }
 	
+	
+	/**
+	  * 缺菜管理
+	  */
+
 });
