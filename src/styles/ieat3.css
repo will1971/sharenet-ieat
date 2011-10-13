@@ -56,9 +56,24 @@ body {
 	margin : 10px ;
 	padding: 0px 0px 0px 90px;
 	position: relative;
-	border-bottom: 1px dotted #D1D1D1
+	border-bottom: 1px dotted #D1D1D1;
 }
-
+.itemnew{
+    margin:auto;
+	position: relative;
+    border-bottom: 1px dotted #D1D1D1;
+}
+.itemnew h1{
+	color: #FFFFFF;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-left:0.6cm;
+}
+.itemnew h2 {
+	color: #DDD;
+	font-size: 1em;
+	margin-left:0.6cm;
+}
 .item h1, .item .ordercontrol , .pageintro h1 {
 	color: #FFFFFF;
 	font-size: 1.2em;
