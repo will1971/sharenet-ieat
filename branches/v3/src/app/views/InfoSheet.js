@@ -4,7 +4,7 @@
 Ext.ns("SH");
 
 SH.InfoSheet = Ext.extend(Ext.Sheet, {
-	width :  400 ,
+	width :  310 ,
 	enter : 'right',
 	cls : 'info',
     hideOnMaskTap : true,
@@ -21,7 +21,7 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 		
 		this.foodinfo = new Ext.data.Store({
 			fields: [
-			         {name: 'image', type: 'string'},
+			         {name: 'imagen', type: 'string'},
 			         {name: 'name', type: 'string'},
 			         {name: 'desc', type: 'string'},
 			         {name: 'price', type: 'string'},
@@ -51,10 +51,7 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 		            }
 		        }]
 			}],
-    		items: [{
-    			html : "详细信息区"
-    		}],
-			items: [new SH.ItemsList({
+			items: [new SH.InfoItemsList({
 		        store:this.foodinfo
 		    })]
         });
@@ -66,18 +63,18 @@ SH.InfoSheet = Ext.extend(Ext.Sheet, {
 	}
 });
 
-SH.ItemsList = Ext.extend(Ext.DataView, {
+SH.InfoItemsList = Ext.extend(Ext.DataView, {
 	tpl :  new Ext.XTemplate(
 		'<tpl for=".">' +
-	         '<div class="item">',
-	            '<div class="itemimg" style="background: url({image}) center no-repeat;position: 50% 50%;"></div>',
-	            '<h3>{name}</h3>',
+	         '<div class="itemnew">',
+	            '<div class="itemimg" style="background: url({imagen}) center no-repeat; height: 180px; "></div>',
+				'<h1>{name}</h1>',
 	            '<h2>{desc}</h2>',
-	            '<h2>￥{price}元</h2>',
+	            //'<h2>￥{price}元</h2>',
 	        '</div>',
         '</tpl>'),
     selectedItemCls : 'selected',
-	itemSelector : 'div.item',
+	itemSelector : 'div.itemnew',
 	emptyText : '当前菜单没有详情说明 ...',
 	height : '100%',
 	selectedItemCls : 'selected',
