@@ -23,7 +23,7 @@ SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
 			fields: [
 			         {name: 'image', type: 'string'},
 			         {name: 'name', type: 'string'},
-			         {name: 'desc', type: 'string'},
+			         {name: 'descn', type: 'string'},
 			         {name: 'price', type: 'string'},
 			     ],
 			data : ieat.data.getSuggestion()
@@ -66,7 +66,7 @@ SH.ItemsList = Ext.extend(Ext.DataView, {
 	         '<div class="item">',
 	            '<div class="itemimg" style="background: url({image}) center no-repeat ; width:88px ; height: 100%; position: absolute; left: 0px; top: 0px;"></div>',
 	            '<h1>{name}</h1>',
-	            '<h2>{desc}</h2>',
+	            '<h2>{descn}</h2>',
 	            '<h2>￥{price}元</h2>',
 	        '</div>',
         '</tpl>'),
