@@ -7,9 +7,6 @@ CACHE MANIFEST
 
 index.html
 
-#media
-media/sf.mp3
-
 #scripts
 lib/sencha-touch.js
 app/ieat3.js
