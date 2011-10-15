@@ -1,0 +1,45 @@
+
+<html><head>
+    <title>测试数据提交</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <link rel="stylesheet" href="ieat/styles/sencha-touch.css" type="text/css">
+    <script type="text/javascript" src="ieat/lib/sencha-touch.js"></script>
+    <script type='text/javascript'>
+
+    Ext.setup( {
+
+		onReady : function() {
+			
+			var panel = new Ext.TabPanel({
+				fullscreen: true,					
+				items: [{
+			      	  xtype : 'button',
+	                text: 'POST',
+	                handler: function(){
+	                    Ext.Ajax.request({
+	                        url: '/webproxy/op',
+	                        method : 'POST' ,
+	                        jsonData : [ "2" , "XXX223344" , "000001" , "000001" , "000001" , 
+	                       	    	[[1,1],[1,1]]
+	                       		] ,				                       	
+	                     success: function(response, opts) {
+	                        	console.dir(response) ;
+	                        	console.dir(opts);
+	                        	Ext.Msg.alert('', response.responseText , Ext.emptyFn);
+	                        }
+	                    });
+	                }
+	            }]
+		});
+
+		}
+	});
+      
+    </script>
+</head>
+<body>
+<div style="display: none;"></div>
+</body>
+</html>
+        
+        
