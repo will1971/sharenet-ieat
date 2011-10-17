@@ -32,7 +32,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                           });
                     }
                 }	
-			},{
+			},
+			/*	{
 				xtype : 'button' ,
 				text : '积分赠券' ,
 				iconCls: 'arrow_down' ,
@@ -45,7 +46,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                           });
                     }
 				}
-			},{
+			},  */
+				{
 				xtype : 'button' ,
 				iconCls: 'arrow_down' ,
 				text : '结单' ,
@@ -177,7 +179,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 						form.showBy(this);
                     }
 				}
-			} , {
+			} , 
+		/*		{
     			xtype : 'button' ,
     			text : '详情',
     			iconCls: 'info',
@@ -192,7 +195,8 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                           });
                     }
                 }
-    		}, {
+    		},   */
+    			{
     			xtype : 'button' ,
     			text : '推荐菜' ,
     			iconCls: 'star',

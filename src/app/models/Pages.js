@@ -665,6 +665,7 @@ SH.Data = Ext.extend(Object, {
 					 * 需要的话可以编制二次索引和HaspMap，提高查询速度。
 					 */
 					initData : function (){
+						var gindex = 0 ;
 						//初始化页面数据
 						for(var i=0; i<=this.pages.length - 1 ; i++){
 							this.pages[i].index = i ;
@@ -674,6 +675,7 @@ SH.Data = Ext.extend(Object, {
 								items[j].index = j ;
 								items[j].hotarea[1] += 50 ;
 								items[j].hotarea[3] += 50 ;
+								items[j].gindex += gindex ;
 							}
 						}
 						//初始化类别数据
@@ -708,7 +710,7 @@ SH.Data = Ext.extend(Object, {
 					 */
 					getPagesOfType : function(type){
 						return this.typePages[type] ;
-					},
+					}, 
 					
 					/**
 					 * 返回指定页面
