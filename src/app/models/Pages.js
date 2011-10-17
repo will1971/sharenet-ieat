@@ -680,7 +680,7 @@ SH.Data = Ext.extend(Object, {
 								items[j].index = j ;
 								items[j].hotarea[1] += 50 ;
 								items[j].hotarea[3] += 50 ;
-								items[j].gindex += gindex ;
+								items[j].gindex = gindex++ ;
 							}
 						}
 						//初始化类别数据
