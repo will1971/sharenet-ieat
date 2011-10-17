@@ -624,9 +624,14 @@ SH.Data = Ext.extend(Object, {
 									price : 68,
 									detail : '乳鸽、油、醋等',
 									hotarea : [ 680, 285, 985, 515]
-								  } ]
-							} 
-							
+								  }]
+							},
+							{
+								image : 'images/logo.jpg',
+								items : [ {
+									hotarea : [ 0, 0, 0, 0]
+								}]
+							}
 							 ],
 
 					//推荐菜系
