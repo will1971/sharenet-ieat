@@ -5,7 +5,7 @@
 Ext.ns("SH");
 
 SH.OrderedSheet = Ext.extend(Ext.Sheet, {
-	width :  400 ,
+	width :  450 ,
 	enter : 'left',
 	cls : 'ordered',
     hideOnMaskTap : true,
@@ -50,7 +50,35 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
                         	this.setVisible(false);
                         }
     	            }
-    	        },{xtype:'spacer'}]
+    	        },{xtype:'spacer'},{
+    	            text: '提交',
+    	            listeners: {
+                        scope : this,
+                        tap: function(){
+                        	
+                        		var orderItem = [] ;
+                        		store.each(function(record){
+                        			var itemId = (record.get('item').gindex) * 5 + 1 ;
+                        			var item = [itemId , record.get('count')] ;
+                        			orderItem.push(item);
+                        		});
+                        	
+                        		console.dir(orderItem);
+                        		var PDU = Ext.util.JSON.encode( [ store.getCount() , "MD5" , "000001" , "000001" , "000001"
+                        		                                  , orderItem ] );
+                        		
+                        		//提交菜单到服务器
+	                        	Ext.Ajax.request({
+	    	                        url: '/webproxy/op',
+	    	                        method : 'POST' ,
+	    	                        jsonData : PDU ,				                       	
+	    	                     success: function(response, opts) {
+	    	                        Ext.Msg.alert('点菜单成功发送到服务器。' , '' , Ext.emptyFn);
+	    	                        }
+	    	                    });
+                        	}
+    	            }
+    	        }]
     		}],
     		
     		items: [new SH.OrderItemsList({
@@ -108,8 +136,10 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	         '<div class="item">',
 	            '<div class="itemimg" style="background: url({item.image}) center no-repeat ; width:88px ; height: 100%; position: absolute; left: 0px; top: 0px;"></div>',
 	            '<h1>{item.name}</h1>',
-	            '<h2>单价：￥{item.price}元</h2>',
-	            '<div class="itemctl"><img class="add"/><span>{count}份</span><img class="minus"/><img class="remove"/></div>',
+	            '<table>',
+	            '<tr><td width="200px" height="40px"><h2>单价:￥{item.price}元</h2></td>',
+	            '<td><div class="itemctl"><img class="add"/><span>{count}份</span><img class="minus"/><img class="remove"/></div></td>',
+	        '</tr></table>',
 	        '</div>',
         '</tpl>'),
     selectedItemCls : 'selected',

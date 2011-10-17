@@ -25,7 +25,7 @@ Ext.regApplication({
     	
     	//创建对象
     	Ext.apply(ieat.views , {
-            /*cover: new SH.AnimPanel({
+            cover: new SH.AnimPanel({
             	listeners: {
             		tap:{
 	            		element: 'el',
@@ -38,7 +38,7 @@ Ext.regApplication({
 	            		}
             		}
             	} 
-            }),*/
+            }),
             viewpage: new SH.PageView()
         });
     	

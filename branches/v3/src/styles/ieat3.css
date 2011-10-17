@@ -86,8 +86,9 @@ body {
 }
 
 .item .itemctl{
+	margin-right:0.1cm;
 	width:12em ; 
-	height: 1.4em ; 
+	height: 1.6em ; 
 }
 
  .item .itemctl span{
@@ -101,19 +102,22 @@ body {
 	-webkit-mask-repeat: no-repeat ;
 	-webkit-mask-position: 15px 0px ;
 	width: 2.8em;
-	height: 1.2em;
+	height: 1.8em;
 }
 
 .item .itemctl img.add {
 	-webkit-mask-image: url('../images/add1.png');
+	-webkit-mask-size: 1.6em 1.6em ;
 }
 
 .item .itemctl img.minus {
 	-webkit-mask-image: url('../images/minus2.png');
+	-webkit-mask-size: 1.6em 1.6em ;
 }
 
 .item .itemctl img.remove{
 	-webkit-mask-image: url('../images/delete1.png');
+	-webkit-mask-size: 1.6em 1.6em ;
 }
 
 #headbar{
