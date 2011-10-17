@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 控制器内，定义了大部分的控制方法
  */
 ieat.control = Ext.regController("control", {
@@ -78,6 +78,7 @@ ieat.control = Ext.regController("control", {
 	 * @param item
 	 */
 	takeOrder : function( options /*pindex , index, item , event*/ ){
+
 		if( ieat.ordered == undefined ){
 			ieat.ordered = new SH.OrderedSheet();
 		}
