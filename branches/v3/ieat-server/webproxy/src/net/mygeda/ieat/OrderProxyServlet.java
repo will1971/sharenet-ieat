@@ -1,6 +1,7 @@
 package net.mygeda.ieat;
 
 import java.io.IOException;
+
 import java.io.Reader;
 import java.io.StringReader;
 
@@ -28,8 +29,15 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
+import java.util.HashSet;
 /**
- * Order Info Proxy
+ * 点菜API
+ * url : http://server:port/webproxy/op
+ * Content : [] 
+ * 
+ * 缺菜调用API
+ * url: http://server:port/webproxy/op?at=oos&u=user&p=pass&i=id1,id2,id3.....
  * 
  * @author sanli
  * 
@@ -38,19 +46,52 @@ public class OrderProxyServlet extends WebSocketServlet {
 	private static final Logger LOG = Log.getLogger(OrderProxyServlet.class);
 
 	private final Set<ProxySocket> members = new CopyOnWriteArraySet<ProxySocket>();
+	
+	private static final Set<String> outofSales = new HashSet<String>();
 
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response)
 			throws javax.servlet.ServletException, IOException {
-		String data = IOUtils.toString( request.getInputStream()) ;
 		
-		for(ProxySocket member : members){
-			member.sendMessage(data);
+		String action = request.getParameter("at") ;
+		
+		if(action!=null && action.equals("oos")){
+			//缺菜调用
+			doOOS(request,response);
+		}else{
+			//点菜调用
+			String data = IOUtils.toString( request.getInputStream()) ;
+			
+			for(ProxySocket member : members){
+				member.sendMessage(data);
+			}
+			
+			response.getWriter().write(fomartOO( String.valueOf( System.currentTimeMillis())
+					,outofSales ));
+		}
+	};
+	
+	
+	/**
+	 * 添加缺少的菜
+	 * @param request
+	 * @param response
+	 */
+	private void doOOS(HttpServletRequest request, HttpServletResponse response) {
+		String items = request.getParameter("i") ;
+		String[] itemArray = items.split(",") ;
+		outofSales.clear() ;
+		if(itemArray.length > 0){
+			for(String item : itemArray){
+				outofSales.add(item) ;
+			}
 		}
 		
-		response.getWriter().write("OK");
-	};
+	}
+
+
+
 
 	@Override
 	protected void doPost(HttpServletRequest request,
@@ -182,6 +223,31 @@ public class OrderProxyServlet extends WebSocketServlet {
 		return sb.toString() ;
 	}
 	
+	
+	/**
+	 * 组合售罄消息给客户端，消息格式如下：
+	 * 【VERSION，ITEM1_ID,ITEM2_ID,ITEM3_ID......】
+	 * @param outofsales2
+	 * @return
+	 */
+	private String fomartOO(String version , Set<String> outofsales2) {
+		StringBuilder sb = new StringBuilder("[");
+		sb.append(version) ;
+		if(outofsales2.size() > 0){
+			sb.append(",") ;
+		}
+		
+		int i = 0 ;
+		for(String itemId : outofsales2){
+			sb.append(itemId) ;
+			if( (i++)  != outofsales2.size() -1 ){
+				sb.append(",") ;	
+			}
+		}
+		sb.append("]") ;
+		return sb.toString() ;
+	}
+
 	
 	/**
 	 * this is for test purpose
