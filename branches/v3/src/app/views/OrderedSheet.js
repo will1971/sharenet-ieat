@@ -58,18 +58,20 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
                         	
                         		var orderItem = [] ;
                         		store.each(function(record){
+                        			console.dir(record.get('item'));
                         			var itemId = (record.get('item').gindex) * 5 + 1 ;
                         			var item = [itemId , record.get('count')] ;
                         			orderItem.push(item);
+                        			console.dir(item);
                         		});
                         	
-                        		console.dir(orderItem);
+                        		
                         		var PDU = Ext.util.JSON.encode( [ store.getCount() , "MD5" , "000001" , "000001" , "000001"
                         		                                  , orderItem ] );
                         		
                         		//提交菜单到服务器
 	                        	Ext.Ajax.request({
-	    	                        url: '/webproxy/op',
+	    	                        url: 'http://localhost:8080/webproxy/op',
 	    	                        method : 'POST' ,
 	    	                        jsonData : PDU ,				                       	
 	    	                     success: function(response, opts) {
