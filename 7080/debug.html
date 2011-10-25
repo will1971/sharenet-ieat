@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <link rel="stylesheet" href="styles/sencha-touch.css" type="text/css">
+    <link rel="stylesheet" href="styles/ieat3.css" type="text/css">
+    <link rel="stylesheet" href="styles/anim.css" type="text/css">
+	<link rel="apple-touch-startup-image" href="images/startup1.jpg" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+	<link rel="apple-touch-startup-image" href="images/startup.jpg" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+</head>
+<body>
+    <!-- 
+        This is your development file. This should load the debug versions of third party library, and load
+        your application file by file (the Sencha Command generators help automate this). See deploy/index.html
+        for the production version of this file
+     -->
+	<div id="loading-mask">
+		<ol style="position: absolute; top: 0px; left: 0px;"><li id="scene-0">
+		<div class="AN-sObj-stage" id="ext-gen878"><div class="AN-Object" id="AN-sObj-65">
+		<div id="AN-sObj-val-65"><img src="images/bg.jpg"></div></div>
+		<div class="AN-Object" id="AN-sObj-66"><div id="AN-sObj-val-66"><img src="images/title.png"></div></div>
+		<div class="AN-Object" id="AN-sObj-68"><div id="AN-sObj-val-68"><img src="images/f1.png"></div></div></div>
+		</li></ol>
+		<script>
+function setConfig(configObject) {
+	config = configObject;
+	
+	//get ol list and children
+    var ol = document.body.getElementsByTagName('ol')[0];
+    scenes = ol.children;
+
+	currentSceneIndex = -1;
+}
+
+function start() {	
+	goToScene(0);
+}
+function goToSceneID(id) {
+	for (var i=0; i < config.length; i++) {
+		if (config[i].id === id) {
+			goToScene(i);
+			return;
+		}
+	}
+}
+//function to go directly to any scene
+function goToScene(index) {
+    
+    //go to scene
+    startScene(index);
+
+	//set up timer if jumping on done
+	if (config[index].jump !== -1) {
+		applyTimeout(config[index].jump, config[index].duration);
+	}
+	
+}
+
+function startScene(index) {
+    
+	//restart current scene without flicker
+	if (index === currentSceneIndex) {
+		scenes[index].setAttribute('class','run restart');
+		setTimeout(function(){
+	        scenes[index].setAttribute('class','run');
+			},0);
+		return;
+	}
+
+    //add the class "run" to the scene currently running and remove it from anybody else
+    var scene;
+    for (var i=0; i < scenes.length; i++) {
+        scene = scenes[i];
+        if (i === index) {
+            scene.setAttribute('class','run');
+        } else {
+            scene.setAttribute('class','');
+        }
+        
+    }
+
+	currentSceneIndex = index;
+    
+}
+function applyTimeout(index,time) {
+    setTimeout(function(){
+        goToScene(index);
+    },time);
+}
+
+function startAnim() {
+	setConfig([{"jump":-1,"duration":2750,"id":0}]);
+	start();
+}
+		
+		</script>
+	</div>
+    <div id="orderingfood"></div>
+     
+    <script type="text/javascript" src="lib/sencha-touch.js"></script>
+    <div id="sencha-app">
+        <script type="text/javascript" src="app/ieat3.js"></script>
+        
+        <!-- Place your view files here -->
+        <div id="sencha-views">
+         	<script type="text/javascript" src="app/views/Viewport.js"></script>
+            <script type="text/javascript" src="app/views/ImagePanel.js"></script>
+            <!-- <script type="text/javascript" src="app/views/AnimPanel.js"></script> -->
+            <script type="text/javascript" src="app/views/HeadBar.js"></script>
+            <script type="text/javascript" src="app/views/PageOverviewSheet.js"></script>
+            <script type="text/javascript" src="app/views/OrderedSheet.js"></script>
+            <script type="text/javascript" src="app/views/InfoSheet.js"></script>
+            <script type="text/javascript" src="app/views/SuggestionSheet.js"></script>
+            <script type="text/javascript" src="app/views/BufferedCarousel.js"></script>
+        </div>
+        
+        <!-- Place your model files here -->
+        <div id="sencha-models">
+            <script type="text/javascript" src="app/models/Pages.js"></script>
+        </div>
+        
+        <!-- Place your controller files here -->
+        <div id="sencha-controllers">
+            <script type="text/javascript" src="app/controllers/control.js"></script> 
+        </div>
+    </div>
+
+
+</body>
+</html>

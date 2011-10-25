@@ -1,0 +1,4 @@
+file list:
+720.css -> for the 768 * 1024 screen
+960.css -> for the 1024 * 769 screen
+base.css -> basic css
