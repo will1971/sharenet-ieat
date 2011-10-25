@@ -127,6 +127,10 @@ ieat.control = Ext.regController("control", {
 		
 		ieat.ordered.removeAllOrder();
 		this.showItemStatus(options.pindex) ;
+		Ext.dispatch({
+              	controller: ieat.control ,
+                action: 'refereshCurrentItemStatus'
+              });
 	},
 	
 	
