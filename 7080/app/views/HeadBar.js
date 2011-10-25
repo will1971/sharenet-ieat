@@ -35,7 +35,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     }
                 }	
 			},
-			   {
+			/*   {
     			xtype : 'button' ,
     			iconCls: 'search' ,
     			text : '选择菜系',listeners: {
@@ -47,7 +47,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                           });
                     }
                 }	
-    		}, 
+    		}, */
     		  {
     			xtype : 'button' ,
     			text : '推荐菜' ,
@@ -222,7 +222,9 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 					                autoCapitalize : true,
 					                required: true,
 					                useClearIcon: true
-					            },{html:'输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新输入台号取出'},{
+					            },
+					            //	{html:'输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新输入台号取出'},
+					            		{
 					            	xtype: 'button',
 					                name: 'ok',
 					                text: 'OK',
@@ -269,7 +271,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 	},
 	
 	udpateOrder : function(count , price ){
-		this.items.get(5).setBadge(count) ;
+		this.items.get(4).setBadge(count) ;
 	} 
 });
 
