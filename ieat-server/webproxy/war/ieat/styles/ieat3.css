@@ -171,8 +171,8 @@ body {
 
 @-webkit-keyframes move {
     0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-in-out; } 
-    60% {  -webkit-transform: scale(0.8);  top : 0px ; left : 1000px ; opacity: 1; }
-    100% {  -webkit-transform: scale(1.5) ; top : 0px ; left : 1000px ; opacity: 0; }
+    60% {  -webkit-transform: scale(0.8);  top : 0px ; left : 900px ; opacity: 1; }
+    100% {  -webkit-transform: scale(1.5) ; top : 0px ; left : 900px ; opacity: 0; }
 }
 
 
