@@ -56,10 +56,12 @@ SH.ImagePanel = Ext.extend(Ext.Panel, {
 		}
 		
 		//如果没有点中某个菜，就弹出预览框
+		/*
 		Ext.dispatch({
           	controller: ieat.control ,
             action: 'showOverView'
           });
+          */
 	},
 	
 	

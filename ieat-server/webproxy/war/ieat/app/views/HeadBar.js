@@ -20,19 +20,19 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				ui: 'plain'
 			},
     		items: [{
-				xtype : 'button' ,
-				iconCls: 'compose',
-				text : '已点菜' , 
-				listeners: {
+    			xtype : 'button' ,
+    			iconCls: 'search' ,
+    			text : '选择菜系',
+    			listeners: {
                     scope : this,
                     tap: function(){
-                    	Ext.dispatch({
+            			Ext.dispatch({
                           	controller: ieat.control ,
-                            action: 'showOrderedView'
+                            action: 'showOverView'
                           });
                     }
                 }	
-			},
+    		},
 			/*	{
 				xtype : 'button' ,
 				text : '积分赠券' ,
@@ -94,7 +94,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 							items : [{
 					            xtype: 'fieldset',
 					            title: '输入台号',
-					            instructions: '输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新输入台号取出',
+					            //instructions: '输入新的台号来开始点菜，当前座的点菜信息不会丢失，在以后可以重新输入台号取出',
 					            defaults: {
 					                labelWidth: '35%'
 					            },
@@ -114,6 +114,26 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 					                autoCapitalize : true,
 					                required: true,
 					                useClearIcon: true
+					            },{
+					            	xtype: 'button',
+					                name: 'ok',
+					                text: 'OK',
+					                listeners :{
+					                	//清空已点菜,  关闭窗口
+					                	tap: function(){
+					                		//取当前页序号
+					                		var pindex = ieat.views.viewpage.getCurrentPageIdx();
+					                		
+					                		//清除已点菜
+											Ext.dispatch({
+												controller : ieat.control,
+												action : 'cleanOrder',
+												pindex : pindex
+											});
+					                		
+	                    	                form.setVisible(false);
+					                	}
+					                }
 					            }]
 					        }]
 						});
@@ -209,26 +229,28 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
                     	ieat.suggestion.show();
                     }
                 }
-    		},{
-    			xtype : 'button' ,
-    			iconCls: 'search' ,
-    			text : '选择菜系',listeners: {
+    		},
+    		{
+				xtype : 'button' ,
+				iconCls: 'compose',
+				text : '已点菜' , 
+				listeners: {
                     scope : this,
                     tap: function(){
-            			Ext.dispatch({
+                    	Ext.dispatch({
                           	controller: ieat.control ,
-                            action: 'showOverView'
+                            action: 'showOrderedView'
                           });
                     }
                 }	
-    		}]
+			}]
         });
     	
     	SH.HeadBar.superclass.initComponent.apply(this, arguments);
 	},
 	
 	udpateOrder : function(count , price ){
-		this.items.get(0).setBadge(count) ;
+		this.items.get(6).setBadge(count) ;
 	} 
 });
 

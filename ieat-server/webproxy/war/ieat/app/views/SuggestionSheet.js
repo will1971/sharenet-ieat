@@ -4,7 +4,7 @@
 Ext.ns("SH");
 
 SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
-	width :  512 ,
+	width :  470 ,
 	enter : 'right',
 	cls : 'suggestion',
     hideOnMaskTap : true,
@@ -24,7 +24,7 @@ SH.SuggestionSheet = Ext.extend(Ext.Sheet, {
 			         {name: 'image', type: 'string'},
 			         {name: 'name', type: 'string'},
 			         {name: 'descn', type: 'string'},
-			         {name: 'price', type: 'string'},
+			         {name: 'price', type: 'string'}
 			     ],
 			data : ieat.data.getSuggestion()
 		});
