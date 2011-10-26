@@ -87,13 +87,13 @@ body {
 
 .item .itemctl{
 	margin-right:0.1cm;
-	width:12em ; 
-	height: 1.6em ; 
+	width:15em ; 
+	height: 2.0em ; 
 }
 
  .item .itemctl span{
 	color: #FFFFFF ;
-	font-size: 1.2em ;
+	font-size: 1.4em ;
 }
 
 .item .itemctl img {
@@ -101,23 +101,23 @@ body {
 	-webkit-mask-size: 1.2em 1.2em ;
 	-webkit-mask-repeat: no-repeat ;
 	-webkit-mask-position: 15px 0px ;
-	width: 2.8em;
-	height: 1.8em;
+	width: 2.9em;
+	height: 2.0em;
 }
 
 .item .itemctl img.add {
 	-webkit-mask-image: url('../images/add1.png');
-	-webkit-mask-size: 1.6em 1.6em ;
+	-webkit-mask-size: 2.0em 2.0em ;
 }
 
 .item .itemctl img.minus {
 	-webkit-mask-image: url('../images/minus2.png');
-	-webkit-mask-size: 1.6em 1.6em ;
+	-webkit-mask-size: 2.0em 2.0em ;
 }
 
 .item .itemctl img.remove{
 	-webkit-mask-image: url('../images/delete1.png');
-	-webkit-mask-size: 1.6em 1.6em ;
+	-webkit-mask-size: 2.0em 2.0em ;
 }
 
 #headbar{
@@ -165,14 +165,14 @@ body {
 	z-index: 9999;
     /*-webkit-transform-origin: 50% 50%;*/
     -webkit-animation-iteration-count: 1;
-    -webkit-animation-duration: 1.8s;
+    -webkit-animation-duration: 1.5s;
     -webkit-animation-name: move;
 }
 
 @-webkit-keyframes move {
     0% { -webkit-transform: opacity: 1; -webkit-animation-timing-function: ease-in-out; } 
-    60% {  -webkit-transform: scale(0.8);  top : 0px ; left : 10px ; opacity: 1; }
-    100% {  -webkit-transform: scale(1.5) ; top : 0px ; left : 10px ; opacity: 0; }
+    60% {  -webkit-transform: scale(0.8);  top : 0px ; left : 1000px ; opacity: 1; }
+    100% {  -webkit-transform: scale(1.5) ; top : 0px ; left : 1000px ; opacity: 0; }
 }
 
 

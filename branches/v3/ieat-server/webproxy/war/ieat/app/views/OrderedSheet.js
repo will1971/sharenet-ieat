@@ -5,8 +5,8 @@
 Ext.ns("SH");
 
 SH.OrderedSheet = Ext.extend(Ext.Sheet, {
-	width :  450 ,
-	enter : 'left',
+	width :  470 ,
+	enter : 'right',
 	cls : 'ordered',
     hideOnMaskTap : true,
 	modal: false,
@@ -42,15 +42,6 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
     				ui : 'dark'
     			},
     		    items:[{
-    	            text: '收回',
-    	            ui: 'back',
-    	            listeners: {
-                        scope : this,
-                        tap: function(){
-                        	this.setVisible(false);
-                        }
-    	            }
-    	        },{xtype:'spacer'},{
     	            text: '提交',
     	            listeners: {
                         scope : this,
@@ -69,7 +60,7 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
                         		if( ieat.submitmask == undefined ){
                         			ieat.submitmask = new Ext.LoadMask(ieat.ordered.el , {msg:"正在提交..."});
                         		}
-                        		ieat.submitmask.show();
+                        		//ieat.submitmask.show();
                         		
                         		//提交菜单到服务器
 	                        	Ext.Ajax.request({
@@ -95,6 +86,15 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 	    	                        }
 	    	                    });
                         	}
+    	            }
+    	        },{xtype:'spacer'},{
+    	            text: '收回',
+    	            ui: 'back',
+    	            listeners: {
+                        scope : this,
+                        tap: function(){
+                        	this.setVisible(false);
+                        }
     	            }
     	        }]
     		}],
@@ -139,6 +139,10 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 		this.store.removeAt(index) ;
 	},
 	
+	removeAllOrder : function(){
+	    this.store.removeAll();
+	},
+	
 	getOrdered : function ( item ){
 		return this.store.getById(this.getItemId(item)) ;
 	} ,
@@ -156,7 +160,7 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	            '<h1>{item.name}</h1>',
 	            '<table>',
 	            '<tr><td width="200px" height="40px"><h2>单价:￥{item.price}元</h2></td>',
-	            '<td><div class="itemctl"><img class="add"/><span>{count}份</span><img class="minus"/><img class="remove"/></div></td>',
+	            '<td><div class="itemctl"><img class="add"/>&nbsp;&nbsp;<img class="minus"/>&nbsp;&nbsp;<span>{count}份</span>&nbsp;&nbsp;<img class="remove"/></div></td>',
 	        '</tr></table>',
 	        '</div>',
         '</tpl>'),

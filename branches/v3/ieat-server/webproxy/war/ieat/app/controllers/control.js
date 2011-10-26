@@ -60,7 +60,7 @@ ieat.control = Ext.regController("control", {
 				var divs = [] ;
 				for(var i = 0 ; i <= page.items.length - 1 ; i++){
 					divs.push( {tag: 'h1', html: page.items[i].name } );
-					divs.push( {tag: 'h2', html: page.items[i].desc } );
+				//	divs.push( {tag: 'h2', html: page.items[i].desc } );
 				}
 				var ovheader = ieat.overview.getDockedItems()[0].getEl().query('.pageintro');
 				var list = Ext.DomHelper.overwrite( ovheader[0] , divs);
@@ -105,6 +105,22 @@ ieat.control = Ext.regController("control", {
 		
 	},
 	
+	/**
+	 * 清空已点菜
+	 * @param {} pindex
+	 */
+	cleanOrder : function(options){
+		if( ieat.ordered == undefined ){
+			return ;
+		}
+		
+		ieat.ordered.removeAllOrder();
+		this.showItemStatus(options.pindex) ;
+		Ext.dispatch({
+              	controller: ieat.control ,
+                action: 'refereshCurrentItemStatus'
+              });
+	},
 	
 	/**
 	 * 设置某页面中的菜品点中情况
