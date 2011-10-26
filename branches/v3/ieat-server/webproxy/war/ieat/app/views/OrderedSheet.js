@@ -160,7 +160,7 @@ SH.OrderItemsList = Ext.extend(Ext.DataView, {
 	            '<h1>{item.name}</h1>',
 	            '<table>',
 	            '<tr><td width="200px" height="40px"><h2>单价:￥{item.price}元</h2></td>',
-	            '<td><div class="itemctl"><img class="add"/>&nbsp;&nbsp;<img class="minus"/>&nbsp;&nbsp;<span>{count}份</span>&nbsp;&nbsp;<img class="remove"/></div></td>',
+	            '<td><div class="itemctl"><span>{count}份</span><img class="add"/>&nbsp;&nbsp;<img class="minus"/>&nbsp;&nbsp;<img class="remove"/></div></td>',
 	        '</tr></table>',
 	        '</div>',
         '</tpl>'),

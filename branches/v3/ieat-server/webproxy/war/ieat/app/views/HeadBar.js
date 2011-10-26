@@ -23,6 +23,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     			xtype : 'button' ,
     			iconCls: 'search' ,
     			text : '选择菜系',
+    			html:'&nbsp;&nbsp;&nbsp;',
     			listeners: {
                     scope : this,
                     tap: function(){
@@ -51,6 +52,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				xtype : 'button' ,
 				iconCls: 'arrow_down' ,
 				text : '结单' ,
+				html:'&nbsp;&nbsp;&nbsp;',
 				listeners: {
                     scope : this,
                     tap: function(){
@@ -83,6 +85,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 			},{
 				xtype : 'button' ,
 				text : '开新台',
+				html:'&nbsp;&nbsp;&nbsp;',
 				iconCls: 'arrow_down' ,
 				listeners: {
                     scope : this,
@@ -144,6 +147,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 			} , {xtype : 'spacer'} ,{
 				xtype : 'button' ,
 				text : '满意度调查' ,
+				html:'&nbsp;&nbsp;&nbsp;',
 				iconCls: 'team',
 				listeners: {
                     scope : this,
@@ -219,6 +223,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
     			{
     			xtype : 'button' ,
     			text : '推荐菜' ,
+    			html:'&nbsp;&nbsp;&nbsp;',
     			iconCls: 'star',
     			listeners: {
                     scope : this,
@@ -234,6 +239,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				xtype : 'button' ,
 				iconCls: 'compose',
 				text : '已点菜' , 
+				html:'&nbsp;',
 				listeners: {
                     scope : this,
                     tap: function(){
@@ -250,7 +256,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 	},
 	
 	udpateOrder : function(count , price ){
-		this.items.get(6).setBadge(count) ;
+		this.items.get(5).setBadge(count) ;
 	} 
 });
 
