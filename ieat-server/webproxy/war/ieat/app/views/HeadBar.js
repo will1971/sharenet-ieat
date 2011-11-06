@@ -84,7 +84,7 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 				}
 			},{
 				xtype : 'button' ,
-				text : '开新台',
+				text : '开台',
 				html:'&nbsp;&nbsp;&nbsp;',
 				iconCls: 'arrow_down' ,
 				listeners: {
@@ -133,8 +133,44 @@ SH.HeadBar = Ext.extend(Ext.Toolbar, {
 												action : 'cleanOrder',
 												pindex : pindex
 											});
-					                		
-	                    	                form.setVisible(false);
+								/*
+								 * 更新菜品售罄状态
+								 */			
+										var store = new Ext.data.Store({
+								fields: [
+								         {name: 'id', type: 'string'},
+								         {name: 'item', type: 'auto'},
+								         {name: 'count', type: 'int'}
+								     ],
+								data : ieat.data.getCustomeOrder('default')
+							});
+
+								var PDU = Ext.util.JSON.encode( [ store.getCount() , "MD5" , 
+                        		"000001" , "000001" , "000001", [] ] );
+                        		
+                        		//提交菜单到服务器
+	                        	Ext.Ajax.request({
+	    	                        url: '/webproxy/op',
+	    	                        method : 'POST' ,
+	    	                        jsonData : PDU ,				                       	
+	    	                     success: function(response, opts) {
+	    	                    	 	console.dir(response) ;
+	    	                    	 	//遍历所有的菜，设置缺菜状态
+	    	                    	 	oosItems = Ext.decode(response.responseText) ;
+	    	                    	 	if(oosItems.length > 1 && oosItems[0] != ieat.oosVersion){
+	    	                    	 		var oosSet = {} ;
+	    	                    	 		for(var i = 1; i<= oosItems.length -1 ; i++){
+	    	                    	 			var gindex = oosItems[i] ;
+	    	                    	 			oosSet[gindex] = true ;
+	    	                    	 		}
+	    	                    	 		
+	    	                    	 		ieat.data.refreshOutofSalesStatus(oosSet);
+	    	                    	 	}	    	                    	 
+	    	                        }
+	    	                    });
+											
+					                		//关闭窗口
+	                    	                form.setVisible(false); 
 					                	}
 					                }
 					            }]

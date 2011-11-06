@@ -46,8 +46,13 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
     	            listeners: {
                         scope : this,
                         tap: function(){
-                        	
-                        		var orderItem = [] ;
+                        	this.setVisible(false);
+                        	//提交需要二次确认
+                        	    Ext.Msg.confirm("提示", "你确定要提交已点菜吗？", function(button,text)
+                        	    {
+                        	    	if(button == 'yes'){
+                        	    		console.log("yes");
+                        	    		var orderItem = [] ;
                         		store.each(function(record){
                         			var itemId = (record.get('item').gindex) * 5 + 1 ;
                         			var item = [itemId , record.get('count')] ;
@@ -85,6 +90,12 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 	    	                    	 	ieat.submitmask.hide();
 	    	                        }
 	    	                    });
+                        	    	}else{
+                        	    		console.log('no');
+                        	    	}
+                        	    
+                        	    });
+                        	                            		
                         	}
     	            }
     	        },{xtype:'spacer'},{
@@ -119,6 +130,21 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 				count : 1 
 				} );
 		}
+		
+		this.updateTitle();
+	},
+	
+	updateTitle : function(){
+		if(this.store.getCount() > 0){
+			var sum = 0 ;
+			this.store.each(function(record){
+				sum += (record.get('count') * record.get('item').price);
+			});
+			this.getDockedItems()[0].setTitle ( "已点菜 - 总价：" + sum + "元" ) ;
+			
+		}else{
+			this.getDockedItems()[0].setTitle ( "已点菜" ) ;
+		}
 	},
 	
 	addOrderByIdx : function(index){
@@ -126,6 +152,7 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 		if( target != undefined ){
 			target.set('count', target.get('count') + 1 );
 		}
+		this.updateTitle();
 	},
 	
 	minusOrderByIdx : function(index){
@@ -133,14 +160,17 @@ SH.OrderedSheet = Ext.extend(Ext.Sheet, {
 		if( target != undefined && target.get('count') > 0){
 			target.set('count', target.get('count') - 1 );
 		}
+		this.updateTitle();
 	},
 	
 	removeOrderByIdx : function(index){
 		this.store.removeAt(index) ;
+		this.updateTitle();
 	},
 	
 	removeAllOrder : function(){
 	    this.store.removeAll();
+	    this.updateTitle();
 	},
 	
 	getOrdered : function ( item ){
